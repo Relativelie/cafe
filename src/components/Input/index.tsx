@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({
         </div>
       )}
       <input
-        className="h-full w-full p-2 border rounded-xl border-slate-300 bg-transparent focus:outline-lime-100"
+        className="h-full w-full py-2 pl-10 pr-2 border rounded-xl border-slate-300 text-xl font-oxygen bg-transparent focus:outline-lime-100"
         type="text"
         value={curVal}
         onChange={(e) => handleInputChange(e.target.value)}
