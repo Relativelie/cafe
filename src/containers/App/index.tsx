@@ -8,6 +8,8 @@ import config from "config";
 import { NotificationToaster } from "components";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
+import { Provider } from "react-redux";
+import { store } from "store/store";
 
 export type SearchingData = {
   recipe: {
@@ -45,12 +47,14 @@ function App() {
   // }, [searchingVal]);
 
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <ErrorBoundaries>
         <AppRoutes />
         <NotificationToaster />
       </ErrorBoundaries>
     </BrowserRouter>
+    </Provider>
   );
 }
 
