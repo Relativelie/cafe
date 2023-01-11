@@ -1,6 +1,6 @@
-import recipesReducer from "./recipesReducer";
+import recipesReducer from "./recipesReducer/reducer";
 
 const reducers = {
-    recipesReducer,
+  recipesReducer,
 };
 export default reducers;

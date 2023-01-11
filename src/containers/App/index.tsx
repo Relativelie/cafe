@@ -3,7 +3,7 @@ import Viewing from "components/Viewing";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ErrorBoundaries from "../../components/ErrorBoundary";
-import Searching from "../SearchingResults";
+import Searching from "../SearchingRecipes/SearchingResults";
 import config from "config";
 import { NotificationToaster } from "components";
 import { BrowserRouter } from "react-router-dom";
@@ -48,12 +48,12 @@ function App() {
 
   return (
     <Provider store={store}>
-    <BrowserRouter>
-      <ErrorBoundaries>
-        <AppRoutes />
-        <NotificationToaster />
-      </ErrorBoundaries>
-    </BrowserRouter>
+      <BrowserRouter>
+        <ErrorBoundaries>
+          <AppRoutes />
+          <NotificationToaster />
+        </ErrorBoundaries>
+      </BrowserRouter>
     </Provider>
   );
 }

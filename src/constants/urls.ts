@@ -1,6 +1,6 @@
 const URLS = {
     HOME: "/",
-    SEARCHING_RES: "/searching"
+    SEARCHING_RECIPES_PAGE: "/searching"
 
 }
 

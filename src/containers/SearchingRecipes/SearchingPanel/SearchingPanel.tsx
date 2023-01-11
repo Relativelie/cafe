@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRecipes } from "services/recipes/recipes";
-import { onChangeFilter } from "store/reducers/recipesReducer";
+import { onChangeFilter } from "store/reducers/recipesReducer/reducer";
 import { recipesFilters } from "store/selectors";
 import useDebounce from "utils/useDebounce";
-import SearchIcon from "../../assets/svg/search";
+import SearchIcon from "../../../assets/svg/search";
 import Filters from "./Filters";
 
 type Filters = {
   searchingVal: string;
 };
 
-const NavigationPanel = () => {
+const SearchingPanel = () => {
   const dispatch = useDispatch();
   const filters = useSelector(recipesFilters);
 
@@ -23,7 +23,9 @@ const NavigationPanel = () => {
       <h3 className="font-dance text-center font-medium">Made with love</h3>
       <Input
         curVal={filters.q}
-        handleInputChange={(value) => dispatch(onChangeFilter({key: "q", value}))}
+        handleInputChange={(value) =>
+          dispatch(onChangeFilter({ block: "q", value }))
+        }
         leftIcon={<SearchIcon />}
       />
       <Filters />
@@ -31,4 +33,4 @@ const NavigationPanel = () => {
   );
 };
 
-export default NavigationPanel;
+export default SearchingPanel;

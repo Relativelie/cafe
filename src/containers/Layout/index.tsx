@@ -1,13 +1,10 @@
-import NavigationPanel from "containers/NavigationPanel";
+import SearchingPanel from "containers/SearchingRecipes/SearchingPanel/SearchingPanel";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
     <div>
-      <NavigationPanel />
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

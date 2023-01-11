@@ -1,13 +1,16 @@
 import URLS from "constants/urls";
 import Layout from "containers/Layout";
-import SearchingResults from "containers/SearchingResults";
+import SearchingRecipesPage from "containers/SearchingRecipes";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path={URLS.HOME} element={<Layout />}>
-        <Route path={URLS.SEARCHING_RES} element={<SearchingResults />} />
+        <Route
+          path={URLS.SEARCHING_RECIPES_PAGE}
+          element={<SearchingRecipesPage />}
+        />
       </Route>
       <Route path="*" element={<Navigate to={URLS.HOME} replace />} />
     </Routes>

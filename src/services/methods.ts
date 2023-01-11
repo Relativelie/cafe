@@ -16,6 +16,6 @@ axiosReq.interceptors.request.use((config) => {
   return config;
 });
 
-export const getRequest = async (filters: object): Promise<any> => {
-  return await axiosReq.get("", { params: filters });
+export const getRequest = async (params: object): Promise<any> => {
+  return await axiosReq.get("", { params: params });
 };
