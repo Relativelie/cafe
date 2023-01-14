@@ -6,7 +6,7 @@ module.exports = {
       fontFamily: {
         dance: ["Dancing Script", "cursive"],
         oxygen: ["Oxygen", "sans-serif"],
-      },
+      }
     },
   },
   plugins: [],

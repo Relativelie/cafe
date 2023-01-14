@@ -1,8 +1,7 @@
+import RecipeCard from "components/RecipeCard";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { RecipesRes } from "services/recipes/models";
-import { getRecipes } from "services/recipes/recipes";
 import { loadRecipes } from "store/reducers/recipesReducer/reducer";
 
 import { recipesData, recipesFilters } from "store/selectors";
@@ -22,21 +21,34 @@ const SearchingResults: React.FC<SearchingProps> = ({
   const recipes = useSelector(recipesData);
   const filters = useSelector(recipesFilters);
 
-  const debouncedVal = useDebounce<string>(filters.q, 1000);
 
-  useEffect(() => {
-    dispatch(loadRecipes(filters));
-    // вставить в зависимость остальные фильтры за исключением поиска
-  }, [debouncedVal, filters.diet]);
+
+  // useEffect(() => {
+  //   dispatch(loadRecipes(filters));
+  //   // вставить в зависимость остальные фильтры за исключением поиска
+  // }, [debouncedVal, filters.diet]);
 
   const location = useLocation();
-  console.log(filters);
-  console.log(recipes);
+
 
   return (
-    <div className="mt-4">
-      <div className="grid grid-cols-[minmax(200px,_600px)] justify-center">
-        <p className="text-white">fv</p>
+    <div className="mt-8 p-4 ">
+      <div className="flex justify-center flex-wrap gap-x-4 xl:gap-x-8 gap-y-10">
+        {recipes &&
+          recipes.recipes.map(({ recipe }) => {
+            return (
+              <RecipeCard
+                image={recipe.image}
+                dietLabels={recipe.dietLabels}
+                cousineLabels={recipe.cuisineType}
+                title={recipe.label}
+                calories={Math.round(
+                  (recipe.calories * 100) / recipe.totalWeight
+                )}
+                ingredientsCount={recipe.ingredientLines.length}
+              />
+            );
+          })}
       </div>
     </div>
   );

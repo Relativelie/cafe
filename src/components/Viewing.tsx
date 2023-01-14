@@ -5,7 +5,7 @@ type ViewingProps = {
 };
 
 const Viewing: React.FC<ViewingProps> = ({ searchingData }) => {
-  console.log(searchingData, "searchingData");
+
   return (
     <div className="flex flex-col">
       {searchingData &&

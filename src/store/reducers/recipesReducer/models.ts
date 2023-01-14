@@ -1,5 +1,4 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { RecipesRes } from "services/recipes/models";
 
 export enum DietEnum {
   balanced = "balanced",
@@ -11,19 +10,110 @@ export enum DietEnum {
 }
 
 export type Filter = {
-    q: string;
-    diet: {
-      [DietEnum.balanced]: boolean;
-      [DietEnum.highFiber]: boolean;
-      [DietEnum.highProtein]: boolean;
-      [DietEnum.lowCarb]: boolean;
-      [DietEnum.lowFat]: boolean;
-      [DietEnum.lowSodium]: boolean;
+  q: string;
+  diet: {
+    [DietEnum.balanced]: boolean;
+    [DietEnum.highFiber]: boolean;
+    [DietEnum.highProtein]: boolean;
+    [DietEnum.lowCarb]: boolean;
+    [DietEnum.lowFat]: boolean;
+    [DietEnum.lowSodium]: boolean;
+  };
+};
+
+export type Recipes = {
+  recipes: [
+    {
+      recipe: Recipe;
+      _links: {
+        self: {
+          href: string;
+          title: string;
+        };
+        next: {
+          href: string;
+          title: string;
+        };
+      };
+    }
+  ];
+  next?: string;
+};
+
+export type Recipe = {
+  totalTime: string;
+  uri: string;
+  label: string;
+  image: string;
+  images: {
+    THUMBNAIL: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    SMALL: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    REGULAR: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    LARGE: {
+      url: string;
+      width: number;
+      height: number;
     };
   };
+  source: string;
+  url: string;
+  shareAs: string;
+  yield: number;
+  dietLabels: [string];
+  healthLabels: [string];
+  cautions: [string];
+  ingredientLines: [string];
+  ingredients: [
+    {
+      text: string;
+      quantity: number;
+      measure: string;
+      food: string;
+      weight: number;
+      foodId: string;
+    }
+  ];
+  calories: number;
+  glycemicIndex: number;
+  totalCO2Emissions: number;
+  co2EmissionsClass: "A+";
+  totalWeight: number;
+  cuisineType: [string];
+  mealType: [string];
+  dishType: [string];
+  instructions: [string];
+  tags: [string];
+  externalId: string;
+  totalNutrients: {};
+  totalDaily: {};
+  digest: [
+    {
+      label: string;
+      tag: string;
+      schemaOrgTag: string;
+      total: number;
+      hasRDI: true;
+      daily: number;
+      unit: string;
+      sub: {};
+    }
+  ];
+};
 
 export type State = {
-  recipesData: RecipesRes | null;
+  recipesData: Recipes | null;
   filter: Filter;
 };
 
@@ -31,7 +121,7 @@ export type Reducers<T> = {
   onChangeFilter: (
     state: State,
     action: PayloadAction<{
-      block: keyof Filter,
+      block: keyof Filter;
       value: T;
       blockItemKey?: string;
     }>
