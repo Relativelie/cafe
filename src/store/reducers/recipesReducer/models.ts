@@ -115,6 +115,7 @@ export type Recipe = {
 export type State = {
   recipesData: Recipes | null;
   filter: Filter;
+  selectedRecipe: Recipe | null;
 };
 
 export type Reducers<T> = {
@@ -126,4 +127,8 @@ export type Reducers<T> = {
       blockItemKey?: string;
     }>
   ) => void;
+  onChangeSelectedVal: (    state: State,
+    action: PayloadAction<{
+      recipe: Recipe | null
+    }>) => void
 };

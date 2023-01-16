@@ -1,4 +1,3 @@
-import SearchingPanel from "containers/SearchingRecipes/SearchingPanel/SearchingPanel";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {

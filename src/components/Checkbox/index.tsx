@@ -12,9 +12,9 @@ const Checkbox: React.FC<CheckboxProps> = ({ label = "", checked, onChange }) =>
         type="checkbox"
         name="status"
         checked={checked}
-        onChange={(e) => onChange(!!e.target.value)}
+        onChange={() => onChange(!checked)}
       />
-      {label && <label className="h4">{label}</label>}
+      {label && <label className="h5">{label}</label>}
     </div>
   );
 };

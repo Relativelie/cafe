@@ -1,6 +1,6 @@
 import URLS from "constants/urls";
 import Layout from "containers/Layout";
-import SearchingRecipesPage from "containers/SearchingRecipes";
+import SearchingRecipesPage from "containers/Recipes";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => {

@@ -1,4 +1,5 @@
 import { Checkbox } from "components";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DietEnum } from "store/reducers/recipesReducer/models";
 import { onChangeFilter } from "store/reducers/recipesReducer/reducer";
@@ -10,7 +11,7 @@ const allFilters = [
     block: "diet",
     availableValues: [
       { label: "balanced", key: DietEnum.balanced },
-      { label: "high-fiber", key: DietEnum.highFiber},
+      { label: "high-fiber", key: DietEnum.highFiber },
       { label: "low-carb", key: DietEnum.lowCarb },
       { label: "low-fat", key: DietEnum.lowFat },
       { label: "high-protein", key: DietEnum.highProtein },
@@ -26,18 +27,26 @@ const Filters = () => {
   return (
     <div>
       {allFilters.map((filter) => (
-        <div>
-          <p>{filter.label}</p>
+        <React.Fragment key={`${filter.block}-${filter.label}`}>
+          <h4>{filter.label}</h4>
           {filter.availableValues.map((item) => (
-            <Checkbox
-              label={item.label}
-              checked={filters.diet[item.key]}
-              onChange={(value) =>
-                dispatch(onChangeFilter({ blockItemKey: item.key, value, block: "diet" }))
-              }
-            />
+            <div key={`${item.key}-checkbox`} className="ml-2">
+              <Checkbox
+                label={item.label}
+                checked={filters.diet[item.key]}
+                onChange={(value) =>
+                    dispatch(
+                    onChangeFilter({
+                      blockItemKey: item.key,
+                      value,
+                      block: "diet",
+                })
+                  )
+                }
+              />
+            </div>
           ))}
-        </div>
+        </React.Fragment>
       ))}
     </div>
   );

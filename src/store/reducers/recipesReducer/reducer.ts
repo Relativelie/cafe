@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getRecipes } from "services/recipes";
-import { DietEnum, Filter, Reducers, State } from "./models";
+import { DietEnum, Filter, Recipe, Reducers, State } from "./models";
 
 export const loadRecipes = createAsyncThunk(
   "recipes",
@@ -8,8 +8,8 @@ export const loadRecipes = createAsyncThunk(
     const res = await getRecipes(filter);
     return {
       recipes: res.hits,
-      next: res["_links"].next?.href
-    };;
+      next: res["_links"].next?.href,
+    };
   }
 );
 
@@ -28,6 +28,7 @@ const recipesSlice = createSlice<State, Reducers<any>>({
         [DietEnum.lowSodium]: false,
       },
     },
+    selectedRecipe: null,
   } as State,
   reducers: {
     onChangeFilter<T>(
@@ -54,6 +55,14 @@ const recipesSlice = createSlice<State, Reducers<any>>({
         };
       }
     },
+    onChangeSelectedVal(
+      state: State,
+      action: PayloadAction<{
+        recipe: Recipe | null;
+      }>
+    ) {
+      state.selectedRecipe = action.payload.recipe;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(loadRecipes.fulfilled, (state, action) => {
@@ -63,5 +72,5 @@ const recipesSlice = createSlice<State, Reducers<any>>({
 });
 
 const languageReducer = recipesSlice.reducer;
-export const { onChangeFilter } = recipesSlice.actions;
+export const { onChangeFilter, onChangeSelectedVal } = recipesSlice.actions;
 export default languageReducer;

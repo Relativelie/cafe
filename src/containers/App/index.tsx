@@ -3,7 +3,7 @@ import Viewing from "components/Viewing";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ErrorBoundaries from "../../components/ErrorBoundary";
-import Searching from "../SearchingRecipes/SearchingResults";
+import Searching from "../Recipes/RecipesList";
 import config from "config";
 import { NotificationToaster } from "components";
 import { BrowserRouter } from "react-router-dom";

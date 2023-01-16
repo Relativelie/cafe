@@ -5,23 +5,24 @@ import { recipesFilters } from "store/selectors";
 import { AppDispatch } from "store/store";
 import useDebounce from "utils/useDebounce";
 import SearchingPanel from "./SearchingPanel/SearchingPanel";
-import SearchingResults from "./SearchingResults";
+import RecipesList from "./RecipesList";
 
 const SearchingRecipesPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector(recipesFilters);
   const debouncedVal = useDebounce<string>(filters.q, 1000);
+  const checkboxFilters: any = {...filters}
+  delete checkboxFilters.q;
 
   useEffect(() => {
     dispatch(loadRecipes(filters));
-    console.log("go in")
-    // вставить в зависимость остальные фильтры за исключением поиска
-  }, [debouncedVal, filters.diet]);
+  }, [debouncedVal, checkboxFilters]);
 
+  // grid grid-cols-[minmax(200px,400px),_1fr]
   return (
-    <div className="grid grid-cols-[minmax(200px,400px),_1fr]">
+    <div className="flex">
       <SearchingPanel />
-      <SearchingResults />
+      <RecipesList />
     </div>
   );
 };
