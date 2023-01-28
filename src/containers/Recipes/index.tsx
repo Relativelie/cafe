@@ -32,7 +32,10 @@ const SearchingRecipesPage = observer(() => {
   }
   useEffect(() => {
     loadRecipes();
-  }, [debouncedVal, checkboxFiltersRef.current]);
+  }, [debouncedVal, checkboxFiltersRef.current])
+
+
+  
 
   return (
     <>
