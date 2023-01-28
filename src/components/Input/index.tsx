@@ -17,9 +17,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative flex items-center">
       {leftIcon && (
-        <div className="absolute h-full flex items-center left-2">
-          {leftIcon}
-        </div>
+        <div className="absolute h-full flex items-center left-2">{leftIcon}</div>
       )}
       <input
         className="h-full w-full py-2 pl-10 pr-2 border rounded-xl border-slate-300 text-xl font-oxygen bg-transparent focus:outline-lime-100"
@@ -28,9 +26,7 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => handleInputChange(e.target.value)}
       />
       {rightIcon && (
-        <div className="absolute h-full flex items-center right-2">
-          {rightIcon}
-        </div>
+        <div className="absolute h-full flex items-center right-2">{rightIcon}</div>
       )}
     </div>
   );

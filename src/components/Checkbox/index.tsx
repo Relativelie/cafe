@@ -4,11 +4,7 @@ type CheckboxProps = {
   label?: string;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({
-  label = "",
-  checked,
-  onChange,
-}) => {
+const Checkbox: React.FC<CheckboxProps> = ({ label = "", checked, onChange }) => {
   return (
     <div className="flex gap-4">
       <input

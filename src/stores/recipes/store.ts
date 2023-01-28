@@ -37,11 +37,7 @@ export const RecipeStore = types
     nextPage: types.maybeNull(types.string),
   })
   .actions((self) => {
-    function onChangeFilter<T>(
-      block: AllFiltersENUM,
-      value: T,
-      blockItemKey?: string,
-    ) {
+    function onChangeFilter<T>(block: AllFiltersENUM, value: T, blockItemKey?: string) {
       console.log(block, value, blockItemKey);
       if (!blockItemKey) {
         self.filters = {

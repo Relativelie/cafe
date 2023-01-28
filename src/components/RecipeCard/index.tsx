@@ -54,9 +54,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
           ))}
         </div>
         <div className="w-fit px-2 rounded-lg bg-green-300">
-          <p className="text-black text-center">
-            {ingredientLines.length} INGREDIENTS
-          </p>
+          <p className="text-black text-center">{ingredientLines.length} INGREDIENTS</p>
         </div>
       </div>
     </div>

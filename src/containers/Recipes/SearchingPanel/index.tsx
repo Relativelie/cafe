@@ -39,9 +39,7 @@ const SearchingPanel = observer(() => {
         <h3 className="font-dance text-center font-medium">Made with love</h3>
         <Input
           curVal={filters.q}
-          handleInputChange={(value) =>
-            onChangeFilter(AllFiltersENUM.Search, value)
-          }
+          handleInputChange={(value) => onChangeFilter(AllFiltersENUM.Search, value)}
           leftIcon={<SearchIcon />}
         />
         <div>
@@ -56,9 +54,7 @@ const SearchingPanel = observer(() => {
                         <Checkbox
                           label={item}
                           checked={(filters[filter.block] as any)[item]}
-                          onChange={(value) =>
-                            onChangeFilter(filter.block, value, item)
-                          }
+                          onChange={(value) => onChangeFilter(filter.block, value, item)}
                         />
                       </div>
                     );
