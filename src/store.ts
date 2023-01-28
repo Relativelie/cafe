@@ -1,24 +1,12 @@
 import React from "react";
-import {
-  IRootStore,
-  RootStore,
-} from "stores";
+import { IRootStore, RootStore } from "stores";
 
-export const store =
-  RootStore.create({
-    recipeStore: {},
-  });
+export const store = RootStore.create({
+  recipeStore: {},
+});
 
-const storeContext =
-  React.createContext<IRootStore>(
-    store,
-  );
+const storeContext = React.createContext<IRootStore>(store);
 
-export const StoreProvider =
-  storeContext.Provider;
+export const StoreProvider = storeContext.Provider;
 
-export const useStore =
-  () =>
-    React.useContext(
-      storeContext,
-    );
+export const useStore = () => React.useContext(storeContext);

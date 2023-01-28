@@ -1,7 +1,4 @@
-import {
-  Instance,
-  types,
-} from "mobx-state-tree";
+import { Instance, types } from "mobx-state-tree";
 
 export enum DietEnum {
   Balanced = "balanced",
@@ -36,46 +33,19 @@ export enum CuisineEnum {
   World = "world",
 }
 
-const parseFiltersType =
-  (enumVal: {
-    [
-      key: string
-    ]: any;
-  }) => {
-    let dict: any =
-      {};
-    Object.keys(
-      enumVal,
-    ).map(
-      (key) =>
-        (dict[
-          enumVal[
-            key
-          ]
-        ] =
-          types.boolean),
-    );
-    return types.model(
-      { ...dict },
-    );
-  };
+const parseFiltersType = (enumVal: { [key: string]: any }) => {
+  let dict: any = {};
+  Object.keys(enumVal).map((key) => (dict[enumVal[key]] = types.boolean));
+  return types.model({ ...dict });
+};
 
-export const Filter =
-  types.model({
-    q: types.string,
-    diet: parseFiltersType(
-      DietEnum,
-    ),
-    cuisineType:
-      parseFiltersType(
-        CuisineEnum,
-      ),
-  });
+export const Filter = types.model({
+  q: types.string,
+  diet: parseFiltersType(DietEnum),
+  cuisineType: parseFiltersType(CuisineEnum),
+});
 
-export type FilterType =
-  Instance<
-    typeof Filter
-  >;
+export type FilterType = Instance<typeof Filter>;
 
 export enum AllFiltersENUM {
   Search = "q",
@@ -88,13 +58,10 @@ export enum AllFiltersTitlesENUM {
   CuisineType = "Cuisine",
 }
 
-export const checkboxFiltersValues =
-  {
-    [AllFiltersENUM.CuisineType]:
-      CuisineEnum,
-    [AllFiltersENUM.Diet]:
-      DietEnum,
-  };
+export const checkboxFiltersValues = {
+  [AllFiltersENUM.CuisineType]: CuisineEnum,
+  [AllFiltersENUM.Diet]: DietEnum,
+};
 
 enum ImageSizeENUM {
   THUMBNAIL = "THUMBNAIL",
@@ -103,92 +70,63 @@ enum ImageSizeENUM {
   LARGE = "LARGE",
 }
 
-const ImageModel =
-  types.model({
-    url: types.string,
-    width:
-      types.number,
-    height:
-      types.number,
-  });
+const ImageModel = types.model({
+  url: types.string,
+  width: types.number,
+  height: types.number,
+});
 
-export const Recipe =
-  types.model({
-    label:
-      types.string,
+export const Recipe = types.model({
+  label: types.string,
 
-    // uri: types.string,
-    image:
-      types.string,
-    // images: types.model({
-    //   THUMBNAIL: ImageModel,
-    //   SMALL: ImageModel,
-    //   REGULAR: ImageModel,
-    //   LARGE: ImageModel,
-    // }),
-    // source: types.string,
-    // url: types.string,
-    // shareAs: types.string,
-    // yield: types.number,
-    dietLabels:
-      types.array(
-        types.string,
-      ),
-    healthLabels:
-      types.array(
-        types.string,
-      ),
-    // cautions: types.frozen(),
-    ingredientLines:
-      types.array(
-        types.string,
-      ),
-    // ingredients: types.frozen(),
+  // uri: types.string,
+  image: types.string,
+  // images: types.model({
+  //   THUMBNAIL: ImageModel,
+  //   SMALL: ImageModel,
+  //   REGULAR: ImageModel,
+  //   LARGE: ImageModel,
+  // }),
+  // source: types.string,
+  // url: types.string,
+  // shareAs: types.string,
+  // yield: types.number,
+  dietLabels: types.array(types.string),
+  healthLabels: types.array(types.string),
+  // cautions: types.frozen(),
+  ingredientLines: types.array(types.string),
+  // ingredients: types.frozen(),
 
-    calories:
-      types.number,
-    totalWeight:
-      types.number,
-    totalTime:
-      types.number,
+  calories: types.number,
+  totalWeight: types.number,
+  totalTime: types.number,
 
-    cuisineType:
-      types.array(
-        types.string,
-      ),
-    mealType:
-      types.array(
-        types.string,
-      ),
-    dishType:
-      types.frozen(),
-    // digest: types.frozen(),
-    // totalDaily: types.frozen(),
-    // totalNutrients: types.frozen(),
-  });
+  cuisineType: types.array(types.string),
+  mealType: types.array(types.string),
+  dishType: types.frozen(),
+  // digest: types.frozen(),
+  // totalDaily: types.frozen(),
+  // totalNutrients: types.frozen(),
+});
 
-export type RecipeType =
-  Instance<
-    typeof Recipe
-  >;
+export type RecipeType = Instance<typeof Recipe>;
 
-export type RecipeResponse =
-  {
-    from: number;
-    to: number;
-    count: number;
-    _links: {
-      self: {
-        href: string;
-        title: string;
-      };
-      next: {
-        href: string;
-        title: string;
-      };
+export type RecipeResponse = {
+  from: number;
+  to: number;
+  count: number;
+  _links: {
+    self: {
+      href: string;
+      title: string;
     };
-    hits: RecipeType[];
+    next: {
+      href: string;
+      title: string;
+    };
   };
+  hits: RecipeType[];
+};
 
 // "recipe": {
 //   "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_bbfc1a248bd6fe277e35fe01027de91f",

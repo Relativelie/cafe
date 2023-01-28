@@ -2,17 +2,13 @@ import { ReactNode } from "react";
 
 type InputProps = {
   curVal: string;
-  handleInputChange: (
-    arg0: string,
-  ) => void;
+  handleInputChange: (arg0: string) => void;
   rightIcon?: ReactNode;
   leftIcon?: ReactNode;
   alt?: string;
 };
 
-const Input: React.FC<
-  InputProps
-> = ({
+const Input: React.FC<InputProps> = ({
   curVal,
   handleInputChange,
   leftIcon,
@@ -28,23 +24,12 @@ const Input: React.FC<
       <input
         className="h-full w-full py-2 pl-10 pr-2 border rounded-xl border-slate-300 text-xl font-oxygen bg-transparent focus:outline-lime-100"
         type="text"
-        value={
-          curVal
-        }
-        onChange={(
-          e,
-        ) =>
-          handleInputChange(
-            e.target
-              .value,
-          )
-        }
+        value={curVal}
+        onChange={(e) => handleInputChange(e.target.value)}
       />
       {rightIcon && (
         <div className="absolute h-full flex items-center right-2">
-          {
-            rightIcon
-          }
+          {rightIcon}
         </div>
       )}
     </div>

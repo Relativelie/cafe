@@ -1,16 +1,11 @@
 import classNames from "classnames";
 import Loading from "../../assets/icons/LoadingRecipe";
 
-type SpinnerProps =
-  {
-    className?: string;
-  };
+type SpinnerProps = {
+  className?: string;
+};
 
-const Spinner: React.FC<
-  SpinnerProps
-> = ({
-  className,
-}) => {
+const Spinner: React.FC<SpinnerProps> = ({ className }) => {
   return (
     <div
       className={classNames(

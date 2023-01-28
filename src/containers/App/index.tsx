@@ -1,9 +1,6 @@
 import axios from "axios";
 import Viewing from "components/Viewing";
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ErrorBoundaries from "../../components/ErrorBoundary";
 // import Searching from "../Recipes/RecipesList";
@@ -13,14 +10,13 @@ import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import { store } from "store";
 
-export type SearchingData =
-  {
-    recipe: {
-      ingredientLines: string[];
-      label: string;
-      image: string;
-    };
+export type SearchingData = {
+  recipe: {
+    ingredientLines: string[];
+    label: string;
+    image: string;
   };
+};
 
 function App() {
   // const { t } = useTranslation();

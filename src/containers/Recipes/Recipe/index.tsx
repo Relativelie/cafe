@@ -2,79 +2,47 @@ import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useStore } from "store";
 
-const Recipe =
-  observer(() => {
-    const {
-      recipeStore,
-    } = useStore();
-    const {
-      filters,
-      isLoading,
-      selectedRecipe,
-    } = toJS(
-      recipeStore,
-    );
-    const {
-      loadRecipes,
-    } = recipeStore;
-    console.log(
-      selectedRecipe,
-    );
-    return (
-      <div>
-        {selectedRecipe && (
-          <div className="h-screen">
-            <div className="w-full h-64 flex items-center justify-center bg-recipe-poster bg-cover bg-center">
-              <div className="relative p-4 bg-black/40">
-                <div className="absolute -bottom-4 left-[35%] px-4 py-[1px] text-black bg-white">
-                  <h5 className="font-semibold">
-                    {"u can do it ♡".toUpperCase()}
-                  </h5>
-                </div>
-                <div className="border-2 border-white p-4">
-                  <p className="text-5xl text-white">
-                    {
-                      selectedRecipe?.label
-                    }
-                  </p>
-                </div>
+const Recipe = observer(() => {
+  const { recipeStore } = useStore();
+  const { filters, isLoading, selectedRecipe } = toJS(recipeStore);
+  const { loadRecipes } = recipeStore;
+  console.log(selectedRecipe);
+  return (
+    <div>
+      {selectedRecipe && (
+        <div className="h-screen">
+          <div className="w-full h-64 flex items-center justify-center bg-recipe-poster bg-cover bg-center">
+            <div className="relative p-4 bg-black/40">
+              <div className="absolute -bottom-4 left-[35%] px-4 py-[1px] text-black bg-white">
+                <h5 className="font-semibold">
+                  {"u can do it ♡".toUpperCase()}
+                </h5>
               </div>
-            </div>
-            <div className="flex mt-10 justify-center items-center gap-10">
-              <div className="w-fit h-fit border-4 border-white rounded-full overflow-hidden">
-                <img
-                  src={
-                    selectedRecipe?.image
-                  }
-                  alt="recipe"
-                />
-              </div>
-              <div className="flex flex-col gap-8">
-                <h3 className="font-semibold">{`${selectedRecipe?.ingredientLines.length} Ingredients`}</h3>
-                <div className="flex flex-col gap-2">
-                  {selectedRecipe?.ingredientLines.map(
-                    (
-                      ingredient,
-                      index,
-                    ) => (
-                      <p
-                        className="h5"
-                        key={`ingredient-${index}`}
-                      >
-                        {
-                          ingredient
-                        }
-                      </p>
-                    ),
-                  )}
-                </div>
+              <div className="border-2 border-white p-4">
+                <p className="text-5xl text-white">{selectedRecipe?.label}</p>
               </div>
             </div>
           </div>
-        )}
-      </div>
-    );
-  });
+          <div className="flex mt-10 justify-center items-center gap-10">
+            <div className="w-fit h-fit border-4 border-white rounded-full overflow-hidden">
+              <img src={selectedRecipe?.image} alt="recipe" />
+            </div>
+            <div className="flex flex-col gap-8">
+              <h3 className="font-semibold">{`${selectedRecipe?.ingredientLines.length} Ingredients`}</h3>
+              <div className="flex flex-col gap-2">
+                {selectedRecipe?.ingredientLines.map((ingredient, index) => (
+                  <p className="h5" key={`ingredient-${index}`}>
+                    {ingredient}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+});
 
 export default Recipe;
 

@@ -2,8 +2,7 @@ const URLS = {
   HOME: "/",
   RECIPES: {
     BASE: "/recipes",
-    RECIPE:
-      "/recipes/recipe",
+    RECIPE: "/recipes/recipe",
   },
 };
 
