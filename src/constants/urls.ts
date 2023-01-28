@@ -1,7 +1,10 @@
 const URLS = {
-    HOME: "/",
-    SEARCHING_RECIPES_PAGE: "/searching"
+  HOME: "/",
+  RECIPES: {
+    BASE: "/recipes",
+    RECIPE:
+      "/recipes/recipe",
+  },
+};
 
-}
-
-export default URLS
+export default URLS;

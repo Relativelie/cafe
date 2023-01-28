@@ -3,32 +3,38 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply bg-zinc-900 text-white
-    }
+  body {
+    @apply bg-zinc-900 text-white;
+  }
 
-    /* Font Size */
+  /* Font Size */
 
-    h1, .h1 {
-        @apply text-4xl
-    }
+  h1,
+  .h1 {
+    @apply text-4xl;
+  }
 
-    h2, .h2 {
-        @apply text-3xl
-    }
+  h2,
+  .h2 {
+    @apply text-3xl;
+  }
 
-    h3, .h3 {
-        @apply text-2xl
-    }
+  h3,
+  .h3 {
+    @apply text-2xl;
+  }
 
-    h4, .h4 {
-        @apply text-xl;
-    }
-    h5, .h5 {
-        @apply text-base;
-    }
+  h4,
+  .h4 {
+    @apply text-xl;
+  }
+  h5,
+  .h5 {
+    @apply text-base;
+  }
 
-    p, .p {
-        @apply text-sm;
-    }
+  p,
+  .p {
+    @apply text-sm;
+  }
 }

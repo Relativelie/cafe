@@ -5,18 +5,28 @@ import en from "./locales/en.json";
 import ru from "./locales/ru.json";
 
 const resources = {
-  en: { translation: en },
-  ru: { translation: ru },
+  en: {
+    translation: en,
+  },
+  ru: {
+    translation: ru,
+  },
 };
 
 i18n
-  .use(initReactI18next)
-  .use(LanguageDetector)
+  .use(
+    initReactI18next,
+  )
+  .use(
+    LanguageDetector,
+  )
   .init({
-    fallbackLng: "en",
+    fallbackLng:
+      "en",
     resources,
     interpolation: {
-      escapeValue: false,
+      escapeValue:
+        false,
     },
   });
 

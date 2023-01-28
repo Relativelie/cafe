@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         dance: ["Dancing Script", "cursive"],
         oxygen: ["Oxygen", "sans-serif"],
+      },
+      backgroundImage: {
+        'recipe-poster': "url('assets/webp/coooking-bg.webp')",
       }
     },
   },

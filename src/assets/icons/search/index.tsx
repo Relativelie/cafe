@@ -1,10 +1,21 @@
 type IconProps = {
-    img: string;
-    alt: string;
-}
+  img: string;
+  alt: string;
+};
 
-const Icon:React.FC<IconProps> = ({img, alt}) => {
-   return <img src={img} alt={alt} className="w-full h-full" />
-}
+const Icon: React.FC<
+  IconProps
+> = ({
+  img,
+  alt,
+}) => {
+  return (
+    <img
+      src={img}
+      alt={alt}
+      className="w-full h-full"
+    />
+  );
+};
 
-export default Icon
+export default Icon;

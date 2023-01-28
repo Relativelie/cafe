@@ -1,0 +1,10 @@
+public
+.idea/
+README.md
+.gitlab-ci.yml
+.prettierrc.js
+.vscode/launch.json
+package-lock.json
+package.json
+postcss.config.js
+.husky/
