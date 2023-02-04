@@ -1,6 +1,7 @@
 import axios from "axios";
 import config from "config";
 import QueryString from "qs";
+import { toast } from "react-hot-toast";
 
 const service = config.service;
 
@@ -24,7 +25,11 @@ axiosReq.interceptors.request.use((config) => {
 });
 
 export const getRequest = async (params?: any, url?: string): Promise<any> => {
-  return await axiosReq.get(url ?? "", {
-    params: params,
-  });
+  return await axiosReq
+    .get(url ?? "", {
+      params: params,
+    })
+    .catch((err) =>
+      toast.error(`Something went wrong please reload the page. Code: ${err.code}`),
+    );
 };

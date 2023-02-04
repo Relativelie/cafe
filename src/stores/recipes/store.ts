@@ -80,8 +80,6 @@ export const RecipeStore = types
             }))
           : null;
         self.nextPage = res["_links"].next?.href ?? null;
-      } catch (e) {
-        console.log(e);
       } finally {
         self.isLoading = false;
       }
@@ -114,8 +112,6 @@ export const RecipeStore = types
 
           self.nextPage = res["_links"].next?.href ?? null;
         }
-      } catch (e) {
-        console.log(e);
       } finally {
         self.isLoading = false;
       }
