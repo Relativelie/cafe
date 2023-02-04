@@ -1,5 +1,4 @@
-import RecipeCard from "components/RecipeCard";
-import ToUpButton from "components/ToUpButton";
+import { RecipeCard, ToUpButton } from "components";
 import URLS from "constants/urls";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
@@ -7,7 +6,7 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "store";
-import { RecipeType } from "stores/recipes/models";
+import { RecipeType } from "stores/recipes";
 
 const RecipesList: React.FC = observer(() => {
   const navigate = useNavigate();

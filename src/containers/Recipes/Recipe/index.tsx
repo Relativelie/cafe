@@ -1,7 +1,7 @@
+import { BackButton } from "components";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useStore } from "store";
-import BackButton from "components/BackButton";
 
 const Recipe = observer(() => {
   const { recipeStore } = useStore();

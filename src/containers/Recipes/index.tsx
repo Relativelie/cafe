@@ -1,20 +1,18 @@
 import { useEffect, useRef } from "react";
 import useDebounce from "utils/useDebounce";
-import Spinner from "components/Spinner";
 import { observer } from "mobx-react-lite";
 import { useStore } from "store";
 import { toJS } from "mobx";
 import isEqual from "lodash.isequal";
 import SearchingPanel from "./SearchingPanel";
-import RecipesList from "./RecipesList";
 import { Outlet, useNavigate } from "react-router-dom";
 import URLS from "constants/urls";
-import ScrollToTop from "utils/useScrollToTop";
+import { Spinner } from "components";
 
 const Recipes = observer(() => {
   const navigate = useNavigate();
   const { recipeStore } = useStore();
-  const { filters, isLoading, recipesData } = toJS(recipeStore);
+  const { filters, isLoading } = toJS(recipeStore);
   const { loadRecipes } = recipeStore;
 
   const debouncedVal = useDebounce<string>(filters.q, 1000);
