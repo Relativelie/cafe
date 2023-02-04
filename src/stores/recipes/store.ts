@@ -1,5 +1,5 @@
 import { clone, flow, SnapshotIn, types } from "mobx-state-tree";
-import { getRecipes } from "services/recipes";
+import { getRecipes, loadNextRecipes } from "services/recipes";
 import {
   Filter,
   Recipe,
@@ -8,8 +8,8 @@ import {
   AllFiltersENUM,
 } from "./models";
 
-const parseFilters = (enumVal: { [key: string]: any }) => {
-  let dict: any = {};
+const parseFilters = (enumVal: { [key: string]: string }) => {
+  let dict: { [key: string]: boolean } = {};
   Object.keys(enumVal).map((key) => (dict[enumVal[key]] = false));
   return dict;
 };
@@ -22,7 +22,7 @@ const setFilters = () => {
         ...parseFilters(checkboxFiltersValues[val]),
       };
     } else {
-      newFilters[val] = "";
+      newFilters[val] = "cherry";
     }
   });
   return newFilters;
@@ -38,7 +38,6 @@ export const RecipeStore = types
   })
   .actions((self) => {
     function onChangeFilter<T>(block: AllFiltersENUM, value: T, blockItemKey?: string) {
-      console.log(block, value, blockItemKey);
       if (!blockItemKey) {
         self.filters = {
           ...self.filters,
@@ -64,18 +63,20 @@ export const RecipeStore = types
         self.isLoading = true;
         const res = yield getRecipes(self.filters);
         self.recipesData = res.hits.length
-          ? res.hits.map((item: any) => ({
-              label: item.recipe.label,
-              image: item.recipe.image,
-              dietLabels: item.recipe.dietLabels,
-              healthLabels: item.recipe.healthLabels,
-              ingredientLines: item.recipe.ingredientLines,
-              calories: item.recipe.calories,
-              totalWeight: item.recipe.totalWeight,
-              totalTime: item.recipe.totalTime,
-              cuisineType: item.recipe.cuisineType,
-              mealType: item.recipe.mealType,
-              dishType: item.recipe.dishType,
+          ? res.hits.map(({ recipe }: any) => ({
+              url: recipe.url,
+              totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
+              label: recipe.label,
+              image: recipe.image,
+              dietLabels: recipe.dietLabels,
+              healthLabels: recipe.healthLabels,
+              ingredientLines: recipe.ingredientLines,
+              calories: recipe.calories,
+              totalWeight: recipe.totalWeight,
+              totalTime: recipe.totalTime,
+              cuisineType: recipe.cuisineType,
+              mealType: recipe.mealType,
+              dishType: recipe.dishType,
             }))
           : null;
         self.nextPage = res["_links"].next?.href ?? null;
@@ -85,10 +86,46 @@ export const RecipeStore = types
         self.isLoading = false;
       }
     });
+
+    const loadNextRecipesList = flow(function* () {
+      try {
+        self.isLoading = true;
+        if (self.nextPage) {
+          const res = yield loadNextRecipes(self.nextPage);
+          if (res.hits.length) {
+            self.recipesData?.push(
+              ...res.hits.map(({ recipe }: any) => ({
+                url: recipe.url,
+                totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
+                label: recipe.label,
+                image: recipe.image,
+                dietLabels: recipe.dietLabels,
+                healthLabels: recipe.healthLabels,
+                ingredientLines: recipe.ingredientLines,
+                calories: recipe.calories,
+                totalWeight: recipe.totalWeight,
+                totalTime: recipe.totalTime,
+                cuisineType: recipe.cuisineType,
+                mealType: recipe.mealType,
+                dishType: recipe.dishType,
+              })),
+            );
+          }
+
+          self.nextPage = res["_links"].next?.href ?? null;
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        self.isLoading = false;
+      }
+    });
+
     return {
       onChangeFilter,
       onClickRecipe,
       loadRecipes,
+      loadNextRecipesList,
     };
   });
 

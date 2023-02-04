@@ -23,7 +23,7 @@ axiosReq.interceptors.request.use((config) => {
   return config;
 });
 
-export const getRequest = async (params?: object, url?: string): Promise<any> => {
+export const getRequest = async (params?: any, url?: string): Promise<any> => {
   return await axiosReq.get(url ?? "", {
     params: params,
   });

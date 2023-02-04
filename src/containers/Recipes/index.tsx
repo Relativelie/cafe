@@ -4,52 +4,46 @@ import Spinner from "components/Spinner";
 import { observer } from "mobx-react-lite";
 import { useStore } from "store";
 import { toJS } from "mobx";
-import RecipesList from "./RecipesList";
-import SearchingPanel from "./SearchingPanel";
 import isEqual from "lodash.isequal";
+import SearchingPanel from "./SearchingPanel";
+import RecipesList from "./RecipesList";
+import { Outlet, useNavigate } from "react-router-dom";
+import URLS from "constants/urls";
+import ScrollToTop from "utils/useScrollToTop";
 
-const SearchingRecipesPage = observer(() => {
+const Recipes = observer(() => {
+  const navigate = useNavigate();
   const { recipeStore } = useStore();
-  const { filters, isLoading } = toJS(recipeStore);
+  const { filters, isLoading, recipesData } = toJS(recipeStore);
   const { loadRecipes } = recipeStore;
 
   const debouncedVal = useDebounce<string>(filters.q, 1000);
-  const checkboxFiltersRef = useRef({
-    ...filters.diet,
-    ...filters.cuisineType,
-  });
+  const checkboxFiltersRef = useRef({ ...filters.diet, ...filters.cuisineType });
 
-  if (
-    !isEqual(checkboxFiltersRef.current, {
-      ...filters.diet,
-      ...filters.cuisineType,
-    })
-  ) {
-    checkboxFiltersRef.current = {
-      ...filters.diet,
-      ...filters.cuisineType,
-    };
+  if (!isEqual(checkboxFiltersRef.current, { ...filters.diet, ...filters.cuisineType })) {
+    checkboxFiltersRef.current = { ...filters.diet, ...filters.cuisineType };
   }
-  useEffect(() => {
-    loadRecipes();
-  }, [debouncedVal, checkboxFiltersRef.current]);
 
-  console.log("test");
+  useEffect(() => {
+    loadRecipes().then(() => {
+      navigate(URLS.RECIPES.SEARCH);
+    });
+  }, [debouncedVal, checkboxFiltersRef.current]);
 
   return (
     <>
       {isLoading && (
-        <div className="absolute h-full w-full">
+        <div className="fixed h-full w-full z-10 bg-slate-500/50">
           <Spinner />
         </div>
       )}
 
       <div className="grid grid-cols-[minmax(200px,400px),_1fr]">
         <SearchingPanel />
-        <RecipesList />
+        <Outlet />
       </div>
     </>
   );
 });
 
-export default SearchingRecipesPage;
+export default Recipes;

@@ -9,11 +9,11 @@ import {
   CuisineEnum,
   DietEnum,
 } from "stores/recipes/models";
-import SearchIcon from "../../../assets/svg/search";
+import SearchIcon from "assets/svg/search";
 
-const parseAvailableFilters = (enumVal: { [key: string]: any }) => {
+function parseAvailableFilters<T>(enumVal: { [key: string]: T }) {
   return Object.values(enumVal).map((val) => val);
-};
+}
 
 const allFilters = [
   {

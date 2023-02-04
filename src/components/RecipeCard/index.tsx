@@ -1,4 +1,4 @@
-import { Recipe, RecipeType } from "stores/recipes/models";
+import { RecipeType } from "stores/recipes/models";
 
 const parseLabels = (labels: string[]) => {
   return labels.length > 3 ? labels.splice(0, 3) : labels;
@@ -23,14 +23,14 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
   return (
     <div
       onClick={() => onClick(recipe)}
-      className="min-h-[200px] w-[280px] relative flex flex-col justify-between pb-2 px-2 rounded-3xl border-4 border-transparent bg-white cursor-pointer hover:border-green-300 hover:border-4 "
+      className="min-h-[200px] w-[280px] relative flex flex-col justify-between pb-2 px-2 rounded-3xl border-4 border-transparent bg-white cursor-pointer hover:border-green-300 hover:border-4 hover:scale-105 duration-200"
     >
       <>
         <div className="flex justify-end">
-          <div className="absolute w-[45%] -top-[15%] left-2 border-4 border-white rounded-full overflow-hidden">
+          <div className="absolute w-32 h-32 flex items-center justify-center -top-[15%] left-2 border-4 border-white rounded-full overflow-hidden">
             <img src={image} alt={title} />
           </div>
-          <div className="w-2/3 h-24 flex items-center justify-center">
+          <div className="w-3/5 h-24 flex items-center justify-center">
             <p className="text-black font-bold">
               {Math.round((calories * 100) / totalWeight)}
               kcal/100g

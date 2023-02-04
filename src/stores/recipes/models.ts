@@ -1,4 +1,4 @@
-import { Instance, types } from "mobx-state-tree";
+import { Instance, ISimpleType, types } from "mobx-state-tree";
 
 export enum DietEnum {
   Balanced = "balanced",
@@ -33,9 +33,11 @@ export enum CuisineEnum {
   World = "world",
 }
 
-const parseFiltersType = (enumVal: { [key: string]: any }) => {
+const parseFiltersType = (enumVal: typeof DietEnum | typeof CuisineEnum) => {
   let dict: any = {};
-  Object.keys(enumVal).map((key) => (dict[enumVal[key]] = types.boolean));
+  Object.keys(enumVal).map(
+    (key) => (dict[enumVal[key as keyof typeof enumVal]] = types.boolean),
+  );
   return types.model({ ...dict });
 };
 
@@ -88,7 +90,7 @@ export const Recipe = types.model({
   //   LARGE: ImageModel,
   // }),
   // source: types.string,
-  // url: types.string,
+  url: types.string,
   // shareAs: types.string,
   // yield: types.number,
   dietLabels: types.array(types.string),
@@ -105,7 +107,7 @@ export const Recipe = types.model({
   mealType: types.array(types.string),
   dishType: types.frozen(),
   // digest: types.frozen(),
-  // totalDaily: types.frozen(),
+  totalDaily: types.string,
   // totalNutrients: types.frozen(),
 });
 

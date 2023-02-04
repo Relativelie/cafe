@@ -19,15 +19,8 @@ const getRecipes = async (filters: FilterType) => {
   if (!parsedFilters.q) {
     delete parsedFilters.q;
   }
-
   const res = await getRequest(parsedFilters);
-
   return res.data;
-  // return Promise.resolve({hits: [], "_links": {}})
-  // return {
-  //   recipes: [...res.data.hits].length ? [...res.data.hits] : null,
-  //   next: res.data["_links"].next?.href,
-  // };
 };
 
 const loadNextRecipes = async (url: string) => {
