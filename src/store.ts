@@ -3,6 +3,7 @@ import { IRootStore, RootStore } from "stores";
 
 export const store = RootStore.create({
   recipeStore: {},
+  authStore: {},
 });
 
 const storeContext = React.createContext<IRootStore>(store);

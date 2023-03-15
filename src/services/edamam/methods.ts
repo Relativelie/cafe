@@ -5,11 +5,11 @@ import { toast } from "react-hot-toast";
 
 const service = config.service;
 
-const axiosReq = axios.create({
+const axiosEdamamReq = axios.create({
   baseURL: service.BASE_RECIPES_URL,
 });
 
-axiosReq.interceptors.request.use((config) => {
+axiosEdamamReq.interceptors.request.use((config) => {
   config.params = {
     app_key: service.API_RECIPES_KEY,
     app_id: service.API_RECIPES_ID,
@@ -24,8 +24,8 @@ axiosReq.interceptors.request.use((config) => {
   return config;
 });
 
-export const getRequest = async (params?: any, url?: string): Promise<any> => {
-  return await axiosReq
+export const getRequestEdamam = async (params?: any, url?: string): Promise<any> => {
+  return await axiosEdamamReq
     .get(url ?? "", {
       params: params,
     })

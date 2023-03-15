@@ -1,5 +1,5 @@
 import { CuisineEnum, DietEnum, FilterType } from "stores/recipes/models";
-import { getRequest } from "./methods";
+import { getRequestEdamam } from "./edamam/methods";
 
 const getRecipes = async (filters: FilterType) => {
   const parsedFilters: {
@@ -19,13 +19,18 @@ const getRecipes = async (filters: FilterType) => {
   if (!parsedFilters.q) {
     delete parsedFilters.q;
   }
-  const res = await getRequest(parsedFilters);
+  const res = await getRequestEdamam(parsedFilters);
   return res.data;
 };
 
 const loadNextRecipes = async (url: string) => {
-  const res = await getRequest(undefined, url);
+  const res = await getRequestEdamam(undefined, url);
   return res.data;
 };
+
+// const updateRecipes = async (url: string) => {
+//   const res = await putRequestEdamam(undefined, url);
+//   return res.data;
+// };
 
 export { getRecipes, loadNextRecipes };

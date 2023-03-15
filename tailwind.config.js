@@ -8,8 +8,15 @@ module.exports = {
         oxygen: ["Oxygen", "sans-serif"],
       },
       backgroundImage: {
-        'recipe-poster': "url('assets/webp/coooking-bg.webp')",
-      }
+        "recipe-poster": "url('assets/webp/coooking-bg.webp')",
+      },
+      borderColor: {
+        error: "#ed5555",
+      },
+      textColor: {
+        error: "#ed5555",
+        gray: "#808080",
+      },
     },
   },
   plugins: [],

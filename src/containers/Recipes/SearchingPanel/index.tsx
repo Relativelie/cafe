@@ -36,11 +36,11 @@ const SearchingPanel = observer(() => {
   return (
     <div className="relative">
       <div className="fixed w-[400px] h-screen flex flex-col gap-6 px-2 pt-2 border-r-[0.5px] border-white/70 bg-white/10">
-        <h3 className="font-dance text-center font-medium">Made with love</h3>
         <Input
           curVal={filters.q}
           handleInputChange={(value) => onChangeFilter(AllFiltersENUM.Search, value)}
           leftIcon={<SearchIcon />}
+          className="mt-4"
         />
         <div>
           {allFilters.map((filter) => {

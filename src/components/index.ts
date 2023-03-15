@@ -6,6 +6,7 @@ import BackButton from "./BackButton";
 import RecipeCard from "./RecipeCard";
 import Spinner from "./Spinner";
 import ToUpButton from "./ToUpButton";
+import FormInput from "./FormInput";
 
 export {
   Input,
@@ -16,4 +17,5 @@ export {
   RecipeCard,
   Spinner,
   ToUpButton,
+  FormInput,
 };

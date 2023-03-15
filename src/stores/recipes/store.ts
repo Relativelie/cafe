@@ -35,6 +35,7 @@ export const RecipeStore = types
     selectedRecipe: types.maybeNull(Recipe),
     isLoading: types.optional(types.boolean, false),
     nextPage: types.maybeNull(types.string),
+    likedRecipes: types.optional(types.array(types.string), []),
   })
   .actions((self) => {
     function onChangeFilter<T>(block: AllFiltersENUM, value: T, blockItemKey?: string) {
@@ -117,11 +118,71 @@ export const RecipeStore = types
       }
     });
 
+    const getLikedRecipes = flow(function* () {
+      try {
+        self.isLoading = true;
+        const res = yield getRecipes(self.filters);
+        self.recipesData = res.hits.length
+          ? res.hits.map(({ recipe }: any) => ({
+              url: recipe.url,
+              totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
+              label: recipe.label,
+              image: recipe.image,
+              dietLabels: recipe.dietLabels,
+              healthLabels: recipe.healthLabels,
+              ingredientLines: recipe.ingredientLines,
+              calories: recipe.calories,
+              totalWeight: recipe.totalWeight,
+              totalTime: recipe.totalTime,
+              cuisineType: recipe.cuisineType,
+              mealType: recipe.mealType,
+              dishType: recipe.dishType,
+            }))
+          : null;
+        self.nextPage = res["_links"].next?.href ?? null;
+      } finally {
+        self.isLoading = false;
+      }
+    });
+
+    const onClickLike = flow(function* () {
+      try {
+        self.isLoading = true;
+        if (self.nextPage) {
+          const res = yield loadNextRecipes(self.nextPage);
+          if (res.hits.length) {
+            self.recipesData?.push(
+              ...res.hits.map(({ recipe }: any) => ({
+                url: recipe.url,
+                totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
+                label: recipe.label,
+                image: recipe.image,
+                dietLabels: recipe.dietLabels,
+                healthLabels: recipe.healthLabels,
+                ingredientLines: recipe.ingredientLines,
+                calories: recipe.calories,
+                totalWeight: recipe.totalWeight,
+                totalTime: recipe.totalTime,
+                cuisineType: recipe.cuisineType,
+                mealType: recipe.mealType,
+                dishType: recipe.dishType,
+              })),
+            );
+          }
+
+          self.nextPage = res["_links"].next?.href ?? null;
+        }
+      } finally {
+        self.isLoading = false;
+      }
+    });
+
     return {
       onChangeFilter,
       onClickRecipe,
       loadRecipes,
       loadNextRecipesList,
+      onClickLike,
     };
   });
 
