@@ -1,10 +1,10 @@
-import { Instance, types } from "mobx-state-tree";
-import { AuthStore } from "./auth";
-import { RecipeStore } from "./recipes";
+import { Instance, types } from 'mobx-state-tree';
+import { RecipeStore } from './recipes';
+import { AnalystStore } from './analyst';
 
-export const RootStore = types.model("RootStore", {
+export const RootStore = types.model('RootStore', {
   recipeStore: RecipeStore,
-  authStore: AuthStore,
+  analystStore: AnalystStore,
 });
 
 export interface IRootStore extends Instance<typeof RootStore> {}

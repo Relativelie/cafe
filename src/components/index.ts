@@ -1,12 +1,13 @@
-import Input from "./Input";
-import ErrorBoundary from "./ErrorBoundary";
-import NotificationToaster from "./NotificationToaster";
-import Checkbox from "./Checkbox";
-import BackButton from "./BackButton";
-import RecipeCard from "./RecipeCard";
-import Spinner from "./Spinner";
-import ToUpButton from "./ToUpButton";
-import FormInput from "./FormInput";
+import Input from './Input';
+import ErrorBoundary from './ErrorBoundary';
+import NotificationToaster from './NotificationToaster';
+import Checkbox from './Checkbox';
+import BackButton from './BackButton';
+import RecipeCard from '../containers/Recipes/RecipesList/RecipeCard';
+import Spinner from './Spinner';
+import ToUpButton from './ToUpButton';
+import FormInput from './FormInput';
+import { TextArea } from './TextArea';
 
 export {
   Input,
@@ -18,4 +19,5 @@ export {
   Spinner,
   ToUpButton,
   FormInput,
+  TextArea,
 };

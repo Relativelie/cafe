@@ -1,5 +1,23 @@
 {
   "common": {
     "error": "Something went wrong..."
+  },
+  "cafeName": "Made with love",
+
+  "recipes": {
+    "label": "Recipes",
+    "filters": {
+      "diet": "Diet",
+      "cuisine": "Cuisine"
+    }
+  },
+  "analyst": {
+    "label": "Ingredients analyst",
+    "quotes1": "Healthy food,",
+    "quotes2": "Wealthy mood",
+    "ready": "I'm ready!",
+    "description": "Full analysis of food recipes in real time - write down the ingredients with commas and don't forget to put the measure, e.g. '1 kg oranges, 0.5kg sugar'.",
+    "write": "write your ingredients...",
+    "example": "e.g. '1 kg oranges, 0.5kg sugar'"
   }
 }

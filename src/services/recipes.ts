@@ -1,36 +1,61 @@
-import { CuisineEnum, DietEnum, FilterType } from "stores/recipes/models";
-import { getRequestEdamam } from "./edamam/methods";
+import { FilterType } from 'stores/recipes';
+import { getRequest } from './methods';
+import QueryString from 'qs';
+import config from 'config';
+import axios from 'axios';
+
+const url = '/recipes/v2';
+
+const service = config.service;
+
+export const axiosRequest = axios.create({
+  baseURL: `${service.BASE_SEVER_URL}${url}`,
+});
+axiosRequest.interceptors.request.use((config) => {
+  config.params = {
+    app_key: service.API_RECIPES_KEY,
+    app_id: service.API_RECIPES_ID,
+    type: 'public',
+    ...config.params,
+  };
+  config.paramsSerializer = (p) => {
+    return QueryString.stringify(p, {
+      arrayFormat: 'repeat',
+    });
+  };
+  return config;
+});
+
+type GetReqParams = {
+  diet: string[];
+  cuisineType: string[];
+  q?: string;
+};
 
 const getRecipes = async (filters: FilterType) => {
-  const parsedFilters: {
-    diet: (string | false)[];
-    cuisineType: (string | false)[];
-    q?: string;
-  } = {
+  const parsedFilters: GetReqParams = {
     ...filters,
-    diet: Object.keys(filters.diet)
-      .map((item) => filters.diet[item as DietEnum] && item)
-      .filter(Boolean),
-    cuisineType: Object.keys(filters.cuisineType)
-      .map((item) => filters.cuisineType[item as CuisineEnum] && item)
-      .filter(Boolean),
+    diet: getActiveFilters(filters.diet),
+    cuisineType: getActiveFilters(filters.cuisineType),
   };
 
   if (!parsedFilters.q) {
     delete parsedFilters.q;
   }
-  const res = await getRequestEdamam(parsedFilters);
+  const res = await getRequest(axiosRequest, parsedFilters);
   return res.data;
 };
 
-const loadNextRecipes = async (url: string) => {
-  const res = await getRequestEdamam(undefined, url);
+const getNextRecipes = async (url: string) => {
+  const res = await getRequest(axiosRequest, undefined);
   return res.data;
 };
 
-// const updateRecipes = async (url: string) => {
-//   const res = await putRequestEdamam(undefined, url);
-//   return res.data;
-// };
+const getActiveFilters = (filters: { [x: string]: boolean }): Array<string> => {
+  return Object.keys(filters)
+    .map((item) => filters[item] && item)
+    .filter(Boolean)
+    .map((item) => item as string);
+};
 
-export { getRecipes, loadNextRecipes };
+export { getRecipes, getNextRecipes };

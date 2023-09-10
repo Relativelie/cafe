@@ -1,44 +1,47 @@
-import { clone, flow, SnapshotIn, types } from "mobx-state-tree";
-import { getRecipes, loadNextRecipes } from "services/recipes";
+import { clone, flow, SnapshotIn, types } from 'mobx-state-tree';
+import { getRecipes, getNextRecipes } from 'services/recipes';
 import {
+  FiltersENUM,
+  checkboxFilters,
   Filter,
+  FilterType,
   Recipe,
-  checkboxFiltersValues,
   RecipeType,
-  AllFiltersENUM,
-} from "./models";
+} from './models';
 
-const parseFilters = (enumVal: { [key: string]: string }) => {
-  let dict: { [key: string]: boolean } = {};
-  Object.keys(enumVal).map((key) => (dict[enumVal[key]] = false));
-  return dict;
-};
+const initialSearchValue = 'cherry';
+const initializeFilters = (): FilterType => {
+  const newFilters: FilterType = {
+    q: initialSearchValue,
+    diet: {},
+    cuisineType: {},
+  };
 
-const setFilters = () => {
-  const newFilters: any = {};
-  Object.values(AllFiltersENUM).forEach((val) => {
-    if (val !== AllFiltersENUM.Search) {
-      newFilters[val] = {
-        ...parseFilters(checkboxFiltersValues[val]),
-      };
-    } else {
-      newFilters[val] = "cherry";
+  Object.values(FiltersENUM).forEach((val) => {
+    if (val !== FiltersENUM.Search) {
+      newFilters[val] = { ...generateDefaultValue(checkboxFilters[val]) };
     }
   });
   return newFilters;
 };
 
+const generateDefaultValue = (enumVal: { [key: string]: string }) => {
+  let dict: { [key: string]: boolean } = {};
+  Object.keys(enumVal).map((key) => (dict[enumVal[key]] = false));
+  return dict;
+};
+
 export const RecipeStore = types
-  .model("RecipeStore", {
+  .model('RecipeStore', {
     recipesData: types.maybeNull(types.array(Recipe)),
-    filters: types.optional(Filter, setFilters()),
+    filters: types.optional(Filter, initializeFilters()),
     selectedRecipe: types.maybeNull(Recipe),
     isLoading: types.optional(types.boolean, false),
     nextPage: types.maybeNull(types.string),
     likedRecipes: types.optional(types.array(types.string), []),
   })
   .actions((self) => {
-    function onChangeFilter<T>(block: AllFiltersENUM, value: T, blockItemKey?: string) {
+    function onChangeFilter<T>(block: FiltersENUM, value: T, blockItemKey?: string) {
       if (!blockItemKey) {
         self.filters = {
           ...self.filters,
@@ -55,6 +58,7 @@ export const RecipeStore = types
         };
       }
     }
+
     const onClickRecipe = (recipe: RecipeType | null) => {
       self.selectedRecipe = recipe;
     };
@@ -64,23 +68,9 @@ export const RecipeStore = types
         self.isLoading = true;
         const res = yield getRecipes(self.filters);
         self.recipesData = res.hits.length
-          ? res.hits.map(({ recipe }: any) => ({
-              url: recipe.url,
-              totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
-              label: recipe.label,
-              image: recipe.image,
-              dietLabels: recipe.dietLabels,
-              healthLabels: recipe.healthLabels,
-              ingredientLines: recipe.ingredientLines,
-              calories: recipe.calories,
-              totalWeight: recipe.totalWeight,
-              totalTime: recipe.totalTime,
-              cuisineType: recipe.cuisineType,
-              mealType: recipe.mealType,
-              dishType: recipe.dishType,
-            }))
+          ? res.hits.map(({ recipe }: any) => convertToRecipe(recipe))
           : null;
-        self.nextPage = res["_links"].next?.href ?? null;
+        self.nextPage = res['_links'].next?.href ?? null;
       } finally {
         self.isLoading = false;
       }
@@ -90,99 +80,42 @@ export const RecipeStore = types
       try {
         self.isLoading = true;
         if (self.nextPage) {
-          const res = yield loadNextRecipes(self.nextPage);
+          const res = yield getNextRecipes(self.nextPage);
           if (res.hits.length) {
             self.recipesData?.push(
-              ...res.hits.map(({ recipe }: any) => ({
-                url: recipe.url,
-                totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
-                label: recipe.label,
-                image: recipe.image,
-                dietLabels: recipe.dietLabels,
-                healthLabels: recipe.healthLabels,
-                ingredientLines: recipe.ingredientLines,
-                calories: recipe.calories,
-                totalWeight: recipe.totalWeight,
-                totalTime: recipe.totalTime,
-                cuisineType: recipe.cuisineType,
-                mealType: recipe.mealType,
-                dishType: recipe.dishType,
-              })),
+              ...res.hits.map(({ recipe }: any) => convertToRecipe(recipe)),
             );
           }
-
-          self.nextPage = res["_links"].next?.href ?? null;
+          self.nextPage = res['_links'].next?.href ?? null;
         }
       } finally {
         self.isLoading = false;
       }
     });
 
-    const getLikedRecipes = flow(function* () {
-      try {
-        self.isLoading = true;
-        const res = yield getRecipes(self.filters);
-        self.recipesData = res.hits.length
-          ? res.hits.map(({ recipe }: any) => ({
-              url: recipe.url,
-              totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
-              label: recipe.label,
-              image: recipe.image,
-              dietLabels: recipe.dietLabels,
-              healthLabels: recipe.healthLabels,
-              ingredientLines: recipe.ingredientLines,
-              calories: recipe.calories,
-              totalWeight: recipe.totalWeight,
-              totalTime: recipe.totalTime,
-              cuisineType: recipe.cuisineType,
-              mealType: recipe.mealType,
-              dishType: recipe.dishType,
-            }))
-          : null;
-        self.nextPage = res["_links"].next?.href ?? null;
-      } finally {
-        self.isLoading = false;
-      }
-    });
-
-    const onClickLike = flow(function* () {
-      try {
-        self.isLoading = true;
-        if (self.nextPage) {
-          const res = yield loadNextRecipes(self.nextPage);
-          if (res.hits.length) {
-            self.recipesData?.push(
-              ...res.hits.map(({ recipe }: any) => ({
-                url: recipe.url,
-                totalDaily: `${Math.round(recipe.totalDaily.ENERC_KCAL.quantity)}%`,
-                label: recipe.label,
-                image: recipe.image,
-                dietLabels: recipe.dietLabels,
-                healthLabels: recipe.healthLabels,
-                ingredientLines: recipe.ingredientLines,
-                calories: recipe.calories,
-                totalWeight: recipe.totalWeight,
-                totalTime: recipe.totalTime,
-                cuisineType: recipe.cuisineType,
-                mealType: recipe.mealType,
-                dishType: recipe.dishType,
-              })),
-            );
-          }
-
-          self.nextPage = res["_links"].next?.href ?? null;
-        }
-      } finally {
-        self.isLoading = false;
-      }
-    });
+    const convertToRecipe = (data: any) => {
+      return Recipe.create({
+        url: data.url,
+        totalDaily: `${Math.round(data.totalDaily.ENERC_KCAL.quantity)}%`,
+        label: data.label,
+        image: data.image,
+        dietLabels: data.dietLabels,
+        healthLabels: data.healthLabels,
+        ingredientLines: data.ingredientLines,
+        calories: data.calories,
+        totalWeight: data.totalWeight,
+        totalTime: data.totalTime,
+        cuisineType: data.cuisineType,
+        mealType: data.mealType,
+        dishType: data.dishType,
+      });
+    };
 
     return {
       onChangeFilter,
       onClickRecipe,
       loadRecipes,
       loadNextRecipesList,
-      onClickLike,
     };
   });
 

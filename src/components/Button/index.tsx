@@ -1,47 +1,49 @@
-import clsx from "clsx";
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import clsx from 'clsx';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
-export enum ButtonColorTypesENUM {
-  Green = "GREEN",
-  Red = "RED",
-  Gray = "GRAY",
+export enum ButtonSizeENUM {
+  sm = 'SM',
+  md = 'MD',
+  lg = 'LG',
+  full = 'FULL',
 }
 
-const bgColors: { [key in ButtonColorTypesENUM]: string } = {
-  GREEN: "bg-[#5aa06b]",
-  RED: "bg-[#ff0c00]",
-  GRAY: "bg-[#808080]",
+const sizes: { [key in ButtonSizeENUM]: string } = {
+  SM: 'w-48 h-9',
+  MD: 'w-64 h-9',
+  LG: 'w-80 h-9',
+  FULL: 'h-full w-full',
 };
 
 interface ButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   disabled?: boolean;
-  color: ButtonColorTypesENUM;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;
-  type?: "submit" | "reset" | "button" | undefined;
+  type?: 'submit' | 'reset' | 'button' | undefined;
+  size?: ButtonSizeENUM;
 }
 
 const Button: React.FC<ButtonProps> = ({
   disabled = false,
-  color = ButtonColorTypesENUM.Gray,
   leftIcon = undefined,
   rightIcon = undefined,
   onClick,
   children,
-  className = "",
-  type = "button",
+  className = '',
+  type = 'button',
+  size = ButtonSizeENUM.md,
 }) => {
   return (
     <button
       type={type}
       disabled={disabled}
       className={clsx(
-        bgColors[color],
+        sizes[size],
         className,
-        "h-full w-full rounded-lg hover:shadow-lg hover:opacity-90",
+        'border-green-300 border-2 rounded-lg hover:shadow-lg hover:bg-green-300',
       )}
       onClick={onClick}
     >

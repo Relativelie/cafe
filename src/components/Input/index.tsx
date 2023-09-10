@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import { ReactNode } from "react";
+import clsx from 'clsx';
+import { ReactNode } from 'react';
 
 type InputProps = {
-  curVal: string;
+  curVal?: string;
   handleInputChange: (arg0: string) => void;
   rightIcon?: ReactNode;
   leftIcon?: ReactNode;
@@ -15,10 +15,10 @@ const Input: React.FC<InputProps> = ({
   handleInputChange,
   leftIcon,
   rightIcon,
-  className = "",
+  className = '',
 }) => {
   return (
-    <div className={clsx(className, "relative flex items-center")}>
+    <div className={clsx(className, 'relative flex items-center')}>
       {leftIcon && (
         <div className="absolute h-full flex items-center left-2">{leftIcon}</div>
       )}

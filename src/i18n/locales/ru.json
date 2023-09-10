@@ -1,5 +1,12 @@
 {
   "common": {
     "error": "Что-то пошло не так..."
-  }
+  },
+  "cafeName": "Made with love",
+  "filters": {
+    "diet": "Диета",
+    "cuisine": "Кухня"
+  },
+  "recipes": "Рецепты",
+  "analyst": "Анализ ингредиентов"
 }

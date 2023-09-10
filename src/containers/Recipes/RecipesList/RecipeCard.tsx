@@ -1,8 +1,9 @@
-import { RecipeType } from "stores/recipes/models";
-import Heart from "assets/icons/Heart";
+import { RecipeType } from 'stores/recipes/models';
+import Heart from 'assets/icons/Heart';
 
-const parseLabels = (labels: string[]) => {
-  return labels.length > 3 ? labels.splice(0, 3) : labels;
+const fittedLabels = (labels: string[]) => {
+  const fittedLabelCount = 3;
+  return labels.length > fittedLabelCount ? labels.splice(0, fittedLabelCount) : labels;
 };
 
 type RecipeCardProps = {
@@ -13,9 +14,9 @@ type RecipeCardProps = {
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
   const {
     image,
-    label: title,
+    label,
     dietLabels,
-    cuisineType: cousineLabels,
+    cuisineType,
     calories,
     ingredientLines,
     totalWeight,
@@ -33,7 +34,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
       <>
         <div className="flex justify-end">
           <div className="absolute w-32 h-32 flex items-center justify-center -top-[15%] left-2 border-4 border-white rounded-full overflow-hidden">
-            <img src={image} alt={title} />
+            <img src={image} alt={label} />
           </div>
           <div className="w-3/5 h-24 flex items-center justify-center">
             <p className="text-black font-bold">
@@ -42,17 +43,17 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
             </p>
           </div>
         </div>
-        <h5 className="mt-1 text-black text-center font-medium">{title}</h5>
+        <h5 className="mt-1 text-black text-center font-medium">{label}</h5>
       </>
 
       <div className="flex flex-col items-center mt-2">
         <div className="flex flex-wrap gap-x-2 ">
-          {parseLabels(dietLabels).map((item) => (
+          {fittedLabels(dietLabels).map((item) => (
             <p key={`${item}-diet-label`} className="text-black">
               #{item.toLowerCase()}
             </p>
           ))}
-          {parseLabels(cousineLabels).map((item) => (
+          {fittedLabels(cuisineType).map((item) => (
             <p key={`${item}-cousine-label`} className="text-black">
               #{item}
             </p>

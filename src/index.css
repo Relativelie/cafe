@@ -11,30 +11,30 @@
 
   h1,
   .h1 {
-    @apply text-4xl;
+    @apply text-4xl font-oxygen;
   }
 
   h2,
   .h2 {
-    @apply text-3xl;
+    @apply text-3xl font-oxygen;
   }
 
   h3,
   .h3 {
-    @apply text-2xl;
+    @apply text-2xl font-oxygen;
   }
 
   h4,
   .h4 {
-    @apply text-xl;
+    @apply text-xl font-oxygen;
   }
   h5,
   .h5 {
-    @apply text-base;
+    @apply text-base font-oxygen;
   }
 
   p,
   .p {
-    @apply text-sm;
+    @apply text-sm font-oxygen;
   }
 }
