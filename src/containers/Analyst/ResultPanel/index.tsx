@@ -13,13 +13,13 @@ export const ResultPanel = () => {
   };
   return (
     <div>
-      <div className="flex gap-4 p-8">
+      <div className="flex flex-col-reverse items-center md:flex-row gap-4 p-8">
         <div className="flex flex-col gap-12 w-2/3">
           <PieChartGraph />
           <PieChartTable />
           <NutritionClaims />
         </div>
-        <div className="h-96 w-1/3">
+        <div className="h-96 w-full md:w-1/3">
           <TextArea placeholder={`${t('analyst.write')} \n ${t('analyst.example')}`} />
         </div>
       </div>

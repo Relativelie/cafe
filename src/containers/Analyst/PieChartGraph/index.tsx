@@ -4,7 +4,7 @@ import { ChartLegendItem } from './ChartLegendItem';
 const chartBgColor = '#18181b';
 export const PieChartGraph = () => {
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col md:flex-row items-center">
       <p>Daily Value 2%</p>
       <Chart
         chartType="PieChart"
