@@ -1,6 +1,6 @@
-import { postRequest } from './methods';
 import config from 'config';
 import axios from 'axios';
+import { postRequest } from './methods';
 
 const url = '/nutrition-details';
 

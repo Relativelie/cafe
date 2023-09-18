@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import { useEffect, useState } from "react";
-import ScrollUp from "assets/png/scroll-up.png";
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
+import ScrollUp from 'assets/png/scroll-up.png';
 
-const ToUpButton = () => {
+const AppToUpButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
@@ -17,9 +17,9 @@ const ToUpButton = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -27,7 +27,7 @@ const ToUpButton = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -35,7 +35,7 @@ const ToUpButton = () => {
     <div>
       {isVisible && (
         <div
-          className={clsx("flex flex-col items-center cursor-pointer")}
+          className={clsx('flex flex-col items-center cursor-pointer')}
           onClick={onClick}
         >
           <img src={ScrollUp} alt="scroll up" className="w-10 h-10" />
@@ -46,4 +46,4 @@ const ToUpButton = () => {
   );
 };
 
-export default ToUpButton;
+export default AppToUpButton;

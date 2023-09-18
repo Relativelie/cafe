@@ -1,13 +1,13 @@
 type IconProps = {
   className?: string;
-  fill?: "red" | "gray";
+  fill?: 'red' | 'gray';
 };
 
 const fillVal = {
-  red: "#FF0000",
-  gray: "#808080",
+  red: '#FF0000',
+  gray: '#808080',
 };
-const Icon: React.FC<IconProps> = ({ className = "", fill = "gray" }) => {
+const Icon: React.FC<IconProps> = ({ className = '', fill = 'gray' }) => {
   return (
     <svg
       className={className}

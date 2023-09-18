@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
-import { ErrorMessage } from "@hookform/error-message";
-import clsx from "clsx";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { ReactNode } from 'react';
+import { ErrorMessage } from '@hookform/error-message';
+import clsx from 'clsx';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
-type InputProps = {
+type AppInputProps = {
   register: UseFormRegister<FieldValues>;
   name: string;
   rightIcon?: ReactNode;
@@ -14,14 +14,14 @@ type InputProps = {
   placeholder?: string;
 };
 
-const FormInput: React.FC<InputProps> = ({
+const AppFormInput: React.FC<AppInputProps> = ({
   register,
   name,
   leftIcon,
   rightIcon,
-  required = "Field is required",
+  required = 'Field is required',
   errors,
-  placeholder = "",
+  placeholder = '',
 }) => {
   return (
     <div className="relative grid grid-rows-[1fr,1.5em] justify-center items-center">
@@ -32,9 +32,9 @@ const FormInput: React.FC<InputProps> = ({
         <input
           className={clsx(
             errors && errors[name]?.message
-              ? "border-error"
-              : "border-slate-300 focus:outline-lime-100",
-            "h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent text-black",
+              ? 'border-error'
+              : 'border-slate-300 focus:outline-lime-100',
+            'h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent text-black',
           )}
           type="text"
           {...(register && { ...register(name, { required }) })}
@@ -56,4 +56,4 @@ const FormInput: React.FC<InputProps> = ({
   );
 };
 
-export default FormInput;
+export default AppFormInput;

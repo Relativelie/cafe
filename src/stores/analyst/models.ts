@@ -7,6 +7,9 @@ export const Ingredient = types.model({
   fat: types.number,
   protein: types.number,
   carbs: types.number,
+  mg: types.number,
+  ca: types.number,
+  vitaRae: types.number,
 });
 
 export type IngredientType = Instance<typeof Ingredient>;

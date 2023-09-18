@@ -1,5 +1,5 @@
+import { RecipeStore } from 'stores/recipes';
 import { Instance, types } from 'mobx-state-tree';
-import { RecipeStore } from './recipes';
 import { AnalystStore } from './analyst';
 
 export const RootStore = types.model('RootStore', {

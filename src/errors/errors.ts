@@ -1,22 +1,14 @@
 export class HttpResponseError extends Error {
-  constructor(
-    private statusCode: number,
-    private statusText: string,
-    private localizedMessage?: string | string[],
-  ) {
+  constructor(private errorCode: number) {
     super();
     this.name = 'HttpResponseError';
-    this.statusCode = statusCode;
-    this.statusText = statusText;
-    this.localizedMessage = localizedMessage;
+    this.errorCode = errorCode;
   }
 
   get message(): string {
-    if (!!this.localizedMessage) {
-      if (Array.isArray(this.localizedMessage)) {
-        return `Ошибка валидации: ${this.localizedMessage.map((item) => `\n${item}`)}`;
-      } else return this.localizedMessage;
+    if (this.message.length) {
+      return `${this.message} Status code: ${this.errorCode}`;
     }
-    return `Необработанная ошибка: ${this.statusText}, с кодом ${this.statusCode}`;
+    return `Something went wrong... Status code: ${this.errorCode}`;
   }
 }

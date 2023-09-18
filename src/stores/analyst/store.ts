@@ -1,6 +1,8 @@
 import { SnapshotIn, flow, types } from 'mobx-state-tree';
 import { Ingredient, TotalNutrients } from '.';
 import { postAnalyst } from 'services/analyst';
+import { HttpResponseError } from 'errors/errors';
+import toast from 'react-hot-toast';
 
 export const AnalystStore = types
   .model('AnalystStore', {
@@ -12,14 +14,21 @@ export const AnalystStore = types
   .actions((self) => {
     const getNutrition = flow(function* (ingredients: Array<string>) {
       try {
+        self.isLoading = true;
         const res = yield postAnalyst(ingredients);
-        if (res.ingredients.length) {
-          self.ingredients?.push(
-            ...res.map(({ ingredient }: any) => convertToIngredient(ingredient)),
-          );
-        }
+
+        self.ingredients = res.ingredients.length
+          ? res.ingredients.map(({ parsed }: any) => convertToIngredient(parsed[0]))
+          : null;
+
         self.totalNutrient = convertToTotalNutrients(res['totalNutrients']);
         self.healthLabels = res['healthLabels'];
+      } catch (e) {
+        if (e instanceof HttpResponseError) {
+          toast.error(e.message);
+        } else {
+          console.info(e);
+        }
       } finally {
         self.isLoading = false;
       }
@@ -27,17 +36,19 @@ export const AnalystStore = types
 
     const convertToIngredient = (data: any) => {
       return Ingredient.create({
-        label: data.text,
-        measure: `${data.parsed[0].quantity} ${data.parsed[0].measure}`,
-        enercKcal: data.totalDaily['ENERC_KCAL'].quantity,
-        fat: data.totalDaily['FAT'].quantity,
-        protein: data.totalDaily['PROCNT'].quantity,
-        carbs: data.totalDaily['CHOCDF'].quantity,
+        label: data.food,
+        measure: `${data.quantity} ${data.measure}`,
+        enercKcal: data.nutrients['ENERC_KCAL'].quantity,
+        fat: data.nutrients['FAT'].quantity,
+        protein: data.nutrients['PROCNT'].quantity,
+        carbs: data.nutrients['CHOCDF'].quantity,
+        mg: data.nutrients['MG'].quantity,
+        ca: data.nutrients['CA'].quantity,
+        vitaRae: data.nutrients['VITA_RAE'].quantity,
       });
     };
 
     const convertToTotalNutrients = (data: any) => {
-      console.log(data);
       return TotalNutrients.create({
         enercKcal: `${data['ENERC_KCAL'].quantity.toFixed(1)}kcal`,
         vitaRae: `${data['VITA_RAE'].quantity.toFixed(1)}µg`,

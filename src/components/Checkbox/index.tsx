@@ -1,10 +1,10 @@
-type CheckboxProps = {
+type AppCheckboxProps = {
   checked: boolean;
   onChange: (val: boolean) => void;
   label?: string;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ label = "", checked, onChange }) => {
+const AppCheckbox: React.FC<AppCheckboxProps> = ({ label = '', checked, onChange }) => {
   return (
     <div className="flex gap-4">
       <input
@@ -18,4 +18,4 @@ const Checkbox: React.FC<CheckboxProps> = ({ label = "", checked, onChange }) =>
     </div>
   );
 };
-export default Checkbox;
+export default AppCheckbox;

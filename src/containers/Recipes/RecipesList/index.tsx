@@ -1,12 +1,13 @@
-import { RecipeCard, ToUpButton } from "components";
-import URLS from "constants/urls";
-import { toJS } from "mobx";
-import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { useNavigate } from "react-router-dom";
-import { useStore } from "store";
-import { RecipeType } from "stores/recipes";
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react-lite';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
+import { useStore } from 'store';
+
+import { RecipeType } from 'stores/recipes';
+import { RecipeCard, AppToUpButton } from 'components';
+import URLS from 'constants/urls';
 
 const RecipesList: React.FC = observer(() => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const RecipesList: React.FC = observer(() => {
   return (
     <div className="relative mt-8 p-4">
       <div className="fixed bottom-10 z-10">
-        <ToUpButton />
+        <AppToUpButton />
       </div>
 
       {

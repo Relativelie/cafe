@@ -18,6 +18,13 @@
     "ready": "I'm ready!",
     "description": "Full analysis of food recipes in real time - write down the ingredients with commas and don't forget to put the measure, e.g. '1 kg oranges, 0.5kg sugar'.",
     "write": "write your ingredients...",
-    "example": "e.g. '1 kg oranges, 0.5kg sugar'"
+    "example": "e.g. '1 kg oranges, 0.5kg sugar'",
+    "nutritionFact": "Nutrition Facts",
+    "vitA": "Vitamin A, RAE",
+    "protein": "Protein",
+    "vitE": "Vitamin E (alpha-tocopherol)",
+    "carbs": "Carbs",
+    "magnesium": "Magnesium, Mg",
+    "calcium": "Calcium, Ca"
   }
 }

@@ -2,12 +2,12 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { useStore } from 'store';
-
-import { Checkbox, Input } from 'components';
-import SearchIcon from 'assets/svg/search';
-import { FiltersENUM, CuisineEnum, DietEnum } from 'stores/recipes';
-import { FilterBlock } from './models';
 import { useTranslation } from 'react-i18next';
+
+import SearchIcon from 'assets/icons/SearchIcon';
+import { FilterBlock } from './models';
+import { CuisineEnum, DietEnum, FiltersENUM } from 'stores/recipes';
+import { AppCheckbox, AppInput } from 'components';
 
 const toArrayFilters = (enumVal: typeof DietEnum | typeof CuisineEnum): Array<string> => {
   return Object.values(enumVal).map((val) => val);
@@ -34,7 +34,7 @@ const SearchingPanel = observer(() => {
   return (
     <div className="relative">
       <div className="fixed w-[400px] h-screen flex flex-col gap-6 px-2 pt-2 border-r-[0.5px] border-white/70 bg-white/10">
-        <Input
+        <AppInput
           curVal={filters.q}
           handleInputChange={(value) => onChangeFilter(FiltersENUM.Search, value)}
           leftIcon={<SearchIcon />}
@@ -49,7 +49,7 @@ const SearchingPanel = observer(() => {
                   {filter.availableValues.map((item) => {
                     return (
                       <div key={`${item}-checkbox`} className="ml-2">
-                        <Checkbox
+                        <AppCheckbox
                           label={item}
                           checked={(filters[filter.block] as any)[item]}
                           onChange={(value) => onChangeFilter(filter.block, value, item)}

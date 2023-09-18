@@ -1,10 +1,11 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import URLS from 'constants/urls';
 import { Analyst } from 'containers/Analyst';
 import Layout from 'containers/Layout';
 import Recipes from 'containers/Recipes';
-import Recipe from 'containers/Recipes/Recipe';
 import RecipesList from 'containers/Recipes/RecipesList';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import Recipe from 'containers/Recipes/Recipe';
 
 const AppRoutes = () => {
   return (

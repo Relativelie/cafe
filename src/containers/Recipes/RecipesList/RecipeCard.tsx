@@ -1,5 +1,5 @@
-import { RecipeType } from 'stores/recipes/models';
-import Heart from 'assets/icons/Heart';
+import HeartIcon from 'assets/icons/HeartIcon';
+import { RecipeType } from 'stores/recipes';
 
 const fittedLabels = (labels: string[]) => {
   const fittedLabelCount = 3;
@@ -28,7 +28,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
       className="min-h-[200px] w-[280px] relative flex flex-col justify-between pb-2 px-2 rounded-3xl border-4 border-transparent bg-white cursor-pointer hover:border-green-300 hover:border-4 hover:scale-105 duration-200"
     >
       <div className="self-end">
-        <Heart />
+        <HeartIcon />
       </div>
 
       <>

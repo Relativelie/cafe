@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-type InputProps = {
+type AppInputProps = {
   curVal?: string;
   handleInputChange: (arg0: string) => void;
   rightIcon?: ReactNode;
@@ -10,7 +10,7 @@ type InputProps = {
   className?: string;
 };
 
-const Input: React.FC<InputProps> = ({
+const AppInput: React.FC<AppInputProps> = ({
   curVal,
   handleInputChange,
   leftIcon,
@@ -35,4 +35,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default AppInput;

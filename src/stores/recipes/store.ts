@@ -1,35 +1,9 @@
 import { clone, flow, SnapshotIn, types } from 'mobx-state-tree';
-import { getRecipes, getNextRecipes } from 'services/recipes';
-import {
-  FiltersENUM,
-  checkboxFilters,
-  Filter,
-  FilterType,
-  Recipe,
-  RecipeType,
-} from './models';
-
-const initialSearchValue = 'cherry';
-const initializeFilters = (): FilterType => {
-  const newFilters: FilterType = {
-    q: initialSearchValue,
-    diet: {},
-    cuisineType: {},
-  };
-
-  Object.values(FiltersENUM).forEach((val) => {
-    if (val !== FiltersENUM.Search) {
-      newFilters[val] = { ...generateDefaultValue(checkboxFilters[val]) };
-    }
-  });
-  return newFilters;
-};
-
-const generateDefaultValue = (enumVal: { [key: string]: string }) => {
-  let dict: { [key: string]: boolean } = {};
-  Object.keys(enumVal).map((key) => (dict[enumVal[key]] = false));
-  return dict;
-};
+import { FiltersENUM, Filter, Recipe, RecipeType } from './models';
+import { getNextRecipes, getRecipes } from 'services/recipes';
+import { HttpResponseError } from 'errors/errors';
+import toast from 'react-hot-toast';
+import { initializeFilters } from './helpers';
 
 export const RecipeStore = types
   .model('RecipeStore', {
@@ -71,6 +45,12 @@ export const RecipeStore = types
           ? res.hits.map(({ recipe }: any) => convertToRecipe(recipe))
           : null;
         self.nextPage = res['_links'].next?.href ?? null;
+      } catch (e) {
+        if (e instanceof HttpResponseError) {
+          toast.error(e.message);
+        } else {
+          console.info(e);
+        }
       } finally {
         self.isLoading = false;
       }
@@ -87,6 +67,12 @@ export const RecipeStore = types
             );
           }
           self.nextPage = res['_links'].next?.href ?? null;
+        }
+      } catch (e) {
+        if (e instanceof HttpResponseError) {
+          toast.error(e.message);
+        } else {
+          console.info(e);
         }
       } finally {
         self.isLoading = false;

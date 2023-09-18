@@ -1,6 +1,6 @@
-import { Toaster } from "react-hot-toast";
+import { Toaster } from 'react-hot-toast';
 
-const NotificationToaster = () => {
+const AppNotificationToaster = () => {
   return (
     <Toaster
       position="bottom-left"
@@ -8,23 +8,23 @@ const NotificationToaster = () => {
         duration: 5000,
         error: {
           style: {
-            background: "#FF0000",
-            color: "#FFF",
-            maxWidth: "600px",
+            background: '#FF0000',
+            color: '#FFF',
+            maxWidth: '600px',
           },
           iconTheme: {
-            primary: "#FF0000",
-            secondary: "#FFF",
+            primary: '#FF0000',
+            secondary: '#FFF',
           },
         },
         success: {
           style: {
-            background: "#3CC13B",
-            color: "#FFF",
+            background: '#3CC13B',
+            color: '#FFF',
           },
           iconTheme: {
-            primary: "#3CC13B",
-            secondary: "#FFF",
+            primary: '#3CC13B',
+            secondary: '#FFF',
           },
         },
       }}
@@ -32,4 +32,4 @@ const NotificationToaster = () => {
   );
 };
 
-export default NotificationToaster;
+export default AppNotificationToaster;

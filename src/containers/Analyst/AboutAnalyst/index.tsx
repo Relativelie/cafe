@@ -1,7 +1,7 @@
-import Button, { ButtonSizeENUM } from 'components/Button';
+import { AppButton, ButtonSizeENUM } from 'components';
 import { useTranslation } from 'react-i18next';
 
-export const AboutAnalyst: React.FC = () => {
+const AboutAnalyst: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -16,7 +16,9 @@ export const AboutAnalyst: React.FC = () => {
         </h5>
       </div>
 
-      <Button size={ButtonSizeENUM.sm}>{t('analyst.ready')}</Button>
+      <AppButton size={ButtonSizeENUM.sm}>{t('analyst.ready')}</AppButton>
     </div>
   );
 };
+
+export default AboutAnalyst;

@@ -26,7 +26,7 @@ interface ButtonProps
   size?: ButtonSizeENUM;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const AppButton: React.FC<ButtonProps> = ({
   disabled = false,
   leftIcon = undefined,
   rightIcon = undefined,
@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
       className={clsx(
         sizes[size],
         className,
-        'border-green-300 border-2 rounded-lg hover:shadow-lg hover:bg-green-300',
+        'h-min border-green-300 border-2 rounded-lg hover:shadow-lg hover:bg-green-300',
       )}
       onClick={onClick}
     >
@@ -54,4 +54,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default AppButton;

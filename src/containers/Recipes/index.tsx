@@ -1,13 +1,14 @@
-import { useEffect, useRef } from "react";
-import useDebounce from "utils/useDebounce";
-import { observer } from "mobx-react-lite";
-import { useStore } from "store";
-import { toJS } from "mobx";
-import isEqual from "lodash.isequal";
-import SearchingPanel from "./SearchingPanel";
-import { Outlet, useNavigate } from "react-router-dom";
-import URLS from "constants/urls";
-import { Spinner } from "components";
+import { useEffect, useRef } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useStore } from 'store';
+import { toJS } from 'mobx';
+import isEqual from 'lodash.isequal';
+import { Outlet, useNavigate } from 'react-router-dom';
+
+import SearchingPanel from './SearchingPanel';
+import { AppSpinner } from 'components';
+import useDebounce from 'utils/useDebounce';
+import URLS from 'constants/urls';
 
 const Recipes = observer(() => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Recipes = observer(() => {
     <>
       {isLoading && (
         <div className="fixed h-full w-full z-10 bg-slate-500/50">
-          <Spinner />
+          <AppSpinner />
         </div>
       )}
 

@@ -1,7 +1,7 @@
-import ErrorBoundaries from "components/ErrorBoundary";
-import { NotificationToaster } from "components";
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./AppRoutes";
+import ErrorBoundaries from 'components/ErrorBoundary';
+import { AppNotificationToaster } from 'components';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './AppRoutes';
 
 export type SearchingData = {
   recipe: {
@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <ErrorBoundaries>
         <AppRoutes />
-        <NotificationToaster />
+        <AppNotificationToaster />
       </ErrorBoundaries>
     </BrowserRouter>
   );

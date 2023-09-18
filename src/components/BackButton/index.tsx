@@ -1,11 +1,11 @@
-import BackIcon from "assets/icons/BackIcon";
-import { useNavigate } from "react-router-dom";
+import BackIcon from 'assets/icons/BackIcon';
+import { useNavigate } from 'react-router-dom';
 
-type BackButtonProps = {
+type AppBackButtonProps = {
   title?: string;
   onBackButtonClick?: () => void;
 };
-const BackButton: React.FC<BackButtonProps> = ({ title, onBackButtonClick }) => {
+const AppBackButton: React.FC<AppBackButtonProps> = ({ title, onBackButtonClick }) => {
   const navigate = useNavigate();
   const onBackClick = () => {
     navigate(-1);
@@ -23,4 +23,4 @@ const BackButton: React.FC<BackButtonProps> = ({ title, onBackButtonClick }) => 
   );
 };
 
-export default BackButton;
+export default AppBackButton;

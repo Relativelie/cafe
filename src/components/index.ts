@@ -1,23 +1,26 @@
-import Input from './Input';
+import AppInput from './Input';
 import ErrorBoundary from './ErrorBoundary';
-import NotificationToaster from './NotificationToaster';
-import Checkbox from './Checkbox';
-import BackButton from './BackButton';
+import AppNotificationToaster from './NotificationToaster';
+import AppCheckbox from './Checkbox';
+import AppBackButton from './BackButton';
 import RecipeCard from '../containers/Recipes/RecipesList/RecipeCard';
-import Spinner from './Spinner';
-import ToUpButton from './ToUpButton';
-import FormInput from './FormInput';
-import { TextArea } from './TextArea';
+import AppSpinner from './Spinner';
+import AppToUpButton from './ToUpButton';
+import AppFormInput from './FormInput';
+import AppButton, { ButtonSizeENUM } from './Button';
+import { AppTextArea } from './TextArea';
 
 export {
-  Input,
+  AppInput,
   ErrorBoundary,
-  NotificationToaster,
-  Checkbox,
-  BackButton,
+  AppNotificationToaster,
+  AppCheckbox,
+  AppBackButton,
   RecipeCard,
-  Spinner,
-  ToUpButton,
-  FormInput,
-  TextArea,
+  AppSpinner,
+  AppToUpButton,
+  AppFormInput,
+  AppTextArea,
+  AppButton,
+  ButtonSizeENUM,
 };
