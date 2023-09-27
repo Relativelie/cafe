@@ -2,6 +2,7 @@ import ErrorBoundaries from 'components/ErrorBoundary';
 import { AppNotificationToaster } from 'components';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
+import ScrollToTop from 'utils/useScrollToTop';
 
 export type SearchingData = {
   recipe: {
@@ -14,6 +15,7 @@ export type SearchingData = {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ErrorBoundaries>
         <AppRoutes />
         <AppNotificationToaster />

@@ -1,14 +1,16 @@
+import { useTranslation } from 'react-i18next';
+import Title from './Title';
+
 type DietTypeProps = {
   title: String;
 };
 
 const DietType: React.FC<DietTypeProps> = ({ title }) => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h3 className="text-center uppercase font-semibold text-green-300 mb-8">
-        Diet Type
-      </h3>
-
+      <Title text={t('recipes.dietType')} />
       <h5 className="font-semibold text-center">{title}</h5>
     </>
   );

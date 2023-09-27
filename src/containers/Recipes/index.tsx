@@ -9,6 +9,7 @@ import SearchingPanel from './SearchingPanel';
 import { AppSpinner } from 'components';
 import useDebounce from 'utils/useDebounce';
 import URLS from 'constants/urls';
+import MobileSearchingPanel from './MobileSearchingPanel';
 
 const Recipes = observer(() => {
   const navigate = useNavigate();
@@ -37,8 +38,11 @@ const Recipes = observer(() => {
         </div>
       )}
 
-      <div className="grid grid-cols-[minmax(200px,400px),_1fr]">
-        <SearchingPanel />
+      <div className="grid lg:grid-cols-[minmax(200px,400px),_1fr]">
+        <div className="hidden lg:block">
+          <SearchingPanel />
+        </div>
+        <MobileSearchingPanel />
         <Outlet />
       </div>
     </>

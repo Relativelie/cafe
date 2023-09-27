@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler } from 'react';
 
 export enum ButtonSizeENUM {
   sm = 'SM',
@@ -20,7 +20,7 @@ interface ButtonProps
   disabled?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: () => void;
   className?: string;
   type?: 'submit' | 'reset' | 'button' | undefined;
   size?: ButtonSizeENUM;

@@ -7,7 +7,7 @@ type IngredientsProps = {
 
 const Ingredients: React.FC<IngredientsProps> = ({ image, ingredients }) => {
   return (
-    <div className="flex justify-center items-center gap-12">
+    <div className="flex justify-center items-center gap-12 pb-8 md:pb-0">
       <div className="w-fit h-fit border-4 border-white rounded-full overflow-hidden">
         <img src={image} alt="recipe" />
       </div>

@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+import Title from './Title';
+
 type NutritionProps = {
   calories: number;
   totalWeight: number;
@@ -5,11 +8,11 @@ type NutritionProps = {
 };
 
 const Nutrition: React.FC<NutritionProps> = ({ calories, totalDaily, totalWeight }) => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h3 className="text-center uppercase font-semibold text-green-300 mb-8">
-        Nutrition
-      </h3>
+      <Title text={t('recipes.nutrition')} />
       <div className="flex justify-center gap-10">
         <div>
           <h5 className="font-semibold text-center">

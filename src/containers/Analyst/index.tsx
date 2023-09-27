@@ -13,7 +13,7 @@ import { AppButton, AppSpinner, AppTextArea, ButtonSizeENUM } from 'components';
 
 export const Analyst = observer(() => {
   const { analystStore } = useStore();
-  const { isLoading, healthLabels, totalNutrient, ingredients } = toJS(analystStore);
+  const { isLoading, healthLabels, totalNutrient } = toJS(analystStore);
   const { getNutrition } = analystStore;
   const textareaRef = useRef<any>();
 
@@ -23,7 +23,6 @@ export const Analyst = observer(() => {
     await getNutrition(textareaRef.current?.value.split(', '));
   };
 
-  console.log(ingredients, totalNutrient);
   return (
     <div className="flex flex-col gap-8 pb-12">
       <AboutAnalyst />

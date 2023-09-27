@@ -1,6 +1,7 @@
 {
   "common": {
-    "error": "Something went wrong..."
+    "error": "Something went wrong...",
+    "close": "Close"
   },
   "cafeName": "Made with love",
 
@@ -9,7 +10,10 @@
     "filters": {
       "diet": "Diet",
       "cuisine": "Cuisine"
-    }
+    },
+    "nutrition": "Nutrition",
+    "dietType": "Diet Type",
+    "backToList": "to recipe list"
   },
   "analyst": {
     "label": "Ingredients analyst",

@@ -1,7 +1,7 @@
-import classNames from "classnames";
-import LoadingRecipeOne from "../../png/loading-recipe-1.png";
-import LoadingRecipeTwo from "../../png/loading-recipe-2.png";
-import LoadingRecipeThree from "../../png/loading-recipe-3.png";
+import clsx from 'clsx';
+import LoadingRecipeOne from '../../png/loading-recipe-1.png';
+import LoadingRecipeTwo from '../../png/loading-recipe-2.png';
+import LoadingRecipeThree from '../../png/loading-recipe-3.png';
 
 const loadingImg = [LoadingRecipeOne, LoadingRecipeTwo, LoadingRecipeThree];
 
@@ -15,7 +15,7 @@ const Icon: React.FC<IconProps> = ({ className }) => {
     <img
       src={loadingImg[randomImg]}
       alt="loading icon"
-      className={classNames(className, "w-full h-full")}
+      className={clsx(className, 'w-full h-full')}
     />
   );
 };
