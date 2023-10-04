@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import Title from './Title';
+import ContentTitle from './ContentTitle';
 
 type DietTypeProps = {
   title: String;
@@ -9,10 +9,10 @@ const DietType: React.FC<DietTypeProps> = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <Title text={t('recipes.dietType')} />
+    <div className="flex flex-col gap-2">
+      <ContentTitle text={t('recipes.dietType')} />
       <h5 className="font-semibold text-center">{title}</h5>
-    </>
+    </div>
   );
 };
 

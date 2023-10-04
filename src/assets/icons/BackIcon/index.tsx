@@ -2,7 +2,7 @@ type IconProps = {
   className?: string;
 };
 
-const Icon: React.FC<IconProps> = ({ className = "" }) => {
+const Icon: React.FC<IconProps> = ({ className = '' }) => {
   return (
     <svg
       className={className}

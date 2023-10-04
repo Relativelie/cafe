@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { useTheme } from 'theme/themeProvider';
 
 type AppInputProps = {
   register: UseFormRegister<FieldValues>;
@@ -23,18 +24,28 @@ const AppFormInput: React.FC<AppInputProps> = ({
   errors,
   placeholder = '',
 }) => {
+  const { theme } = useTheme();
+
+  const isError = errors && errors[name]?.message;
+
+  const inputInlineStyles = {
+    color: theme.colors.default,
+    borderColor: isError ? theme.colors.danger : theme.colors.defaultInverse,
+  };
+
   return (
     <div className="relative grid grid-rows-[1fr,1.5em] justify-center items-center">
       <div className="relative flex items-center">
         {leftIcon && (
-          <div className="absolute h-full flex items-center left-2">{leftIcon}</div>
+          <div className="absolute h-full flex items-center left-2">
+            {leftIcon}
+          </div>
         )}
         <input
+          style={inputInlineStyles}
           className={clsx(
-            errors && errors[name]?.message
-              ? 'border-error'
-              : 'border-slate-300 focus:outline-lime-100',
-            'h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent text-black',
+            isError && theme.outlineFocusColor.brand,
+            'h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent',
           )}
           type="text"
           {...(register && { ...register(name, { required }) })}
@@ -42,14 +53,20 @@ const AppFormInput: React.FC<AppInputProps> = ({
         />
 
         {rightIcon && (
-          <div className="absolute h-full flex items-center right-2">{rightIcon}</div>
+          <div className="absolute h-full flex items-center right-2">
+            {rightIcon}
+          </div>
         )}
       </div>
       {required && (
         <ErrorMessage
           errors={errors}
           name={name}
-          render={({ message }) => <p className="text-error text-center">{message}</p>}
+          render={({ message }) => (
+            <p style={{ color: theme.colors.danger }} className="text-center">
+              {message}
+            </p>
+          )}
         />
       )}
     </div>

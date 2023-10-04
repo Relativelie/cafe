@@ -6,10 +6,13 @@ type IngredientItemProps = {
   ingredient: IngredientType;
 };
 
-export const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient }) => {
+export const IngredientItem: React.FC<IngredientItemProps> = ({
+  ingredient,
+}) => {
   const { t } = useTranslation();
 
-  const { enercKcal, label, measure, fat, protein, carbs, mg, ca, vitaRae } = ingredient;
+  const { enercKcal, label, measure, fat, protein, carbs, mg, ca, vitaRae } =
+    ingredient;
 
   return (
     <div>
@@ -21,7 +24,10 @@ export const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient }) =>
         <NutritionItem title="Calories" value={enercKcal.toString()} />
         <NutritionItem title={t('analyst.fat')} value={fat.toString()} />
         <NutritionItem title={t('analyst.vitA')} value={vitaRae.toString()} />
-        <NutritionItem title={t('analyst.protein')} value={protein.toString()} />
+        <NutritionItem
+          title={t('analyst.protein')}
+          value={protein.toString()}
+        />
         <NutritionItem title={t('analyst.carbs')} value={carbs.toString()} />
         <NutritionItem title={t('analyst.magnesium')} value={mg.toString()} />
         <NutritionItem title={t('analyst.calcium')} value={ca.toString()} />

@@ -15,7 +15,11 @@ export const RecipeStore = types
     likedRecipes: types.optional(types.array(types.string), []),
   })
   .actions((self) => {
-    function onChangeFilter<T>(block: FiltersENUM, value: T, blockItemKey?: string) {
+    function onChangeFilter<T>(
+      block: FiltersENUM,
+      value: T,
+      blockItemKey?: string,
+    ) {
       if (!blockItemKey) {
         self.filters = {
           ...self.filters,

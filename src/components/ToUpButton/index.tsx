@@ -1,13 +1,18 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import ScrollUp from 'assets/png/scroll-up.png';
+import { useTheme } from 'theme/themeProvider';
+import { useTranslation } from 'react-i18next';
 
-const AppToUpButton = () => {
+const AppUpButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const handleScroll = () => {
     const heightToHideFrom = 200;
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
 
     if (winScroll < heightToHideFrom) {
       setIsVisible(false);
@@ -39,11 +44,16 @@ const AppToUpButton = () => {
           onClick={onClick}
         >
           <img src={ScrollUp} alt="scroll up" className="w-10 h-10" />
-          <h5 className="uppercase font-bold text-green-600">Up</h5>
+          <h5
+            style={{ color: theme.colors.success }}
+            className="uppercase font-bold"
+          >
+            {t('common.up')}
+          </h5>
         </div>
       )}
     </div>
   );
 };
 
-export default AppToUpButton;
+export default AppUpButton;

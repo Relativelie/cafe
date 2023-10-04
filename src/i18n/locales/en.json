@@ -1,7 +1,8 @@
 {
   "common": {
     "error": "Something went wrong...",
-    "close": "Close"
+    "close": "Close",
+    "up": "Up"
   },
   "cafeName": "Made with love",
 
@@ -29,6 +30,8 @@
     "vitE": "Vitamin E (alpha-tocopherol)",
     "carbs": "Carbs",
     "magnesium": "Magnesium, Mg",
-    "calcium": "Calcium, Ca"
+    "calcium": "Calcium, Ca",
+    "ingredient": "Ingredient",
+    "fat": "Fat"
   }
 }

@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ThemeVariantsENUM } from 'theme/models';
+import { useTheme } from 'theme/themeProvider';
 
 export enum ButtonSizeENUM {
   sm = 'SM',
@@ -16,7 +18,10 @@ const sizes: { [key in ButtonSizeENUM]: string } = {
 };
 
 interface ButtonProps
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   disabled?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -36,14 +41,20 @@ const AppButton: React.FC<ButtonProps> = ({
   type = 'button',
   size = ButtonSizeENUM.md,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <button
       type={type}
       disabled={disabled}
+      style={{
+        borderColor: theme.colors.lightBrand,
+      }}
       className={clsx(
         sizes[size],
         className,
-        'h-min border-green-300 border-2 rounded-lg hover:shadow-lg hover:bg-green-300',
+        theme.hoverBgColors.darkBrand,
+        'h-min border-2 rounded-lg hover:shadow-lg',
       )}
       onClick={onClick}
     >

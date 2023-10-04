@@ -5,7 +5,11 @@ export class FilterBlock {
   block: FiltersENUM;
   availableValues: Array<string>;
 
-  constructor(label: string, block: FiltersENUM, availableValues: Array<string>) {
+  constructor(
+    label: string,
+    block: FiltersENUM,
+    availableValues: Array<string>,
+  ) {
     this.label = label;
     this.block = block;
     this.availableValues = availableValues;

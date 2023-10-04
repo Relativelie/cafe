@@ -18,7 +18,9 @@ export const AnalystStore = types
         const res = yield postAnalyst(ingredients);
 
         self.ingredients = res.ingredients.length
-          ? res.ingredients.map(({ parsed }: any) => convertToIngredient(parsed[0]))
+          ? res.ingredients.map(({ parsed }: any) =>
+              convertToIngredient(parsed[0]),
+            )
           : null;
 
         self.totalNutrient = convertToTotalNutrients(res['totalNutrients']);

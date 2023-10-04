@@ -16,7 +16,7 @@ const Recipe = observer(() => {
   return (
     <div>
       {selectedRecipe && (
-        <div className="h-screen flex flex-col gap-4 lg:gap-10">
+        <div className="h-screen flex flex-col gap-6 lg:gap-10">
           <div className="h-64 grid grid-cols-[80px_1fr_80px] grid-rows-[50px_1fr_80px] bg-recipe-poster bg-cover bg-center">
             <AppBackButton title={t('recipes.backToList')} />
             <Header title={selectedRecipe.label} />
@@ -26,7 +26,7 @@ const Recipe = observer(() => {
             totalWeight={selectedRecipe.totalWeight}
             totalDaily={selectedRecipe.totalDaily}
           />
-          {selectedRecipe.dietLabels.length && (
+          {selectedRecipe.dietLabels.length > 0 && (
             <DietType title={selectedRecipe.dietLabels.toString()} />
           )}
           <Ingredients

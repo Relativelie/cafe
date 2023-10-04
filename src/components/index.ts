@@ -5,7 +5,7 @@ import AppCheckbox from './Checkbox';
 import AppBackButton from './BackButton';
 import RecipeCard from '../containers/Recipes/RecipesList/RecipeCard';
 import AppSpinner from './Spinner';
-import AppToUpButton from './ToUpButton';
+import AppUpButton from './ToUpButton';
 import AppFormInput from './FormInput';
 import AppButton, { ButtonSizeENUM } from './Button';
 import { AppTextArea } from './TextArea';
@@ -18,7 +18,7 @@ export {
   AppBackButton,
   RecipeCard,
   AppSpinner,
-  AppToUpButton,
+  AppUpButton as AppToUpButton,
   AppFormInput,
   AppTextArea,
   AppButton,

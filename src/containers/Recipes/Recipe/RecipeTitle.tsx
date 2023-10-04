@@ -1,17 +1,37 @@
 import React from 'react';
+import { useTheme } from 'theme/themeProvider';
 
 type HeaderProps = {
   title: string;
 };
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="col-start-2 row-start-2 relative p-4 bg-black/50">
-      <div className="absolute -bottom-4 left-[40%] px-4 py-[1px] text-black bg-white">
+    <div
+      style={{ backgroundColor: theme.colors.opacityDefault }}
+      className="col-start-2 row-start-2 relative p-4"
+    >
+      <div
+        style={{
+          backgroundColor: theme.colors.defaultInverse,
+          color: theme.colors.default,
+        }}
+        className="absolute -bottom-4 left-[40%] px-4 py-[1px]"
+      >
         <h5 className="font-semibold">{'u can do it ♡'.toUpperCase()}</h5>
       </div>
-      <div className="border-2 border-white p-4">
-        <p className="text-3xl xl:text-5xl text-white">{title}</p>
+      <div
+        style={{ borderColor: theme.colors.defaultInverse }}
+        className="border-2 p-4"
+      >
+        <p
+          style={{ color: theme.colors.defaultInverse }}
+          className="text-3xl xl:text-5xl"
+        >
+          {title}
+        </p>
       </div>
     </div>
   );

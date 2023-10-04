@@ -11,7 +11,9 @@ export const getRequest = async (
       params: params,
     })
     .catch((err) =>
-      toast.error(`Something went wrong please reload the page. Code: ${err.code}`),
+      toast.error(
+        `Something went wrong please reload the page. Code: ${err.code}`,
+      ),
     );
 };
 
@@ -23,6 +25,8 @@ export const postRequest = async (
   return await axiosInstance
     .post(url ?? '', body)
     .catch((err) =>
-      toast.error(`Something went wrong please reload the page. Code: ${err.code}`),
+      toast.error(
+        `Something went wrong please reload the page. Code: ${err.code}`,
+      ),
     );
 };

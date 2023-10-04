@@ -1,19 +1,26 @@
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 import { useStore } from 'store';
+import { useTheme } from 'theme/themeProvider';
 
 export const PieChartTable = observer(() => {
   const { analystStore } = useStore();
   const { ingredients } = toJS(analystStore);
+  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
-    <table className="w-full table-auto border-spacing-1 text-left border border-separate  border-1 rounded-lg border-slate-500">
+    <table
+      style={{ borderColor: theme.colors.opacityDefault }}
+      className="w-full table-auto border-spacing-1 text-left border border-separate border-1 rounded-lg"
+    >
       <thead>
         <tr>
-          <th>Ingredient</th>
-          <th>Fat</th>
-          <th>Protein</th>
-          <th>Carbs</th>
+          <th> {t('analyst.ingredient')}</th>
+          <th>{t('analyst.fat')}</th>
+          <th>{t('analyst.protein')}</th>
+          <th>{t('analyst.carbs')}</th>
         </tr>
       </thead>
       <tbody>

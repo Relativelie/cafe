@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import Title from './Title';
+import ContentTitle from './ContentTitle';
 
 type NutritionProps = {
   calories: number;
@@ -7,12 +7,16 @@ type NutritionProps = {
   totalDaily: string;
 };
 
-const Nutrition: React.FC<NutritionProps> = ({ calories, totalDaily, totalWeight }) => {
+const Nutrition: React.FC<NutritionProps> = ({
+  calories,
+  totalDaily,
+  totalWeight,
+}) => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <Title text={t('recipes.nutrition')} />
+    <div className="flex flex-col gap-2">
+      <ContentTitle text={t('recipes.nutrition')} />
       <div className="flex justify-center gap-10">
         <div>
           <h5 className="font-semibold text-center">
@@ -25,7 +29,7 @@ const Nutrition: React.FC<NutritionProps> = ({ calories, totalDaily, totalWeight
           <h5 className="uppercase">daily value</h5>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

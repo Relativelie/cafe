@@ -8,7 +8,9 @@ type PieChartGraphProps = {
   totalNutrient: TotalNutrientsType;
 };
 
-export const PieChartGraph: React.FC<PieChartGraphProps> = ({ totalNutrient }) => {
+export const PieChartGraph: React.FC<PieChartGraphProps> = ({
+  totalNutrient,
+}) => {
   const { fat, protein, chocdf, fasat } = totalNutrient;
 
   return (
@@ -32,7 +34,10 @@ export const PieChartGraph: React.FC<PieChartGraphProps> = ({ totalNutrient }) =
         }}
       />
       <div className="flex flex-col gap-4">
-        <ChartLegendItem bgColor="bg-[#EF6262]" title="Fatty acids, total saturated" />
+        <ChartLegendItem
+          bgColor="bg-[#EF6262]"
+          title="Fatty acids, total saturated"
+        />
         <ChartLegendItem bgColor="bg-[#FFC95F]" title="Carbs" />
         <ChartLegendItem bgColor="bg-[#A0C49D]" title="Protein" />
       </div>
