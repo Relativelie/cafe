@@ -8,7 +8,8 @@ import AppSpinner from './Spinner';
 import AppUpButton from './ToUpButton';
 import AppFormInput from './FormInput';
 import AppButton, { ButtonSizeENUM } from './Button';
-import { AppTextArea } from './TextArea';
+import AppTextArea from './TextArea';
+import AppRadioButton from './RadioButton';
 
 export {
   AppInput,
@@ -23,4 +24,5 @@ export {
   AppTextArea,
   AppButton,
   ButtonSizeENUM,
+  AppRadioButton,
 };

@@ -6,7 +6,7 @@ type AppTextAreaProps = {
   textareaRef?: React.Ref<any>;
 };
 
-export const AppTextArea: React.FC<AppTextAreaProps> = ({
+const AppTextArea: React.FC<AppTextAreaProps> = ({
   placeholder,
   textareaRef,
 }) => {
@@ -24,3 +24,5 @@ export const AppTextArea: React.FC<AppTextAreaProps> = ({
     ></textarea>
   );
 };
+
+export default AppTextArea;

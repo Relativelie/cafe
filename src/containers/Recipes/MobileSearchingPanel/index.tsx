@@ -6,14 +6,6 @@ import { useLocation } from 'react-router-dom';
 import URLS from 'constants/urls';
 import { useTheme } from 'theme/themeProvider';
 
-const customStyles: Modal.Styles = {
-  content: {
-    background: 'black',
-    overflow: 'scroll',
-  },
-  overlay: { zIndex: 40, backgroundColor: 'rgba(255, 255, 255, .3)' },
-};
-
 const MobileSearchingPanel = () => {
   const location = useLocation();
   const { theme } = useTheme();
@@ -25,6 +17,14 @@ const MobileSearchingPanel = () => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const customModalStyles: Modal.Styles = {
+    content: {
+      background: theme.colors.default,
+      overflow: 'scroll',
+    },
+    overlay: { zIndex: 40, backgroundColor: 'rgba(255, 255, 255, .3)' },
   };
 
   const isRecipeListPage = (): boolean =>
@@ -49,12 +49,10 @@ const MobileSearchingPanel = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        style={customModalStyles}
+        ariaHideApp={false}
       >
-        <div>
-          <SearchingPanel isMobileView closeModal={closeModal} />
-        </div>
+        <SearchingPanel isMobileView closeModal={closeModal} />
       </Modal>
     </div>
   );

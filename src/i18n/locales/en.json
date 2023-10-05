@@ -5,7 +5,12 @@
     "up": "Up"
   },
   "cafeName": "Made with love",
-
+  "settings": {
+    "theme": "Theme",
+    "language": "Language",
+    "dark": "Dark",
+    "light": "Light"
+  },
   "recipes": {
     "label": "Recipes",
     "filters": {

@@ -10,6 +10,7 @@ import { FilterBlock } from './models';
 import { CuisineEnum, DietEnum, FiltersENUM } from 'stores/recipes';
 import { AppButton, AppCheckbox, AppInput, ButtonSizeENUM } from 'components';
 import { useTheme } from 'theme/themeProvider';
+import { Section } from './Section';
 
 const toArrayFilters = (
   enumVal: typeof DietEnum | typeof CuisineEnum,
@@ -68,24 +69,11 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
           <div className="flex flex-col gap-4">
             {filterBlocks.map((filter) => {
               return (
-                <React.Fragment key={`${filter.block}`}>
-                  <h4>{filter.label}</h4>
-                  <div className="flex flex-col gap-2 md:gap-1">
-                    {filter.availableValues.map((item) => {
-                      return (
-                        <div key={`${item}-checkbox`} className="ml-2">
-                          <AppCheckbox
-                            label={item}
-                            checked={(filters[filter.block] as any)[item]}
-                            onChange={(value) =>
-                              onChangeFilter(filter.block, value, item)
-                            }
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </React.Fragment>
+                <Section
+                  filterBlock={filter}
+                  filters={filters}
+                  onChange={onChangeFilter}
+                />
               );
             })}
           </div>

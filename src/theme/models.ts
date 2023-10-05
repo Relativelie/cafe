@@ -48,9 +48,10 @@ export type FocusColors = {
 export type ThemeContextType = {
   theme: Theme;
   toggleTheme: (arg: ThemeVariantsENUM) => void;
+  selectedThemeTitle: ThemeVariantsENUM;
 };
 
 export enum ThemeVariantsENUM {
-  light,
-  dark,
+  Light = 'LIGHT',
+  Dark = 'DARK',
 }

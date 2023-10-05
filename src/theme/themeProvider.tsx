@@ -13,9 +13,9 @@ export function useTheme() {
   return context;
 }
 
-const themes = {
-  [ThemeVariantsENUM.light]: lightTheme,
-  [ThemeVariantsENUM.dark]: darkTheme,
+export const themes = {
+  [ThemeVariantsENUM.Light]: lightTheme,
+  [ThemeVariantsENUM.Dark]: darkTheme,
 };
 
 interface ThemeProviderProps {
@@ -24,17 +24,21 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(darkTheme);
+  const [selectedThemeTitle, setSelectedThemeTitle] =
+    useState<ThemeVariantsENUM>(ThemeVariantsENUM.Dark);
 
   useEffect(() => {
     setToLS('theme', theme);
   }, [theme]);
 
   const toggleTheme = (themeVariant: ThemeVariantsENUM) => {
+    console.log(themeVariant, themes);
     setTheme(themes[themeVariant]);
+    setSelectedThemeTitle(themeVariant);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, selectedThemeTitle }}>
       {children}
     </ThemeContext.Provider>
   );
