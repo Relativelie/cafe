@@ -20,7 +20,7 @@ const AppRadioButton: React.FC<AppRadioButtonProps> = ({
   onChange,
 }) => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 items-center">
       <input
         type="radio"
         checked={checked}

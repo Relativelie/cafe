@@ -1,10 +1,9 @@
 import { AppRadioButton } from 'components';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeVariantsENUM } from 'theme/models';
-import { themes, useTheme } from 'theme/themeProvider';
+import { useTheme } from 'theme/themeProvider';
 
-export const Settings = () => {
+const ThemeSettings = () => {
   const { t } = useTranslation();
   const { theme, toggleTheme, selectedThemeTitle } = useTheme();
 
@@ -13,12 +12,12 @@ export const Settings = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-2">
       <h4>{t('settings.theme')}</h4>
       {Object.keys(ThemeVariantsENUM).map((themeKey) => {
         const value =
           ThemeVariantsENUM[themeKey as keyof typeof ThemeVariantsENUM];
-        console.log('themeKey, themeKey', selectedThemeTitle, themeKey);
+
         return (
           <AppRadioButton
             key={themeKey}
@@ -28,9 +27,8 @@ export const Settings = () => {
           />
         );
       })}
-      <h5>{t('settings.theme')}</h5>
-      <h4>{t('settings.language')}</h4>
-      <h5>{t('settings.theme')}</h5>
     </div>
   );
 };
+
+export default ThemeSettings;

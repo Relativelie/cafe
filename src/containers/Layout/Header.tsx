@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'theme/themeProvider';
 import { useState } from 'react';
-import { Settings } from './Settings';
+import Settings from './Settings';
 
 const Header = () => {
   const { t } = useTranslation();
