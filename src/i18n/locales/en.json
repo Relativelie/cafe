@@ -6,10 +6,14 @@
   },
   "cafeName": "Made with love",
   "settings": {
-    "theme": "Theme",
-    "language": "Language",
+    "theme": "Choose theme",
+    "language": "Choose language",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "barbie": "Barbie",
+    "ken": "Ken",
+    "ru": "Russian",
+    "en": "English"
   },
   "recipes": {
     "label": "Recipes",
@@ -19,7 +23,10 @@
     },
     "nutrition": "Nutrition",
     "dietType": "Diet Type",
-    "backToList": "to recipe list"
+    "backToList": "to recipe list",
+    "ingredients_one": "{{count}} Ingredient",
+    "ingredients_few": "{{count}} Ingredients",
+    "ingredients_other": "{{count}} Ingredients"
   },
   "analyst": {
     "label": "Ingredients analyst",
@@ -37,6 +44,12 @@
     "magnesium": "Magnesium, Mg",
     "calcium": "Calcium, Ca",
     "ingredient": "Ingredient",
-    "fat": "Fat"
+    "fat": "Fat",
+    "analyze": "Analyze",
+    "totalNutrients": "Total Nutrients",
+    "ingredientsNutrients": "Ingredients Nutrients",
+    "calories": "Calories",
+    "fattyAcids": "Fatty acids, total saturated",
+    "totalLipid": "Total lipid (fat)"
   }
 }

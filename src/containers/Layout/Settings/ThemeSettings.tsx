@@ -13,7 +13,9 @@ const ThemeSettings = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <h4>{t('settings.theme')}</h4>
+      <h4 style={{ color: theme.colors.defaultInverse }}>
+        {t('settings.theme')}
+      </h4>
       {Object.keys(ThemeVariantsENUM).map((themeKey) => {
         const value =
           ThemeVariantsENUM[themeKey as keyof typeof ThemeVariantsENUM];

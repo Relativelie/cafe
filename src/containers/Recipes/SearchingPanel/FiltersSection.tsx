@@ -3,20 +3,21 @@ import React from 'react';
 import { FilterBlock } from './models';
 import { FilterType, FiltersENUM } from 'stores/recipes';
 
-type SectionProps = {
+type FiltersSectionProps = {
   filterBlock: FilterBlock;
   filters: FilterType;
   onChange: (block: FiltersENUM, value: boolean, blockItemKey: string) => void;
 };
 
-export const Section: React.FC<SectionProps> = ({
+export const FiltersSection: React.FC<FiltersSectionProps> = ({
   filterBlock,
   filters,
   onChange,
 }) => {
   const { block, label, availableValues } = filterBlock;
+
   return (
-    <React.Fragment key={`${block}`}>
+    <React.Fragment key={`${block}-block`}>
       <h4>{label}</h4>
       <div className="flex flex-col gap-2 md:gap-1">
         {availableValues.map((item) => {

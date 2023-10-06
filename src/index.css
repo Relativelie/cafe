@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-zinc-900 text-white;
-  }
-
   /* Font Size */
 
   h1,

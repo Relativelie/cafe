@@ -1,8 +1,8 @@
 import { Chart } from 'react-google-charts';
 import { ChartLegendItem } from './ChartLegendItem';
 import { TotalNutrientsType } from 'stores/analyst';
-
-const chartBgColor = '#18181b';
+import { useTheme } from 'theme/themeProvider';
+import { useTranslation } from 'react-i18next';
 
 type PieChartGraphProps = {
   totalNutrient: TotalNutrientsType;
@@ -11,12 +11,14 @@ type PieChartGraphProps = {
 export const PieChartGraph: React.FC<PieChartGraphProps> = ({
   totalNutrient,
 }) => {
+  const { theme } = useTheme();
+  const { t } = useTranslation();
   const { fat, protein, chocdf, fasat } = totalNutrient;
 
   return (
     <div className="flex flex-col md:flex-row items-center">
       <h4>
-        Total lipid (fat) <span className="font-bold">{fat}</span>
+        {t('analyst.totalLipid')} <span className="font-bold">{fat}</span>
       </h4>
       <Chart
         chartType="PieChart"
@@ -30,16 +32,16 @@ export const PieChartGraph: React.FC<PieChartGraphProps> = ({
           colors: ['#EF6262', '#FFC95F', '#A0C49D'],
           chartArea: { top: 0, bottom: 0 },
           legend: { position: 'none' },
-          backgroundColor: chartBgColor,
+          backgroundColor: theme.colors.default,
         }}
       />
       <div className="flex flex-col gap-4">
         <ChartLegendItem
           bgColor="bg-[#EF6262]"
-          title="Fatty acids, total saturated"
+          title={t('analyst.fattyAcids')}
         />
-        <ChartLegendItem bgColor="bg-[#FFC95F]" title="Carbs" />
-        <ChartLegendItem bgColor="bg-[#A0C49D]" title="Protein" />
+        <ChartLegendItem bgColor="bg-[#FFC95F]" title={t('analyst.carbs')} />
+        <ChartLegendItem bgColor="bg-[#A0C49D]" title={t('analyst.protein')} />
       </div>
     </div>
   );

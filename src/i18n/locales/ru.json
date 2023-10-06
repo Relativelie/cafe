@@ -1,12 +1,55 @@
 {
   "common": {
-    "error": "Что-то пошло не так..."
+    "error": "Что-то пошло не так...",
+    "close": "Закрыть",
+    "up": "Наверх"
   },
   "cafeName": "Made with love",
-  "filters": {
-    "diet": "Диета",
-    "cuisine": "Кухня"
+  "settings": {
+    "theme": "Выберите тему",
+    "language": "Выберите язык",
+    "dark": "Темный",
+    "light": "Светлый",
+    "barbie": "Барби",
+    "ken": "Кен",
+    "ru": "Русский",
+    "en": "Английский"
   },
-  "recipes": "Рецепты",
-  "analyst": "Анализ ингредиентов"
+  "recipes": {
+    "label": "Рецепты",
+    "filters": {
+      "diet": "Диета",
+      "cuisine": "Вид кухни"
+    },
+    "nutrition": "Питание",
+    "dietType": "Тип диеты",
+    "backToList": "рецептам",
+    "ingredients_one": "{{count}} Ингредиент",
+    "ingredients_few": "{{count}} Ингредиента",
+    "ingredients_many": "{{count}} Ингредиентов"
+  },
+  "analyst": {
+    "label": "Анализ ингредиентов",
+    "quotes1": "Healthy food,",
+    "quotes2": "Wealthy mood",
+    "ready": "Я готов!",
+    "description": "Полный анализ рецептов блюд в реальном времени - записывайте ингредиенты через запятую на английском и не забывайте указывать меру, например, '1 kg oranges, 0.5kg sugar'.",
+    "write": "напишите ингредиенты...",
+    "example": "например, '1 kg oranges, 0.5kg sugar'",
+    "nutritionFact": "Факты о питании",
+    "vitA": "Витамин A, RAE",
+    "protein": "Протеин",
+    "vitE": "Витамин E (alpha-tocopherol)",
+    "carbs": "Углеводы",
+    "magnesium": "Магний, Mg",
+    "calcium": "Кальций, Ca",
+    "ingredient": "Ингредиент",
+    "fat": "Жиры",
+    "analyze": "Анализировать",
+    "totalNutrients": "Общее количество питательных веществ",
+    "ingredientsNutrients": "Питательные вещества в составе",
+    "calories": "Калории",
+    "fattyAcids": "Жирные кислоты, общее количество насыщенных",
+    "totalLipid": "Общие липиды (жиры)"
+  }
 }

@@ -54,4 +54,6 @@ export type ThemeContextType = {
 export enum ThemeVariantsENUM {
   Light = 'LIGHT',
   Dark = 'DARK',
+  Barbie = 'BARBIE',
+  Ken = 'KEN',
 }

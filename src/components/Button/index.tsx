@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { ThemeVariantsENUM } from 'theme/models';
 import { useTheme } from 'theme/themeProvider';
 
 export enum ButtonSizeENUM {
@@ -27,7 +26,6 @@ interface ButtonProps
   rightIcon?: JSX.Element;
   onClick?: () => void;
   className?: string;
-  type?: 'submit' | 'reset' | 'button' | undefined;
   size?: ButtonSizeENUM;
 }
 
@@ -38,14 +36,13 @@ const AppButton: React.FC<ButtonProps> = ({
   onClick,
   children,
   className = '',
-  type = 'button',
   size = ButtonSizeENUM.md,
 }) => {
   const { theme } = useTheme();
 
   return (
     <button
-      type={type}
+      type="button"
       disabled={disabled}
       style={{
         borderColor: theme.colors.lightBrand,

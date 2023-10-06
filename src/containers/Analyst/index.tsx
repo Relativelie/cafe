@@ -30,7 +30,7 @@ export const Analyst = observer(() => {
       <AboutAnalyst />
       {isLoading && (
         <div
-          style={{ backgroundColor: theme.colors.opacityDefault }}
+          style={{ backgroundColor: theme.colors.defaultInverse }}
           className="fixed h-full w-full z-10"
         >
           <AppSpinner />
@@ -50,7 +50,7 @@ export const Analyst = observer(() => {
             placeholder={`${t('analyst.write')} \n ${t('analyst.example')}`}
           />
           <AppButton size={ButtonSizeENUM.full} onClick={onClickAnalyze}>
-            Analyze
+            {t('analyst.analyze')}
           </AppButton>
         </div>
       </div>

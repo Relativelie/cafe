@@ -3,6 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
 import ru from './locales/ru.json';
+import { LocalesVariantsENUM } from './models';
 
 const resources = {
   en: {
@@ -17,7 +18,7 @@ i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
-    fallbackLng: 'en',
+    lng: LocalesVariantsENUM.En,
     resources,
     interpolation: {
       escapeValue: false,

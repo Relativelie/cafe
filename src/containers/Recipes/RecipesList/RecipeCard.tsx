@@ -81,7 +81,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
           style={{ backgroundColor: theme.colors.lightBrand }}
           className="w-fit px-2 rounded-lg"
         >
-          <p style={{ color: theme.colors.default }} className="text-center">
+          <p className="text-center text-black">
             {ingredientLines.length} INGREDIENTS
           </p>
         </div>

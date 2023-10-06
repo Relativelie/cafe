@@ -10,7 +10,7 @@ import { FilterBlock } from './models';
 import { CuisineEnum, DietEnum, FiltersENUM } from 'stores/recipes';
 import { AppButton, AppCheckbox, AppInput, ButtonSizeENUM } from 'components';
 import { useTheme } from 'theme/themeProvider';
-import { Section } from './Section';
+import { FiltersSection } from './FiltersSection';
 
 const toArrayFilters = (
   enumVal: typeof DietEnum | typeof CuisineEnum,
@@ -63,13 +63,14 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
             handleInputChange={(value) =>
               onChangeFilter(FiltersENUM.Search, value)
             }
-            leftIcon={<SearchIcon />}
+            leftIcon={<SearchIcon fill={theme.colors.defaultInverse} />}
             className={clsx(!isMobileView && 'mt-4')}
           />
           <div className="flex flex-col gap-4">
             {filterBlocks.map((filter) => {
               return (
-                <Section
+                <FiltersSection
+                  key={`${filter.block}-${filter.label}`}
                   filterBlock={filter}
                   filters={filters}
                   onChange={onChangeFilter}

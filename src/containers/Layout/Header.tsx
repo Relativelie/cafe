@@ -49,34 +49,41 @@ const Header = () => {
       <div
         style={{
           backgroundColor: theme.colors.darkBrand,
-          borderBottomColor: theme.colors.defaultInverse,
         }}
-        className="fixed top-0 left-0 right-0 flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] z-20"
+        className="fixed top-0 left-0 right-0 z-20"
       >
-        <Link to={URLS.HOME} className="h4 font-dance">
-          {t('cafeName')}
-        </Link>
-        <div className="flex gap-4">
-          {routes.map((route) => (
-            <Link key={route.path} to={route.path}>
-              <h5>{route.title}</h5>
-            </Link>
-          ))}
-          <div className="cursor-pointer" onClick={showModal}>
-            <SettingsIcon
-              style={{ color: theme.colors.defaultInverse }}
-              className="fill-current "
-            />
+        <div
+          style={{
+            borderBottomColor: theme.colors.defaultInverse,
+          }}
+          className=" flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] "
+        >
+          <Link to={URLS.HOME} className="h4 font-dance">
+            {t('cafeName')}
+          </Link>
+          <div className="flex gap-4">
+            {routes.map((route) => (
+              <Link key={route.path} to={route.path}>
+                <h5>{route.title}</h5>
+              </Link>
+            ))}
+            <div className="cursor-pointer" onClick={showModal}>
+              <SettingsIcon
+                style={{ color: theme.colors.defaultInverse }}
+                className="fill-current "
+              />
+            </div>
           </div>
         </div>
       </div>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customModalStyles}
         ariaHideApp={false}
       >
-        <Settings />
+        <Settings closeModal={closeModal} />
       </Modal>
     </div>
   );

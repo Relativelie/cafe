@@ -12,7 +12,7 @@ export const PieChartTable = observer(() => {
 
   return (
     <table
-      style={{ borderColor: theme.colors.opacityDefault }}
+      style={{ borderColor: theme.colors.opacityDefaultInverse }}
       className="w-full table-auto border-spacing-1 text-left border border-separate border-1 rounded-lg"
     >
       <thead>
