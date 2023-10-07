@@ -11,13 +11,7 @@ module.exports = {
       backgroundImage: {
         'recipe-poster': "url('assets/webp/coooking-bg.webp')",
         'analyst-poster': "url('assets/webp/heather-barnes.webp')",
-      },
-      borderColor: {
-        error: '#ed5555',
-      },
-      textColor: {
-        error: '#ed5555',
-        gray: '#808080',
+        'sea-poster': "url('assets/webp/sea.webp')",
       },
       textShadow: {
         sm: '0 1px 2px #111111 var(--tw-shadow-color)',

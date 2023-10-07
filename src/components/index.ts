@@ -10,6 +10,7 @@ import AppFormInput from './FormInput';
 import AppButton, { ButtonSizeENUM } from './Button';
 import AppTextArea from './TextArea';
 import AppRadioButton from './RadioButton';
+import AppAnchorLink from './AnchorLink';
 
 export {
   AppInput,
@@ -25,4 +26,5 @@ export {
   AppButton,
   ButtonSizeENUM,
   AppRadioButton,
+  AppAnchorLink,
 };

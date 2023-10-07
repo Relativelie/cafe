@@ -2,11 +2,16 @@ import { AppRadioButton } from 'components';
 import { LocalesVariantsENUM } from 'i18n/models';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
+import { LocalStorageENUM, setToLS } from 'utils/storage';
 
 const LanguageSettings = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
-  const { i18n } = useTranslation();
+
+  const changeLanguage = (value: LocalesVariantsENUM): void => {
+    i18n.changeLanguage(value);
+    setToLS(LocalStorageENUM.Language, value);
+  };
 
   return (
     <div className="flex flex-col gap-2">
@@ -22,7 +27,7 @@ const LanguageSettings = () => {
             key={themeKey}
             label={t(`settings.${themeKey.toLowerCase()}`)}
             checked={i18n.language === value}
-            onChange={() => i18n.changeLanguage(value)}
+            onChange={() => changeLanguage(value)}
           />
         );
       })}

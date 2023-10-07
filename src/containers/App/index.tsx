@@ -6,6 +6,7 @@ import ScrollToTop from 'utils/useScrollToTop';
 import { ThemeProvider } from 'theme/themeProvider';
 import { I18nextProvider } from 'react-i18next';
 import i18n from 'i18n/i18n.config';
+import { InitFromLocalStorage } from './InitFromLocalStorage';
 
 export type SearchingData = {
   recipe: {
@@ -21,6 +22,7 @@ function App() {
       <ThemeProvider>
         <I18nextProvider i18n={i18n}>
           <ScrollToTop />
+          <InitFromLocalStorage />
           <ErrorBoundaries>
             <AppRoutes />
             <AppNotificationToaster />

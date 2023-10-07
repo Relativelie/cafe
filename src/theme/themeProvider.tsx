@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { Theme, ThemeContextType, ThemeVariantsENUM } from './models';
-import { setToLS } from 'utils/storage';
 import { lightTheme, darkTheme, barbieTheme, kenTheme } from './themes';
+import { LocalStorageENUM, setToLS } from 'utils/storage';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -28,22 +28,26 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(darkTheme);
   const [selectedThemeTitle, setSelectedThemeTitle] =
     useState<ThemeVariantsENUM>(ThemeVariantsENUM.Dark);
-
-  useEffect(() => {}, []);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
-    setToLS('theme', theme);
-    setDefaultStyles();
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+      return;
+    }
+
+    setToLS(LocalStorageENUM.Theme, selectedThemeTitle);
   }, [theme]);
 
   const toggleTheme = (themeVariant: ThemeVariantsENUM) => {
     setTheme(themes[themeVariant]);
     setSelectedThemeTitle(themeVariant);
+    setDefaultStyles(themes[themeVariant]);
   };
 
-  const setDefaultStyles = (): void => {
-    document.body.style.backgroundColor = theme.colors.default;
-    document.body.style.color = theme.colors.defaultInverse;
+  const setDefaultStyles = (newTheme: Theme): void => {
+    document.body.style.backgroundColor = newTheme.colors.default;
+    document.body.style.color = newTheme.colors.defaultInverse;
   };
 
   return (

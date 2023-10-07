@@ -51,5 +51,10 @@
     "calories": "Calories",
     "fattyAcids": "Fatty acids, total saturated",
     "totalLipid": "Total lipid (fat)"
+  },
+  "footer": {
+    "imageSource": "All images used from",
+    "unsplashLink": "https://unsplash.com/",
+    "pages": "My github and linkedin pages"
   }
 }
