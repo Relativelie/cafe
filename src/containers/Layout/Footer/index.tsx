@@ -1,16 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
 import { AppAnchorLink, ImageBlackout } from 'components';
-import Github from '../../../assets/png/github.png';
-import Linkedin from '../../../assets/png/linkedin.png';
-
-const links = {
-  linkedin: {
-    link: 'https://www.linkedin.com/in/gu-khabibullina/',
-    image: Linkedin,
-  },
-  github: { link: 'https://github.com/Relativelie', image: Github },
-};
+import { links } from './data';
+import { LinksENUM } from './data/models';
 
 export const Footer = () => {
   const { theme } = useTheme();
@@ -29,12 +21,12 @@ export const Footer = () => {
             <div className="flex justify-center gap-4">
               {Object.keys(links).map((item) => (
                 <AppAnchorLink
-                  key={links[item as keyof typeof links].link}
-                  link={links[item as keyof typeof links].link}
+                  key={links[item as unknown as LinksENUM].link}
+                  link={links[item as unknown as LinksENUM].link}
                   child={
                     <img
                       className="h-16 w-16 border-2 rounded-full filter grayscale hover:filter-none"
-                      src={links[item as keyof typeof links].image}
+                      src={links[item as unknown as LinksENUM].image}
                       alt={item}
                     />
                   }
