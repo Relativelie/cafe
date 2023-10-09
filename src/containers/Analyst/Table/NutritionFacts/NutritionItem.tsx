@@ -13,7 +13,6 @@ export const NutritionItem: React.FC<NutritionItemProps> = ({
         <p>{title}</p>
         <p>{value}</p>
       </div>
-
       <hr />
     </div>
   );

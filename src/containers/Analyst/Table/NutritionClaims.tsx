@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
 
 type NutritionClaimsProps = {
@@ -6,10 +7,12 @@ type NutritionClaimsProps = {
 
 export const NutritionClaims: React.FC<NutritionClaimsProps> = ({ labels }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <h2 className="font-semibold">Nutrition claims</h2>
+      <h2 className="font-semibold">{t('analyst.claims')}</h2>
+
       <div className="flex flex-wrap justify-center gap-3">
         {labels.map((label) => {
           return (

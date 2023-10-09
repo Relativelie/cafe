@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
-import { AppButton, ButtonSizeENUM, ImageBlackout } from 'components';
 import { useTranslation } from 'react-i18next';
+
+import { AppButton, ButtonSizeENUM, ImageBlackout } from 'components';
 import { useTheme } from 'theme/themeProvider';
 
 const AboutAnalyst: React.FC = () => {
@@ -17,15 +18,15 @@ const AboutAnalyst: React.FC = () => {
       <ImageBlackout />
       <div className="w-full flex flex-col items-center gap-5 z-10 text-white">
         <>
-          <h2 className="text-6xl font-cursive text-shadow-lg">
+          <h2 className="text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
             {t('analyst.quotes1')}
           </h2>
-          <h2 className="text-6xl font-cursive text-shadow-lg">
+          <h2 className="text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
             {t('analyst.quotes2')}
           </h2>
         </>
         <div className="w-2/3">
-          <h5 className="text-lg text-center font-semibold text-shadow-lg">
+          <h5 className="text-lg text-center font-semibold text-shadow-[0_4px_8px_#111111]">
             {t('analyst.description')}
           </h5>
         </div>

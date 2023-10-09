@@ -32,9 +32,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({
           }`}
         />
       </div>
-      <h3 className={clsx(!isSelected && 'opacity-40', 'text-shadow-lg')}>
-        {title}
-      </h3>
+      <h3 className={clsx(!isSelected && 'opacity-40')}>{title}</h3>
     </div>
   );
 };

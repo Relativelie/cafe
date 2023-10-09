@@ -1,5 +1,5 @@
-import { useTheme } from 'theme/themeProvider';
 import clsx from 'clsx';
+import { useTheme } from 'theme/themeProvider';
 import { ThemeVariantsENUM } from 'theme/models';
 
 type EventCardProps = {
@@ -41,7 +41,9 @@ const EventCard: React.FC<EventCardProps> = ({
               <h4 className="font-cursive">{date}</h4>
             </div>
 
-            <p className="h5 text-shadow-lg text-justify">{description}</p>
+            <p className="h5 text-shadow-[0_4px_8px_#111111] text-justify">
+              {description}
+            </p>
           </div>
         </div>
       </div>

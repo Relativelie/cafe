@@ -17,11 +17,6 @@ module.exports = {
         'about-poster-two': "url('assets/webp/about-us-2.webp')",
         'home-poster': "url('assets/png/home-bg.png')",
       },
-      textShadow: {
-        sm: '0 1px 2px #111111 var(--tw-shadow-color)',
-        DEFAULT: '0 2px 4px #111111 var(--tw-shadow-color)',
-        lg: '0 8px 16px #111111 var(--tw-shadow-color)',
-      },
     },
   },
   plugins: [

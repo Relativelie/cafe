@@ -2,7 +2,7 @@ import { Theme } from 'theme/models';
 
 const lightTheme: Theme = {
   colors: {
-    lightBrand: '#c97c68d4',
+    lightBrand: '#fd977dd4',
     darkBrand: '#83493b9a',
     success: '#25894f',
     danger: '#ed3c14',

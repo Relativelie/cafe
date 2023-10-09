@@ -29,14 +29,16 @@
     "label": "Recipes",
     "filters": {
       "diet": "Diet",
-      "cuisine": "Cuisine"
+      "cuisineType": "Cuisine"
     },
     "nutrition": "Nutrition",
     "dietType": "Diet Type",
     "backToList": "to recipe list",
     "ingredients_one": "{{count}} Ingredient",
     "ingredients_few": "{{count}} Ingredients",
-    "ingredients_other": "{{count}} Ingredients"
+    "ingredients_other": "{{count}} Ingredients",
+    "matches": "We couldn't find any matches",
+    "matchesDescription": "Double check your search for any typos or spelling errors - or try a different search term."
   },
   "analyst": {
     "label": "Ingredients analyst",
@@ -60,7 +62,8 @@
     "ingredientsNutrients": "Ingredients Nutrients",
     "calories": "Calories",
     "fattyAcids": "Fatty acids, total saturated",
-    "totalLipid": "Total lipid (fat)"
+    "totalLipid": "Total lipid (fat)",
+    "claims": "Nutrition claims"
   },
   "footer": {
     "imageSource": "All images used from",

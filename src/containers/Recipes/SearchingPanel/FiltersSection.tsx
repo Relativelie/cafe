@@ -1,7 +1,8 @@
 import { AppCheckbox } from 'components';
 import React from 'react';
-import { FilterBlock } from './models';
+import { FilterBlock } from './data/models';
 import { FilterType, FiltersENUM } from 'stores/recipes';
+import { useTranslation } from 'react-i18next';
 
 type FiltersSectionProps = {
   filterBlock: FilterBlock;
@@ -14,11 +15,12 @@ export const FiltersSection: React.FC<FiltersSectionProps> = ({
   filters,
   onChange,
 }) => {
-  const { block, label, availableValues } = filterBlock;
+  const { block, availableValues } = filterBlock;
+  const { t } = useTranslation();
 
   return (
     <React.Fragment key={`${block}-block`}>
-      <h4>{label}</h4>
+      <h4>{t(`recipes.filters.${block}`)}</h4>
       <div className="flex flex-col gap-2 md:gap-1">
         {availableValues.map((item) => {
           return (

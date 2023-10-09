@@ -8,6 +8,7 @@ import { useStore } from 'store';
 import { RecipeType } from 'stores/recipes';
 import { RecipeCard, AppToUpButton } from 'components';
 import URLS from 'constants/urls';
+import MatchesError from './MatchesError';
 
 const RecipesList: React.FC = observer(() => {
   const navigate = useNavigate();
@@ -51,13 +52,7 @@ const RecipesList: React.FC = observer(() => {
               );
             })
           ) : (
-            <div className="h-screen flex flex-col justify-center items-center">
-              <h3>We couldn't find any matches</h3>
-              <h3>
-                Double check your search for any typos or spelling errors - or
-                try a different search term.
-              </h3>
-            </div>
+            <MatchesError />
           )}
         </div>
       }

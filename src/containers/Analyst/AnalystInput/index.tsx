@@ -1,0 +1,30 @@
+import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useStore } from 'store';
+import { AppTextArea, AppButton, ButtonSizeENUM } from 'components';
+
+const AnalystInput = () => {
+  const { analystStore } = useStore();
+  const { getNutrition } = analystStore;
+
+  const textareaRef = useRef<any>();
+  const { t } = useTranslation();
+
+  const onClickAnalyze = async () => {
+    await getNutrition(textareaRef.current?.value.split(', '));
+  };
+
+  return (
+    <div className="h-96 w-full md:w-2/4">
+      <AppTextArea
+        textareaRef={textareaRef}
+        placeholder={`${t('analyst.write')} \n ${t('analyst.example')}`}
+      />
+      <AppButton size={ButtonSizeENUM.full} onClick={onClickAnalyze}>
+        {t('analyst.analyze')}
+      </AppButton>
+    </div>
+  );
+};
+
+export default AnalystInput;

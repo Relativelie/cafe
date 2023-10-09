@@ -1,6 +1,5 @@
 import { AppButton, ButtonSizeENUM } from 'components';
 import { useTranslation } from 'react-i18next';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useTheme } from 'theme/themeProvider';
 
 const Header = () => {
@@ -12,11 +11,13 @@ const Header = () => {
       <div className="flex flex-col items-center">
         <h2
           style={{ color: theme.colors.lightBrand }}
-          className="font-cursive text-shadow-lg"
+          className="font-cursive text-shadow-[0_4px_8px_#111111]"
         >
           {t('home.welcome')}
         </h2>
-        <h1 className="text-shadow-lg">{t('cafeName')}</h1>
+        <h1 className="text-white text-shadow-[0_4px_8px_#111111]">
+          {t('cafeName')}
+        </h1>
       </div>
 
       <h5>{t('home.workingSince')}</h5>

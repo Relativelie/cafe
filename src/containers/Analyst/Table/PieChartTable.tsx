@@ -17,7 +17,7 @@ export const PieChartTable = observer(() => {
     >
       <thead>
         <tr>
-          <th> {t('analyst.ingredient')}</th>
+          <th>{t('analyst.ingredient')}</th>
           <th>{t('analyst.fat')}</th>
           <th>{t('analyst.protein')}</th>
           <th>{t('analyst.carbs')}</th>

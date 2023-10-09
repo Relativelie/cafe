@@ -6,17 +6,11 @@ import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import SearchIcon from 'assets/icons/SearchIcon';
-import { FilterBlock } from './models';
-import { CuisineEnum, DietEnum, FiltersENUM } from 'stores/recipes';
-import { AppButton, AppCheckbox, AppInput, ButtonSizeENUM } from 'components';
+import { FiltersENUM } from 'stores/recipes';
+import { AppButton, AppInput, ButtonSizeENUM } from 'components';
 import { useTheme } from 'theme/themeProvider';
 import { FiltersSection } from './FiltersSection';
-
-const toArrayFilters = (
-  enumVal: typeof DietEnum | typeof CuisineEnum,
-): Array<string> => {
-  return Object.values(enumVal).map((val) => val);
-};
+import { filterBlocks } from './data';
 
 type SearchingPanelProps = {
   isMobileView?: boolean;
@@ -30,19 +24,6 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
     const { onChangeFilter } = recipeStore;
     const { t } = useTranslation();
     const { theme } = useTheme();
-
-    const filterBlocks = [
-      new FilterBlock(
-        t('recipes.filters.diet'),
-        FiltersENUM.Diet,
-        toArrayFilters(DietEnum),
-      ),
-      new FilterBlock(
-        t('recipes.filters.cuisine'),
-        FiltersENUM.CuisineType,
-        toArrayFilters(CuisineEnum),
-      ),
-    ];
 
     const blockStyles = {
       borderColor: theme.colors.opacityDefaultInverse,
@@ -66,11 +47,14 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
             leftIcon={<SearchIcon fill={theme.colors.defaultInverse} />}
             className={clsx(!isMobileView && 'mt-4')}
           />
+
           <div className="flex flex-col gap-4">
             {filterBlocks.map((filter) => {
               return (
                 <FiltersSection
-                  key={`${filter.block}-${filter.label}`}
+                  key={`${filter.block}-${t(
+                    `recipes.filters.${filter.block}`,
+                  )}`}
                   filterBlock={filter}
                   filters={filters}
                   onChange={onChangeFilter}
@@ -78,6 +62,7 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
               );
             })}
           </div>
+
           {isMobileView && (
             <AppButton size={ButtonSizeENUM.full} onClick={closeModal}>
               {t('common.close')}
