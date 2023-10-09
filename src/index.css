@@ -34,3 +34,12 @@
     @apply text-sm font-oxygen;
   }
 }
+.showEvents {
+  top: 0;
+  opacity: 1;
+}
+
+.hideEvents {
+  top: 200px;
+  opacity: 0;
+}

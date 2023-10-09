@@ -11,6 +11,7 @@ import AppButton, { ButtonSizeENUM } from './Button';
 import AppTextArea from './TextArea';
 import AppRadioButton from './RadioButton';
 import AppAnchorLink from './AnchorLink';
+import ImageBlackout from './ImageBlackout';
 
 export {
   AppInput,
@@ -27,4 +28,5 @@ export {
   ButtonSizeENUM,
   AppRadioButton,
   AppAnchorLink,
+  ImageBlackout,
 };

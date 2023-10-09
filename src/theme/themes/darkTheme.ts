@@ -2,14 +2,14 @@ import { Theme } from '../models';
 
 const darkTheme: Theme = {
   colors: {
-    lightBrand: '#24ff21',
+    lightBrand: 'rgb(207, 141, 79)',
     darkBrand: '#0f172ab5',
     danger: '#ed3c14',
     success: '#16a34a',
     default: '#18181b',
     opacityDefault: '#18181bcb',
     defaultInverse: '#f0f7feff',
-    opacityDefaultInverse: '#f1f5f9ff',
+    opacityDefaultInverse: '#f1f5f981',
   },
   hoverBgColors: {
     darkBrand: 'hover:bg-[#0f172ab5]',
@@ -19,10 +19,10 @@ const darkTheme: Theme = {
     success: 'hover:border-[#16a34a]',
   },
   accentColors: {
-    brand: 'accent-[#24ff21]',
+    brand: 'accent-[rgb(207, 141, 79)]',
   },
   focusColors: {
-    brand: 'focus:border-[#24ff21]',
+    brand: 'focus:border-[rgb(207, 141, 79)]',
   },
   outlineFocusColor: {
     brand: 'focus:outline-[#ecfccb]',

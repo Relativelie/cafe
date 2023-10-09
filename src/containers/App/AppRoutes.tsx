@@ -6,11 +6,13 @@ import Layout from 'containers/Layout';
 import Recipes from 'containers/Recipes';
 import RecipesList from 'containers/Recipes/RecipesList';
 import Recipe from 'containers/Recipes/Recipe';
+import Home from 'containers/Home';
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path={URLS.HOME} element={<Layout />}>
+        <Route path={URLS.HOME} element={<Home />} />
         <Route path={URLS.RECIPES.BASE} element={<Recipes />}>
           <Route path={URLS.RECIPES.SEARCH} element={<RecipesList />} />
           <Route path={URLS.RECIPES.RECIPE} element={<Recipe />} />

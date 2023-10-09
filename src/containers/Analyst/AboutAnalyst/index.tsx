@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { AppButton, ButtonSizeENUM } from 'components';
+import { AppButton, ButtonSizeENUM, ImageBlackout } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
 
@@ -14,13 +14,13 @@ const AboutAnalyst: React.FC = () => {
         'relative flex p-5 bg-analyst-poster bg-cover bg-center shadow-lg',
       )}
     >
-      <div className="bg-black absolute inset-0 opacity-60"></div>
-      <div className="flex flex-col items-center gap-5 z-10 text-white">
+      <ImageBlackout />
+      <div className="w-full flex flex-col items-center gap-5 z-10 text-white">
         <>
-          <h2 className="text-6xl font-dance text-shadow-lg">
+          <h2 className="text-6xl font-cursive text-shadow-lg">
             {t('analyst.quotes1')}
           </h2>
-          <h2 className="text-6xl font-dance text-shadow-lg">
+          <h2 className="text-6xl font-cursive text-shadow-lg">
             {t('analyst.quotes2')}
           </h2>
         </>
