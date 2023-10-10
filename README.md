@@ -17,12 +17,23 @@ Make informed dietary choices.
 Your culinary journey begins here.
 Explore app content.
 
+
 ## Another features
 * Multi-Language Support: Smooth switching between languages.
 * Themes: Choose from different themes to personalize the app's appearance.
 
 ## Short video review
 * Language and theme switching
+https://github.com/Relativelie/cafe/assets/59819426/349f7bd4-e450-4750-a3e0-a3e261d95465
+
+* Recipes page
+https://github.com/Relativelie/cafe/assets/59819426/ec63a23b-fb39-49bc-8bcf-162aa3ca8c4d
+
+* Analyst page
+https://github.com/Relativelie/cafe/assets/59819426/9d4ba8f4-f89d-4238-bece-97b46ab98e05
+
+* Home page
+https://github.com/Relativelie/cafe/assets/59819426/6ef43fe9-9787-4291-b9f2-febf16814e13
 
 
 ## Getting Started
