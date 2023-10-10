@@ -40,13 +40,13 @@ export const AnalystStore = types
       return Ingredient.create({
         label: data.food,
         measure: `${data.quantity} ${data.measure}`,
-        enercKcal: data.nutrients['ENERC_KCAL'].quantity,
-        fat: data.nutrients['FAT'].quantity,
-        protein: data.nutrients['PROCNT'].quantity,
-        carbs: data.nutrients['CHOCDF'].quantity,
-        mg: data.nutrients['MG'].quantity,
-        ca: data.nutrients['CA'].quantity,
-        vitaRae: data.nutrients['VITA_RAE'].quantity,
+        enercKcal: assertForUndefined(data.nutrients['ENERC_KCAL']?.quantity),
+        fat: assertForUndefined(data.nutrients['FAT']?.quantity),
+        protein: assertForUndefined(data.nutrients['PROCNT']?.quantity),
+        carbs: assertForUndefined(data.nutrients['CHOCDF']?.quantity),
+        mg: assertForUndefined(data.nutrients['MG']?.quantity),
+        ca: assertForUndefined(data.nutrients['CA']?.quantity),
+        vitaRae: assertForUndefined(data.nutrients['VITA_RAE']?.quantity),
       });
     };
 
@@ -63,6 +63,10 @@ export const AnalystStore = types
         mg: `${data['MG'].quantity.toFixed(1)}mg`,
         ca: `${data['CA'].quantity.toFixed(1)}mg`,
       });
+    };
+
+    const assertForUndefined = (value: number | undefined): number => {
+      return value ?? 0;
     };
 
     return {

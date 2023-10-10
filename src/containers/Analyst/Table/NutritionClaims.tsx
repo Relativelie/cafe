@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
 
 type NutritionClaimsProps = {
-  labels: Array<String>;
+  labels: Array<string>;
 };
 
 export const NutritionClaims: React.FC<NutritionClaimsProps> = ({ labels }) => {
@@ -16,7 +16,7 @@ export const NutritionClaims: React.FC<NutritionClaimsProps> = ({ labels }) => {
       <div className="flex flex-wrap justify-center gap-3">
         {labels.map((label) => {
           return (
-            <div className="flex items-center gap-3">
+            <div key={label} className="flex items-center gap-3">
               <h5>{label}</h5>
               <div
                 style={{ backgroundColor: theme.colors.opacityDefault }}

@@ -63,15 +63,15 @@ export const RecipeStore = types
     const loadNextRecipesList = flow(function* () {
       try {
         self.isLoading = true;
-        if (self.nextPage) {
-          const res = yield getNextRecipes(self.nextPage);
-          if (res.hits.length) {
-            self.recipesData?.push(
-              ...res.hits.map(({ recipe }: any) => convertToRecipe(recipe)),
-            );
-          }
-          self.nextPage = res['_links'].next?.href ?? null;
+        if (!self.nextPage) return;
+
+        const res = yield getNextRecipes(self.nextPage);
+        if (res.hits.length) {
+          self.recipesData?.push(
+            ...res.hits.map(({ recipe }: any) => convertToRecipe(recipe)),
+          );
         }
+        self.nextPage = res['_links'].next?.href ?? null;
       } catch (e) {
         if (e instanceof HttpResponseError) {
           toast.error(e.message);

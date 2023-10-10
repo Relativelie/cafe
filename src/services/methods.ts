@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { toast } from 'react-hot-toast';
 
 export const getRequest = async (

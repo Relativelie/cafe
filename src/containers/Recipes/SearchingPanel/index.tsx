@@ -29,23 +29,32 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
       borderColor: theme.colors.opacityDefaultInverse,
     };
 
+    const onScrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    };
+
     return (
       <div className={clsx(!isMobileView && 'relative')}>
         <div
           style={blockStyles}
           className={clsx(
             !isMobileView &&
-              'fixed w-[25em] px-2 pt-2 h-screen border-r-[0.5px]',
+              'fixed w-[25em] px-2 overflow-y-auto pt-2 h-[80%] border-r-[0.5px]',
             'flex flex-col gap-6 ',
           )}
         >
           <AppInput
             curVal={filters.q}
-            handleInputChange={(value) =>
-              onChangeFilter(FiltersENUM.Search, value)
-            }
+            handleInputChange={(value) => {
+              onScrollToTop();
+              onChangeFilter(FiltersENUM.Search, value);
+            }}
             leftIcon={<SearchIcon fill={theme.colors.defaultInverse} />}
-            className={clsx(!isMobileView && 'mt-4')}
+            className={clsx(!isMobileView && 'mt-4 mr-4')}
           />
 
           <div className="flex flex-col gap-4">
@@ -57,7 +66,14 @@ const SearchingPanel: React.FC<SearchingPanelProps> = observer(
                   )}`}
                   filterBlock={filter}
                   filters={filters}
-                  onChange={onChangeFilter}
+                  onChange={(
+                    block: FiltersENUM,
+                    value: boolean,
+                    blockItemKey: string,
+                  ) => {
+                    onScrollToTop();
+                    onChangeFilter(block, value, blockItemKey);
+                  }}
                 />
               );
             })}

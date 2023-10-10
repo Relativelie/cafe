@@ -27,7 +27,10 @@ export const NutritionFacts = observer(() => {
 
         <h3>{t('analyst.ingredientsNutrients')}</h3>
         {ingredients?.map((ingredient) => (
-          <IngredientItem ingredient={ingredient} />
+          <IngredientItem
+            key={`${ingredient.label}-ingredient`}
+            ingredient={ingredient}
+          />
         ))}
       </div>
     </div>

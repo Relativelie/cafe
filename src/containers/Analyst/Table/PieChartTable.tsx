@@ -25,13 +25,13 @@ export const PieChartTable = observer(() => {
       </thead>
       <tbody>
         {ingredients?.map((ingredient) => (
-          <tr>
+          <tr key={`${ingredient.label}-pieChartTable`}>
             <td>
               {ingredient.label}, {ingredient.measure}
             </td>
-            <td>{ingredient.fat}</td>
-            <td>{ingredient.protein}</td>
-            <td>{ingredient.carbs}</td>
+            <td>{ingredient.fat.toFixed(1)}</td>
+            <td>{ingredient.protein.toFixed(1)}</td>
+            <td>{ingredient.carbs.toFixed(1)}</td>
           </tr>
         ))}
       </tbody>

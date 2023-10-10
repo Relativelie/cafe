@@ -47,7 +47,7 @@ const getRecipes = async (filters: FilterType) => {
 };
 
 const getNextRecipes = async (url: string) => {
-  const res = await getRequest(axiosRequest, undefined);
+  const res = await getRequest(axiosRequest, undefined, url);
   return res.data;
 };
 

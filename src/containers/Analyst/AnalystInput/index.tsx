@@ -11,14 +11,25 @@ const AnalystInput = () => {
   const { t } = useTranslation();
 
   const onClickAnalyze = async () => {
-    await getNutrition(textareaRef.current?.value.split(', '));
+    let searchingValue = getAnalyzedArray();
+
+    await getNutrition(searchingValue);
+  };
+
+  const getAnalyzedArray = (): Array<string> => {
+    if (textareaRef.current?.value.includes(',')) {
+      return textareaRef.current?.value.replace(/\n/g, ' ').split(', ');
+    }
+    return textareaRef.current?.value
+      .split(/\n/g)
+      .filter((item: string) => item !== '');
   };
 
   return (
     <div className="h-96 w-full md:w-2/4">
       <AppTextArea
         textareaRef={textareaRef}
-        placeholder={`${t('analyst.write')} \n ${t('analyst.example')}`}
+        placeholder={`${t('analyst.write')} \n${t('analyst.example')}`}
       />
       <AppButton size={ButtonSizeENUM.full} onClick={onClickAnalyze}>
         {t('analyst.analyze')}

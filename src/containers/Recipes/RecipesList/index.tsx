@@ -34,7 +34,7 @@ const RecipesList: React.FC = observer(() => {
 
   return (
     <div className="relative mt-8 p-4">
-      <div className="fixed bottom-10 z-10">
+      <div className="fixed bottom-[15vh] z-10">
         <AppToUpButton />
       </div>
 

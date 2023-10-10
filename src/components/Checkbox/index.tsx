@@ -23,7 +23,11 @@ const AppCheckbox: React.FC<AppCheckboxProps> = ({
         checked={checked}
         onChange={() => onChange(!checked)}
       />
-      {label && <label className="h5">{label}</label>}
+      {label && (
+        <label onClick={() => onChange(!checked)} className="h5">
+          {label}
+        </label>
+      )}
     </div>
   );
 };
