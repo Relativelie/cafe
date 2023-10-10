@@ -21,6 +21,7 @@ Explore app content.
 ## Another features
 * Multi-Language Support: Smooth switching between languages.
 * Themes: Choose from different themes to personalize the app's appearance.
+* Theme and languge are stored in localStorage
 
 ## Short video review
 * Language and theme switching
