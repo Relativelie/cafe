@@ -1,6 +1,7 @@
 import { toJS } from 'mobx';
 import { useStore } from 'store';
 import { observer } from 'mobx-react-lite';
+import { useRef } from 'react';
 
 import AboutAnalyst from './AboutAnalyst';
 import { PieChartGraph } from './PieChartGraph';
@@ -11,10 +12,17 @@ import Table from './Table';
 export const Analyst = observer(() => {
   const { analystStore } = useStore();
   const { isLoading, totalNutrient } = toJS(analystStore);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const onClickReadyBtn = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   return (
     <div className="flex flex-col gap-8 pb-12">
-      <AboutAnalyst />
+      <AboutAnalyst onClick={onClickReadyBtn} />
 
       {isLoading && (
         <div className="fixed h-full w-full z-10">
@@ -28,7 +36,7 @@ export const Analyst = observer(() => {
             <PieChartGraph totalNutrient={totalNutrient} />
           )}
         </div>
-        <AnalystInput />
+        <AnalystInput ref={inputRef} />
       </div>
 
       <Table />

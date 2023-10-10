@@ -4,7 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { AppButton, ButtonSizeENUM, ImageBlackout } from 'components';
 import { useTheme } from 'theme/themeProvider';
 
-const AboutAnalyst: React.FC = () => {
+type AboutAnalystProps = {
+  onClick: () => void;
+};
+
+const AboutAnalyst: React.FC<AboutAnalystProps> = ({ onClick }) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
@@ -31,7 +35,9 @@ const AboutAnalyst: React.FC = () => {
           </h5>
         </div>
 
-        <AppButton size={ButtonSizeENUM.sm}>{t('analyst.ready')}</AppButton>
+        <AppButton size={ButtonSizeENUM.sm} onClick={onClick}>
+          {t('analyst.ready')}
+        </AppButton>
       </div>
     </div>
   );

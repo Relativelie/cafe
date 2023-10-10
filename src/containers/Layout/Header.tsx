@@ -58,7 +58,7 @@ const Header = () => {
           }}
           className=" flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] "
         >
-          <Link to={URLS.HOME} className="p md:h4 font-cursive">
+          <Link to={URLS.HOME} className="font-cursive">
             {t('cafeName')}
           </Link>
           <div className="flex gap-4">

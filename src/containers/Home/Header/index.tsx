@@ -11,7 +11,7 @@ const Header = () => {
       <div className="flex flex-col items-center">
         <h2
           style={{ color: theme.colors.lightBrand }}
-          className="h5 md:h2 font-cursive text-shadow-[0_4px_8px_#111111]"
+          className="font-cursive text-shadow-[0_4px_8px_#111111]"
         >
           {t('home.welcome')}
         </h2>

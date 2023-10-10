@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from 'store';
 import { AppTextArea, AppButton, ButtonSizeENUM } from 'components';
 
-const AnalystInput = () => {
+type AnalystInputProps = {
+  ref: React.RefObject<HTMLInputElement | null>;
+};
+
+const AnalystInput: React.FC<AnalystInputProps> = ({ ref }) => {
   const { analystStore } = useStore();
   const { getNutrition } = analystStore;
 
-  const textareaRef = useRef<any>();
   const { t } = useTranslation();
 
   const onClickAnalyze = async () => {
@@ -17,10 +20,12 @@ const AnalystInput = () => {
   };
 
   const getAnalyzedArray = (): Array<string> => {
-    if (textareaRef.current?.value.includes(',')) {
-      return textareaRef.current?.value.replace(/\n/g, ' ').split(', ');
+    if (!ref.current?.value) return [];
+
+    if (ref.current?.value.includes(',')) {
+      return ref.current?.value.replace(/\n/g, ' ').split(', ');
     }
-    return textareaRef.current?.value
+    return ref.current?.value
       .split(/\n/g)
       .filter((item: string) => item !== '');
   };
@@ -28,7 +33,7 @@ const AnalystInput = () => {
   return (
     <div className="h-96 w-full md:w-2/4">
       <AppTextArea
-        textareaRef={textareaRef}
+        textareaRef={ref}
         placeholder={`${t('analyst.write')} \n${t('analyst.example')}`}
       />
       <AppButton size={ButtonSizeENUM.full} onClick={onClickAnalyze}>
