@@ -22,6 +22,7 @@ Explore app content.
 * Multi-Language Support: Smooth switching between languages.
 * Themes: Choose from different themes to personalize the app's appearance.
 * Theme and languge are stored in localStorage
+* Infinite pagination in recipe page
 
 ## Short video review
 * Language and theme switching
