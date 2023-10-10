@@ -29,14 +29,13 @@ https://github.com/Relativelie/cafe/assets/59819426/82cd2efd-dce0-45e6-b1aa-76a3
 
 * Recipes page
 
-https://github.com/Relativelie/cafe/assets/59819426/ec63a23b-fb39-49bc-8bcf-162aa3ca8c4d.mp4
+https://github.com/Relativelie/cafe/assets/59819426/1292b437-69ef-4560-a04e-fd1228dea4f0
 
 * Analyst page
 
 https://github.com/Relativelie/cafe/assets/59819426/9e5803a6-4493-4480-8a3f-4fd99a1d33de
 
 * Home page
-
 
 https://github.com/Relativelie/cafe/assets/59819426/dee68a58-7efd-4de7-97b1-730bbca52823
 
