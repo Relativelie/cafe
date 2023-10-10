@@ -24,16 +24,21 @@ Explore app content.
 
 ## Short video review
 * Language and theme switching
-https://github.com/Relativelie/cafe/assets/59819426/349f7bd4-e450-4750-a3e0-a3e261d95465
+
+https://github.com/Relativelie/cafe/assets/59819426/82cd2efd-dce0-45e6-b1aa-76a357c3abb3
 
 * Recipes page
-https://github.com/Relativelie/cafe/assets/59819426/ec63a23b-fb39-49bc-8bcf-162aa3ca8c4d
+
+https://github.com/Relativelie/cafe/assets/59819426/ec63a23b-fb39-49bc-8bcf-162aa3ca8c4d.mp4
 
 * Analyst page
-https://github.com/Relativelie/cafe/assets/59819426/9d4ba8f4-f89d-4238-bece-97b46ab98e05
+
+https://github.com/Relativelie/cafe/assets/59819426/9e5803a6-4493-4480-8a3f-4fd99a1d33de
 
 * Home page
-https://github.com/Relativelie/cafe/assets/59819426/6ef43fe9-9787-4291-b9f2-febf16814e13
+
+
+https://github.com/Relativelie/cafe/assets/59819426/dee68a58-7efd-4de7-97b1-730bbca52823
 
 
 ## Getting Started
