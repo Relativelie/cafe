@@ -2,27 +2,28 @@
 
 **Online demo**: https://relativelie.github.io/cafe/
 
-This project offers a delightful user experience and is divided into three main components:
+This project consist of three main components:
 
-* Recipe Searcher 🍳
+1. **Recipe Searcher** 🍳
 Discover a world of culinary delights with our Recipe Searcher.
 Find recipes by name, diet or cuisine.
 
-* Nutrient Analyst 📊
+2. **Nutrient Analyst** 📊
 Analyze the nutritional content of your favorite recipes.
 Get detailed insights into calories, macronutrients, and more.
 Make informed dietary choices.
 
-* Home Page 🏠
+3. **Home Page** 🏠
 Your culinary journey begins here.
 Explore app content.
 
 ## Another features
-* Multi-Language Support: Seamlessly switch between languages.
+* Multi-Language Support: Smooth switching between languages.
 * Themes: Choose from different themes to personalize the app's appearance.
 
 ## Short video review
-* 
+* Language and theme switching
+
 
 ## Getting Started
 
