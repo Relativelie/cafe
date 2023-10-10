@@ -18,10 +18,10 @@ const AboutAnalyst: React.FC = () => {
       <ImageBlackout />
       <div className="w-full flex flex-col items-center gap-5 z-10 text-white">
         <>
-          <h2 className="text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
+          <h2 className="text-center text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
             {t('analyst.quotes1')}
           </h2>
-          <h2 className="text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
+          <h2 className="text-center text-6xl font-cursive text-shadow-[0_4px_8px_#111111]">
             {t('analyst.quotes2')}
           </h2>
         </>

@@ -23,7 +23,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({
         className={clsx(
           isSelected && 'shadow-2xl',
           poster,
-          'relative bg-center bg-cover h-32 w-32 rounded-full',
+          'relative bg-center bg-cover h-16 w-16 md:h-32 md:w-32 rounded-full',
         )}
       >
         <ImageBlackout
@@ -32,7 +32,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({
           }`}
         />
       </div>
-      <h3 className={clsx(!isSelected && 'opacity-40')}>{title}</h3>
+      <h3 className={clsx(!isSelected && 'opacity-40', 'p md:h3')}>{title}</h3>
     </div>
   );
 };

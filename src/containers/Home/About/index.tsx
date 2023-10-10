@@ -8,7 +8,12 @@ const About = () => {
 
   const image = (bgImage: string) => {
     return (
-      <div className={clsx(bgImage, 'bg-cover bg-center h-96 w-64')}></div>
+      <div
+        className={clsx(
+          bgImage,
+          'hidden md:block bg-cover bg-center h-96 w-64',
+        )}
+      ></div>
     );
   };
 
@@ -20,7 +25,7 @@ const About = () => {
           backgroundColor: theme.colors.darkBrand,
           color: theme.colors.defaultInverse,
         }}
-        className="h-80 w-72 flex flex-col items-center justify-around text-center p-2"
+        className="h-80 md:w-72 flex flex-col items-center justify-around text-center p-2"
       >
         <div>
           <h2

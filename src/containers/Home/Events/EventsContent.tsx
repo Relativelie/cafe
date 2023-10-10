@@ -7,7 +7,7 @@ const EventsContent = () => {
 
   useEffect(() => {
     const options = {
-      threshold: 0.6,
+      threshold: 0.3,
     };
     const observer = new IntersectionObserver(handleIntersection, options);
 
@@ -39,7 +39,10 @@ const EventsContent = () => {
   };
 
   return (
-    <div className="w-full flex justify-around" ref={newsItemRef}>
+    <div
+      className="w-full flex flex-col lg:flex-row gap-4 lg:justify-around"
+      ref={newsItemRef}
+    >
       {eventsData.map(({ id, title, date, description, image }) => (
         <EventCard
           key={`${id}-event`}

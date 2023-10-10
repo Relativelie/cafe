@@ -33,9 +33,9 @@ const Content = () => {
           />
         ))}
       </div>
-      <div className=" bg-no-repeat bg-home-poster bg-contain bg-center">
+      <div className="bg-no-repeat bg-home-poster bg-contain bg-center">
         <div style={{ backgroundColor: theme.colors.opacityDefault }}>
-          <div className="flex flex-col h-[32vh] items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
             {selectedOffer.description.map(({ title, content }) => (
               <Description key={title} title={title} content={content} />
             ))}

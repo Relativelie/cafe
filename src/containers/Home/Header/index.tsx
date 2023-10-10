@@ -7,20 +7,20 @@ const Header = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="absolute top-28 w-full flex flex-col justify-center items-center gap-4">
+    <div className="absolute top-8 md:top-28 w-full flex flex-col justify-center items-center gap-1 md:gap-4">
       <div className="flex flex-col items-center">
         <h2
           style={{ color: theme.colors.lightBrand }}
-          className="font-cursive text-shadow-[0_4px_8px_#111111]"
+          className="h5 md:h2 font-cursive text-shadow-[0_4px_8px_#111111]"
         >
           {t('home.welcome')}
         </h2>
-        <h1 className="text-white text-shadow-[0_4px_8px_#111111]">
+        <h1 className="h4 md:h1 text-white text-shadow-[0_4px_8px_#111111]">
           {t('cafeName')}
         </h1>
       </div>
 
-      <h5>{t('home.workingSince')}</h5>
+      <h5 className="text-center">{t('home.workingSince')}</h5>
       <a href="#offers">
         <AppButton size={ButtonSizeENUM.sm}>
           {t('home.our')} {t('home.offers')}

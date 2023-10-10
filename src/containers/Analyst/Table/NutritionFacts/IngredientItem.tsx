@@ -15,11 +15,11 @@ export const IngredientItem: React.FC<IngredientItemProps> = ({
 
   return (
     <div>
-      <div className="flex justify-between px-4">
+      <div className="flex justify-between md:px-4">
         <h4>{label}</h4>
         <p>{measure}</p>
       </div>
-      <div className="px-12">
+      <div className="md:px-12">
         <NutritionItem title={t('analyst.calories')} value={enercKcal} />
         <NutritionItem title={t('analyst.fat')} value={fat} />
         <NutritionItem title={t('analyst.vitA')} value={vitaRae} />

@@ -5,7 +5,7 @@ import EventsContent from './EventsContent';
 const Events = () => {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-col justify-between h-[50vh] overflow-hidden">
+    <div className="flex flex-col justify-between overflow-hidden">
       <ContentTitle title={t('home.events').toUpperCase()} />
       <EventsContent />
     </div>

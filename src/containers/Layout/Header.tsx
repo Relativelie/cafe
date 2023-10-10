@@ -35,8 +35,8 @@ const Header = () => {
     content: {
       background: theme.colors.default,
       overflow: 'scroll',
-      height: '50%',
-      width: '50%',
+      height: '60%',
+      width: '60%',
       top: '25%',
       left: '25%',
     },
@@ -58,13 +58,13 @@ const Header = () => {
           }}
           className=" flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] "
         >
-          <Link to={URLS.HOME} className="h4 font-cursive">
+          <Link to={URLS.HOME} className="p md:h4 font-cursive">
             {t('cafeName')}
           </Link>
           <div className="flex gap-4">
             {routes.map((route) => (
               <Link key={route.path} to={route.path}>
-                <h5>{route.title}</h5>
+                <h5 className="p md:h5">{route.title}</h5>
               </Link>
             ))}
             <div className="cursor-pointer" onClick={showModal}>

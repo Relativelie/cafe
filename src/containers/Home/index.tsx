@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="relative">
+      <div className="relative h-[20vh] md:h-full">
         <div className="top-0 bg-food-poster bg-[right_bottom_37%] bg-cover">
           <WaveIcon fill={theme.colors.default} />
         </div>
