@@ -36,7 +36,7 @@ export const Analyst = observer(() => {
             <PieChartGraph totalNutrient={totalNutrient} />
           )}
         </div>
-        <AnalystInput ref={inputRef} />
+        <AnalystInput inputRef={inputRef} />
       </div>
 
       <Table />
