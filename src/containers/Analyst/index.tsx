@@ -1,45 +1,43 @@
-import { toJS } from 'mobx';
-import { useStore } from 'store';
-import { observer } from 'mobx-react-lite';
-import { useRef } from 'react';
+import { toJS } from 'mobx'
+import { useStore } from 'store'
+import { observer } from 'mobx-react-lite'
+import { useRef } from 'react'
 
-import AboutAnalyst from './AboutAnalyst';
-import { PieChartGraph } from './PieChartGraph';
-import { AppSpinner } from 'components';
-import AnalystInput from './AnalystInput';
-import Table from './Table';
+import AboutAnalyst from './AboutAnalyst'
+import { PieChartGraph } from './PieChartGraph'
+import { AppSpinner } from 'components'
+import AnalystInput from './AnalystInput'
+import Table from './Table'
 
 export const Analyst = observer(() => {
-  const { analystStore } = useStore();
-  const { isLoading, totalNutrient } = toJS(analystStore);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { analystStore } = useStore()
+  const { isLoading, totalNutrient } = toJS(analystStore)
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
   const onClickReadyBtn = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (textAreaRef.current) {
+      textAreaRef.current.focus()
     }
-  };
+  }
 
   return (
-    <div className="flex flex-col gap-8 pb-12">
+    <div className='flex flex-col gap-8 pb-12'>
       <AboutAnalyst onClick={onClickReadyBtn} />
 
       {isLoading && (
-        <div className="fixed h-full w-full z-10">
+        <div className='fixed h-full w-full z-10'>
           <AppSpinner />
         </div>
       )}
 
-      <div className="flex flex-col items-center md:flex-row gap-4 pt-8 px-8">
-        <div className="w-3/4">
-          {totalNutrient && !isLoading && (
-            <PieChartGraph totalNutrient={totalNutrient} />
-          )}
+      <div className='flex flex-col items-center md:flex-row gap-4 pt-8 px-8'>
+        <div className='w-3/4'>
+          {totalNutrient && !isLoading && <PieChartGraph totalNutrient={totalNutrient} />}
         </div>
-        <AnalystInput inputRef={inputRef} />
+        <AnalystInput textAreaRef={textAreaRef} />
       </div>
 
       <Table />
     </div>
-  );
-});
+  )
+})
