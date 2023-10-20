@@ -6,7 +6,7 @@ import AppRoutes from './AppRoutes';
 import ScrollToTop from 'utils/useScrollToTop';
 import { ThemeProvider } from 'theme/themeProvider';
 import i18n from 'i18n/i18n.config';
-import { InitFromLocalStorage } from './InitFromLocalStorage';
+import { InitFromLocalStorage } from '../InitFromLocalStorage';
 
 export type SearchingData = {
   recipe: {
