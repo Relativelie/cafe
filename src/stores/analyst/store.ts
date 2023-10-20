@@ -1,8 +1,8 @@
-import { SnapshotIn, flow, types } from 'mobx-state-tree';
-import { Ingredient, TotalNutrients } from '.';
-import { postAnalyst } from 'services/analyst';
-import { HttpResponseError } from 'errors/errors';
-import toast from 'react-hot-toast';
+import { SnapshotIn, flow, types } from 'mobx-state-tree'
+import { Ingredient, TotalNutrients } from '.'
+import { postAnalyst } from 'services/analyst'
+import { HttpResponseError } from 'errors/errors'
+import toast from 'react-hot-toast'
 
 export const AnalystStore = types
   .model('AnalystStore', {
@@ -14,27 +14,25 @@ export const AnalystStore = types
   .actions((self) => {
     const getNutrition = flow(function* (ingredients: Array<string>) {
       try {
-        self.isLoading = true;
-        const res = yield postAnalyst(ingredients);
+        self.isLoading = true
+        const res = yield postAnalyst(ingredients)
 
         self.ingredients = res.ingredients.length
-          ? res.ingredients.map(({ parsed }: any) =>
-              convertToIngredient(parsed[0]),
-            )
-          : null;
+          ? res.ingredients.map(({ parsed }: any) => convertToIngredient(parsed[0]))
+          : null
 
-        self.totalNutrient = convertToTotalNutrients(res['totalNutrients']);
-        self.healthLabels = res['healthLabels'];
+        self.totalNutrient = convertToTotalNutrients(res['totalNutrients'])
+        self.healthLabels = res['healthLabels']
       } catch (e) {
         if (e instanceof HttpResponseError) {
-          toast.error(e.message);
+          toast.error(e.message)
         } else {
-          console.info(e);
+          console.info(e)
         }
       } finally {
-        self.isLoading = false;
+        self.isLoading = false
       }
-    });
+    })
 
     const convertToIngredient = (data: any) => {
       return Ingredient.create({
@@ -47,8 +45,8 @@ export const AnalystStore = types
         mg: assertForUndefined(data.nutrients['MG']?.quantity),
         ca: assertForUndefined(data.nutrients['CA']?.quantity),
         vitaRae: assertForUndefined(data.nutrients['VITA_RAE']?.quantity),
-      });
-    };
+      })
+    }
 
     const convertToTotalNutrients = (data: any) => {
       return TotalNutrients.create({
@@ -62,16 +60,16 @@ export const AnalystStore = types
         fatrn: `${data['FATRN'].quantity.toFixed(1)}g`,
         mg: `${data['MG'].quantity.toFixed(1)}mg`,
         ca: `${data['CA'].quantity.toFixed(1)}mg`,
-      });
-    };
+      })
+    }
 
     const assertForUndefined = (value: number | undefined): number => {
-      return value ?? 0;
-    };
+      return value ?? 0
+    }
 
     return {
       getNutrition,
-    };
-  });
+    }
+  })
 
-export interface IAnalystStore extends SnapshotIn<typeof AnalystStore> {}
+export type IAnalystStore = SnapshotIn<typeof AnalystStore>

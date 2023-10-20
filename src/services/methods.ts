@@ -1,32 +1,24 @@
-import axios, { AxiosInstance } from 'axios';
-import { toast } from 'react-hot-toast';
+import { AxiosInstance } from 'axios'
+import { toast } from 'react-hot-toast'
 
 export const getRequest = async (
   axiosInstance: AxiosInstance,
-  params?: any,
+  params?: unknown,
   url?: string,
 ): Promise<any> => {
   return await axiosInstance
     .get(url ?? '', {
       params: params,
     })
-    .catch((err) =>
-      toast.error(
-        `Something went wrong please reload the page. Code: ${err.code}`,
-      ),
-    );
-};
+    .catch((err) => toast.error(`Something went wrong please reload the page. Code: ${err.code}`))
+}
 
 export const postRequest = async (
   axiosInstance: AxiosInstance,
-  body?: any,
+  body?: unknown,
   url?: string,
 ): Promise<any> => {
   return await axiosInstance
     .post(url ?? '', body)
-    .catch((err) =>
-      toast.error(
-        `Something went wrong please reload the page. Code: ${err.code}`,
-      ),
-    );
-};
+    .catch((err) => toast.error(`Something went wrong please reload the page. Code: ${err.code}`))
+}

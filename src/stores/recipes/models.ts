@@ -1,12 +1,10 @@
-import { ISimpleType, Instance, types } from 'mobx-state-tree';
+import { ISimpleType, Instance, types } from 'mobx-state-tree'
 
 const getFilterModel = (enumVal: typeof DietEnum | typeof CuisineEnum) => {
-  let dict: { [x: string]: ISimpleType<boolean> } = {};
-  Object.keys(enumVal).map(
-    (key) => (dict[enumVal[key as keyof typeof enumVal]] = types.boolean),
-  );
-  return types.model({ ...dict });
-};
+  const dict: { [x: string]: ISimpleType<boolean> } = {}
+  Object.keys(enumVal).map((key) => (dict[enumVal[key as keyof typeof enumVal]] = types.boolean))
+  return types.model({ ...dict })
+}
 
 export enum DietEnum {
   Balanced = 'balanced',
@@ -51,14 +49,14 @@ export const Filter = types.model({
   [FiltersENUM.Search]: types.string,
   [FiltersENUM.Diet]: getFilterModel(DietEnum),
   [FiltersENUM.CuisineType]: getFilterModel(CuisineEnum),
-});
+})
 
 export const checkboxFilters = {
   [FiltersENUM.CuisineType]: CuisineEnum,
   [FiltersENUM.Diet]: DietEnum,
-};
+}
 
-export type FilterType = Instance<typeof Filter>;
+export type FilterType = Instance<typeof Filter>
 
 export const Recipe = types.model({
   label: types.string,
@@ -74,23 +72,23 @@ export const Recipe = types.model({
   mealType: types.array(types.string),
   dishType: types.frozen(),
   totalDaily: types.string,
-});
+})
 
-export type RecipeType = Instance<typeof Recipe>;
+export type RecipeType = Instance<typeof Recipe>
 
 export type RecipeResponse = {
-  from: number;
-  to: number;
-  count: number;
+  from: number
+  to: number
+  count: number
   _links: {
     self: {
-      href: string;
-      title: string;
-    };
+      href: string
+      title: string
+    }
     next: {
-      href: string;
-      title: string;
-    };
-  };
-  hits: RecipeType[];
-};
+      href: string
+      title: string
+    }
+  }
+  hits: RecipeType[]
+}
