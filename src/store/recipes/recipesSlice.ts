@@ -44,9 +44,6 @@ const recipesSlice = createSlice({
     unselectRecipe(state) {
       state.selectedRecipe = null;
     },
-    resetRecipesState(_) {
-      return { ...initialState };
-    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(recipesApi.endpoints.getRecipes.matchFulfilled, (state, { payload }) => {
@@ -64,12 +61,7 @@ const recipesSlice = createSlice({
   },
 });
 
-export const {
-  onChangeSearchFilter,
-  onChangeCheckboxFilter,
-  selectRecipe,
-  unselectRecipe,
-  resetRecipesState,
-} = recipesSlice.actions;
+export const { onChangeSearchFilter, onChangeCheckboxFilter, selectRecipe, unselectRecipe } =
+  recipesSlice.actions;
 
 export default recipesSlice.reducer;

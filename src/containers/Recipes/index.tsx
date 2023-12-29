@@ -10,14 +10,13 @@ import { useTheme } from 'theme/themeProvider';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { getRecipes } from 'services/recipes';
 import URLS from 'constants/urls';
-import { resetRecipesState } from 'store/recipes/recipesSlice';
 
 const Recipes = () => {
   const navigate = useNavigate();
 
   const { filters } = useAppSelector((state) => state.recipes);
-  const [trigger, { isLoading }] = getRecipes.useLazyQuery();
-  const dispatch = useAppDispatch();
+  const [trigger, { isLoading } ] = getRecipes.useLazyQuery();
+
   const { theme } = useTheme();
 
   const debouncedVal = useDebounce<string>(filters.q, 1000);
@@ -39,10 +38,6 @@ const Recipes = () => {
     trigger(filters).then(() => {
       navigate(URLS.RECIPES.SEARCH);
     });
-
-    return () => {
-      dispatch(resetRecipesState());
-    };
   }, [debouncedVal, checkboxFiltersRef.current]);
 
   return (
