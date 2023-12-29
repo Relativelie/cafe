@@ -8,16 +8,11 @@ type VariantButtonProps = {
   onClick: () => void;
 };
 
-const VariantButton: React.FC<VariantButtonProps> = ({
-  title,
-  isSelected,
-  poster,
-  onClick,
-}) => {
+const VariantButton: React.FC<VariantButtonProps> = ({ title, isSelected, poster, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="flex flex-col justify-center items-center gap-2 cursor-pointer"
+      className='flex flex-col justify-center items-center gap-2 cursor-pointer'
     >
       <div
         className={clsx(

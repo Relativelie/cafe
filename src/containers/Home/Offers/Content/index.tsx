@@ -15,12 +15,11 @@ const Content = () => {
     return id === selectedContent;
   };
 
-  const offersData =
-    i18n.language === LocalesVariantsENUM.En ? offersDataEu : offersDataRu;
+  const offersData = i18n.language === LocalesVariantsENUM.En ? offersDataEu : offersDataRu;
   const selectedOffer = offersData.filter(({ id }) => isSelected(id))[0];
   return (
-    <div className="flex flex-col gap-8 items-center mt-14">
-      <div className="flex gap-32">
+    <div className='flex flex-col gap-8 items-center mt-14'>
+      <div className='flex gap-32'>
         {offersData.map((item) => (
           <VariantButton
             key={`${item.id}-btn`}
@@ -33,17 +32,14 @@ const Content = () => {
           />
         ))}
       </div>
-      <div className="bg-no-repeat bg-home-poster bg-contain bg-center">
+      <div className='bg-no-repeat bg-home-poster bg-contain bg-center'>
         <div style={{ backgroundColor: theme.colors.opacityDefault }}>
-          <div className="flex flex-col items-center justify-center">
+          <div className='flex flex-col items-center justify-center'>
             {selectedOffer.description.map(({ title, content }) => (
               <Description key={title} title={title} content={content} />
             ))}
           </div>
-          <h2
-            style={{ color: theme.colors.lightBrand }}
-            className="text-center"
-          >
+          <h2 style={{ color: theme.colors.lightBrand }} className='text-center'>
             {selectedOffer.endingQuote}
           </h2>
         </div>

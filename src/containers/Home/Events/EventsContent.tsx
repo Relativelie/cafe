@@ -1,42 +1,42 @@
-import { useEffect, useRef } from 'react'
-import EventCard from './EventCard'
-import eventsData from './data'
+import { useEffect, useRef } from 'react';
+import EventCard from './EventCard';
+import eventsData from './data';
 
 const EventsContent = () => {
-  const newsItemRef = useRef(null)
+  const newsItemRef = useRef(null);
 
   useEffect(() => {
     const options = {
       threshold: 0.3,
-    }
-    const observer = new IntersectionObserver(handleIntersection, options)
+    };
+    const observer = new IntersectionObserver(handleIntersection, options);
 
-    newsItemRef.current && observer.observe(newsItemRef.current)
+    newsItemRef.current && observer.observe(newsItemRef.current);
 
     return () => {
-      observer.disconnect()
-    }
-  }, [])
+      observer.disconnect();
+    };
+  }, []);
 
   const handleIntersection = (entries: any) => {
     if (entries[0].isIntersecting) {
-      showEvents()
+      showEvents();
     }
-  }
+  };
 
   const showEvents = () => {
-    const events = document.querySelectorAll('.home-event')
-    let i = 0
+    const events = document.querySelectorAll('.home-event');
+    let i = 0;
     const myInterval = setInterval(function () {
-      events[i].classList.remove('hideEvents')
-      events[i].classList.add('showEvents')
+      events[i].classList.remove('hideEvents');
+      events[i].classList.add('showEvents');
 
-      i++
+      i++;
       if (i === eventsData.length) {
-        clearInterval(myInterval)
+        clearInterval(myInterval);
       }
-    }, 200)
-  }
+    }, 200);
+  };
 
   return (
     <div className='w-full flex flex-col lg:flex-row gap-4 lg:justify-around' ref={newsItemRef}>
@@ -50,7 +50,7 @@ const EventsContent = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default EventsContent
+export default EventsContent;

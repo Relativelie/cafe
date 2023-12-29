@@ -1,9 +1,7 @@
-import { DietEnum, CuisineEnum, FiltersENUM } from 'stores/recipes';
+import { CuisineEnum, DietEnum, FiltersENUM } from 'store/recipes/models/common';
 import { FilterBlock } from './models';
 
-const toArrayFilters = (
-  enumVal: typeof DietEnum | typeof CuisineEnum,
-): Array<string> => {
+const toArrayFilters = (enumVal: typeof DietEnum | typeof CuisineEnum): Array<string> => {
   return Object.values(enumVal).map((val) => val);
 };
 

@@ -1,19 +1,16 @@
-import { toJS } from 'mobx';
-import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
-import { useStore } from 'store';
 import { useTheme } from 'theme/themeProvider';
+import { useAppSelector } from 'utils/hooks';
 
-export const PieChartTable = observer(() => {
-  const { analystStore } = useStore();
-  const { ingredients } = toJS(analystStore);
+export const PieChartTable = () => {
+  const { ingredients } = useAppSelector((state) => state.analyst);
   const { theme } = useTheme();
   const { t } = useTranslation();
 
   return (
     <table
       style={{ borderColor: theme.colors.opacityDefaultInverse }}
-      className="w-full table-auto border-spacing-1 text-left border border-separate border-1 rounded-lg"
+      className='w-full table-auto border-spacing-1 text-left border border-separate border-1 rounded-lg'
     >
       <thead>
         <tr>
@@ -37,4 +34,4 @@ export const PieChartTable = observer(() => {
       </tbody>
     </table>
   );
-});
+};

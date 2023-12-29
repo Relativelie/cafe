@@ -19,7 +19,7 @@ const AppRoutes = () => {
         </Route>
         <Route path={URLS.ANALYST} element={<Analyst />}></Route>
       </Route>
-      <Route path="*" element={<Navigate to={URLS.HOME} replace />} />
+      <Route path='*' element={<Navigate to={URLS.HOME} replace />} />
     </Routes>
   );
 };

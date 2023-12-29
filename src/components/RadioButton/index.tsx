@@ -24,9 +24,9 @@ const AppRadioButton: React.FC<AppRadioButtonProps> = ({
   const { theme } = useTheme();
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className='flex gap-2 items-center'>
       <input
-        type="radio"
+        type='radio'
         className={clsx(theme.accentColors.brand, 'self-center')}
         checked={checked}
         name={name}
@@ -37,7 +37,7 @@ const AppRadioButton: React.FC<AppRadioButtonProps> = ({
       {label && (
         <label
           style={{ color: theme.colors.defaultInverse }}
-          className="cursor-pointer"
+          className='cursor-pointer'
           htmlFor={htmlFor}
           onClick={onChange}
         >

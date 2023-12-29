@@ -5,11 +5,7 @@ type ImageBlackoutProps = {
 };
 
 const ImageBlackout: React.FC<ImageBlackoutProps> = ({ className }) => {
-  return (
-    <div
-      className={clsx(className, 'bg-black absolute inset-0 opacity-50')}
-    ></div>
-  );
+  return <div className={clsx(className, 'bg-black absolute inset-0 opacity-50')}></div>;
 };
 
 export default ImageBlackout;

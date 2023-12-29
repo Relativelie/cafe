@@ -27,12 +27,11 @@ const MobileSearchingPanel = () => {
     overlay: { zIndex: 40, backgroundColor: 'rgba(255, 255, 255, .3)' },
   };
 
-  const isRecipeListPage = (): boolean =>
-    URLS.RECIPES.SEARCH === location.pathname;
+  const isRecipeListPage = (): boolean => URLS.RECIPES.SEARCH === location.pathname;
 
   return (
-    <div className="lg:hidden relative h-10 z-10">
-      <div className="fixed flex justify-end items-center h-14 top-20 right-0">
+    <div className='lg:hidden relative h-10 z-10'>
+      <div className='fixed flex justify-end items-center h-14 top-20 right-0'>
         {isRecipeListPage() && (
           <div
             style={{
@@ -40,7 +39,7 @@ const MobileSearchingPanel = () => {
               borderColor: theme.colors.defaultInverse,
             }}
             onClick={showModal}
-            className="p-3 mr-4 rounded-full border-2 cursor-pointer"
+            className='p-3 mr-4 rounded-full border-2 cursor-pointer'
           >
             <FilterIcon />
           </div>

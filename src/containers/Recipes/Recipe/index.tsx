@@ -1,23 +1,21 @@
-import { toJS } from 'mobx';
-import { observer } from 'mobx-react-lite';
-import { useStore } from 'store';
 import Header from './RecipeTitle';
 import Nutrition from './Nutrition';
 import DietType from './DietType';
 import Ingredients from './Ingredients';
 import { AppBackButton } from 'components';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from 'utils/hooks';
 
-const Recipe = observer(() => {
-  const { recipeStore } = useStore();
-  const { selectedRecipe } = toJS(recipeStore);
+const Recipe = () => {
+  const { selectedRecipe } = useAppSelector((state) => state.recipes);
   const { t } = useTranslation();
 
+  const showDietTypes = selectedRecipe && selectedRecipe.dietLabels.length > 0;
   return (
-    <div>
+    <>
       {selectedRecipe && (
-        <div className="h-screen flex flex-col gap-6 lg:gap-10">
-          <div className="h-64 grid grid-cols-[80px_1fr_80px] grid-rows-[50px_1fr_80px] bg-recipe-poster bg-cover bg-center">
+        <div className='h-screen flex flex-col gap-6 lg:gap-10'>
+          <div className='h-64 grid grid-cols-[80px_1fr_80px] grid-rows-[50px_1fr_80px] bg-recipe-poster bg-cover bg-center'>
             <AppBackButton title={t('recipes.backToList')} />
             <Header title={selectedRecipe.label} />
           </div>
@@ -26,17 +24,12 @@ const Recipe = observer(() => {
             totalWeight={selectedRecipe.totalWeight}
             totalDaily={selectedRecipe.totalDaily}
           />
-          {selectedRecipe.dietLabels.length > 0 && (
-            <DietType title={selectedRecipe.dietLabels.toString()} />
-          )}
-          <Ingredients
-            image={selectedRecipe.image}
-            ingredients={selectedRecipe.ingredientLines}
-          />
+          {showDietTypes && <DietType title={selectedRecipe.dietLabels.toString()} />}
+          <Ingredients image={selectedRecipe.image} ingredients={selectedRecipe.ingredientLines} />
         </div>
       )}
-    </div>
+    </>
   );
-});
+};
 
 export default Recipe;

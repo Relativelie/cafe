@@ -3,15 +3,12 @@ type NutritionItemProps = {
   value: number | string;
 };
 
-export const NutritionItem: React.FC<NutritionItemProps> = ({
-  title,
-  value,
-}) => {
+export const NutritionItem: React.FC<NutritionItemProps> = ({ title, value }) => {
   const showedValue = typeof value === 'string' ? value : value.toFixed(1);
 
   return (
     <div>
-      <div className="flex justify-between p-2">
+      <div className='flex justify-between p-2'>
         <p>{title}</p>
         <p>{showedValue}</p>
       </div>

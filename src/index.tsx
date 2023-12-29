@@ -4,17 +4,16 @@ import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import './i18n/i18n.config';
-import { StoreProvider, store } from 'store';
+import { Provider } from 'react-redux';
+import { store } from 'store/store';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <StoreProvider value={store}>
+    <Provider store={store}>
       <App />
-    </StoreProvider>
+    </Provider>
   </React.StrictMode>,
 );
 

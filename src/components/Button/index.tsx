@@ -17,10 +17,7 @@ const sizes: { [key in ButtonSizeENUM]: string } = {
 };
 
 interface ButtonProps
-  extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   disabled?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -42,7 +39,7 @@ const AppButton: React.FC<ButtonProps> = ({
 
   return (
     <button
-      type="button"
+      type='button'
       disabled={disabled}
       style={{
         borderColor: theme.colors.lightBrand,

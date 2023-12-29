@@ -8,10 +8,7 @@ type ErrorBoundariesState = {
   error: string;
 };
 
-export default class ErrorBoundaries extends Component<
-  ErrorBoundariesProps,
-  ErrorBoundariesState
-> {
+export default class ErrorBoundaries extends Component<ErrorBoundariesProps, ErrorBoundariesState> {
   public state: ErrorBoundariesState = {
     hasError: false,
     error: '',
@@ -31,7 +28,7 @@ export default class ErrorBoundaries extends Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="text-secondary d-flex flex-column align-items-center justify-content-center">
+        <div className='text-secondary d-flex flex-column align-items-center justify-content-center'>
           <h1>Something went wrong...</h1>
           <p>{this.state.error}</p>
         </div>

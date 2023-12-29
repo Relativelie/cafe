@@ -11,8 +11,7 @@ const AppUpButton = () => {
 
   const handleScroll = () => {
     const heightToHideFrom = 200;
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
     if (winScroll < heightToHideFrom) {
       setIsVisible(false);
@@ -39,15 +38,9 @@ const AppUpButton = () => {
   return (
     <div>
       {isVisible && (
-        <div
-          className={clsx('flex flex-col items-center cursor-pointer')}
-          onClick={onClick}
-        >
-          <img src={ScrollUp} alt="scroll up" className="w-10 h-10" />
-          <h5
-            style={{ color: theme.colors.success }}
-            className="uppercase font-bold"
-          >
+        <div className={clsx('flex flex-col items-center cursor-pointer')} onClick={onClick}>
+          <img src={ScrollUp} alt='scroll up' className='w-10 h-10' />
+          <h5 style={{ color: theme.colors.success }} className='uppercase font-bold'>
             {t('common.up')}
           </h5>
         </div>

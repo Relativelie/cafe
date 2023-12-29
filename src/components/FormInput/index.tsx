@@ -34,36 +34,28 @@ const AppFormInput: React.FC<AppInputProps> = ({
   };
 
   return (
-    <div className="relative grid grid-rows-[1fr,1.5em] justify-center items-center">
-      <div className="relative flex items-center">
-        {leftIcon && (
-          <div className="absolute h-full flex items-center left-2">
-            {leftIcon}
-          </div>
-        )}
+    <div className='relative grid grid-rows-[1fr,1.5em] justify-center items-center'>
+      <div className='relative flex items-center'>
+        {leftIcon && <div className='absolute h-full flex items-center left-2'>{leftIcon}</div>}
         <input
           style={inputInlineStyles}
           className={clsx(
             isError && theme.outlineFocusColor.brand,
             'h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent',
           )}
-          type="text"
+          type='text'
           {...(register && { ...register(name, { required }) })}
           placeholder={placeholder}
         />
 
-        {rightIcon && (
-          <div className="absolute h-full flex items-center right-2">
-            {rightIcon}
-          </div>
-        )}
+        {rightIcon && <div className='absolute h-full flex items-center right-2'>{rightIcon}</div>}
       </div>
       {required && (
         <ErrorMessage
           errors={errors}
           name={name}
           render={({ message }) => (
-            <p style={{ color: theme.colors.danger }} className="text-center">
+            <p style={{ color: theme.colors.danger }} className='text-center'>
               {message}
             </p>
           )}

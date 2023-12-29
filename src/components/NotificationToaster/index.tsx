@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast';
 const AppNotificationToaster = () => {
   return (
     <Toaster
-      position="bottom-left"
+      position='bottom-left'
       toastOptions={{
         duration: 5000,
         error: {

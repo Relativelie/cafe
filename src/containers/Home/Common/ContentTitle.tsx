@@ -10,11 +10,8 @@ const ContentTitle: React.FC<ContentTitleProps> = ({ title }) => {
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col items-center">
-      <h4
-        style={{ color: theme.colors.lightBrand }}
-        className="font-cursive text-center"
-      >
+    <div className='flex flex-col items-center'>
+      <h4 style={{ color: theme.colors.lightBrand }} className='font-cursive text-center'>
         {t('home.our')}
       </h4>
       <h2>{title}</h2>

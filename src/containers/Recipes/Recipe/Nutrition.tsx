@@ -7,26 +7,22 @@ type NutritionProps = {
   totalDaily: string;
 };
 
-const Nutrition: React.FC<NutritionProps> = ({
-  calories,
-  totalDaily,
-  totalWeight,
-}) => {
+const Nutrition: React.FC<NutritionProps> = ({ calories, totalDaily, totalWeight }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className='flex flex-col gap-2'>
       <ContentTitle text={t('recipes.nutrition')} />
-      <div className="flex justify-center gap-10">
+      <div className='flex justify-center gap-10'>
         <div>
-          <h5 className="font-semibold text-center">
+          <h5 className='font-semibold text-center'>
             {Math.round((calories * 100) / totalWeight)}
           </h5>
-          <h5 className="uppercase">calories/100g</h5>
+          <h5 className='uppercase'>calories/100g</h5>
         </div>
         <div>
-          <h5 className="font-semibold text-center">{totalDaily}</h5>
-          <h5 className="uppercase">daily value</h5>
+          <h5 className='font-semibold text-center'>{totalDaily}</h5>
+          <h5 className='uppercase'>daily value</h5>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 type AppAnchorLinkProps = {
-  link?: string
-  title?: string
-  child?: JSX.Element
-}
+  link?: string;
+  title?: string;
+  child?: JSX.Element;
+};
 
 const AppAnchorLink: React.FC<AppAnchorLinkProps> = ({ link, title, child }) => {
   return (
@@ -10,7 +10,7 @@ const AppAnchorLink: React.FC<AppAnchorLinkProps> = ({ link, title, child }) => 
       {title}
       {child}
     </a>
-  )
-}
+  );
+};
 
-export default AppAnchorLink
+export default AppAnchorLink;

@@ -1,20 +1,19 @@
-import { toJS } from 'mobx';
-import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from 'store';
-
-import { RecipeType } from 'stores/recipes';
 import { RecipeCard, AppToUpButton } from 'components';
 import URLS from 'constants/urls';
 import MatchesError from './MatchesError';
+import { getNextRecipes } from 'services/recipes';
+import { useAppDispatch, useAppSelector } from 'utils/hooks';
+import { selectRecipe } from 'store/recipes/recipesSlice';
+import RecipeEntity from 'store/recipes/models/RecipeEntity';
 
-const RecipesList: React.FC = observer(() => {
+const RecipesList: React.FC = () => {
   const navigate = useNavigate();
-  const { recipeStore } = useStore();
-  const { recipesData, isLoading, nextPage } = toJS(recipeStore);
-  const { onClickRecipe, loadNextRecipesList } = recipeStore;
+  const { nextPage, recipes } = useAppSelector((state) => state.recipes);
+  const [trigger, { isLoading }] = getNextRecipes.useLazyQuery();
+  const dispatch = useAppDispatch();
 
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -22,30 +21,29 @@ const RecipesList: React.FC = observer(() => {
   });
 
   useEffect(() => {
-    if (inView && !isLoading) {
-      loadNextRecipesList();
+    if (inView && !isLoading && nextPage) {
+      trigger(nextPage);
     }
   }, [inView]);
 
-  const onClickRecipeCard = (recipe: RecipeType) => {
-    onClickRecipe(recipe);
+  const onClickRecipeCard = (recipe: RecipeEntity) => {
+    dispatch(selectRecipe(recipe.uri));
     navigate(URLS.RECIPES.RECIPE);
   };
 
   return (
-    <div className="relative mt-8 p-4">
-      <div className="fixed bottom-[15vh] z-10">
+    <div className='relative mt-8 p-4'>
+      <div className='fixed bottom-[15vh] z-10'>
         <AppToUpButton />
       </div>
 
       {
-        <div className="flex justify-center flex-wrap gap-x-4 xl:gap-x-8 gap-y-10">
-          {recipesData ? (
-            recipesData &&
-            recipesData.map((recipe) => {
+        <div className='flex justify-center flex-wrap gap-x-4 xl:gap-x-8 gap-y-10'>
+          {recipes ? (
+            recipes.map((recipe) => {
               return (
                 <RecipeCard
-                  key={`${recipe.url}-${recipe.calories}-recipe`}
+                  key={`${recipe.uri}-${recipe.calories}`}
                   recipe={recipe}
                   onClick={() => onClickRecipeCard(recipe)}
                 />
@@ -56,9 +54,9 @@ const RecipesList: React.FC = observer(() => {
           )}
         </div>
       }
-      {nextPage && <div ref={ref} className="mb-4" />}
+      {nextPage && <div ref={ref} className='mb-4' />}
     </div>
   );
-});
+};
 
 export default RecipesList;

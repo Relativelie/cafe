@@ -22,26 +22,18 @@ const AppInput: React.FC<AppInputProps> = ({
 
   return (
     <div className={clsx(className, 'relative flex items-center')}>
-      {leftIcon && (
-        <div className="absolute h-full flex items-center left-2">
-          {leftIcon}
-        </div>
-      )}
+      {leftIcon && <div className='absolute h-full flex items-center left-2'>{leftIcon}</div>}
       <input
         style={{ borderColor: theme.colors.opacityDefaultInverse }}
         className={clsx(
           theme.outlineFocusColor.brand,
           'h-full w-full py-2 pl-10 pr-2 border rounded-xl text-xl font-oxygen bg-transparent',
         )}
-        type="text"
+        type='text'
         value={curVal}
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {rightIcon && (
-        <div className="absolute h-full flex items-center right-2">
-          {rightIcon}
-        </div>
-      )}
+      {rightIcon && <div className='absolute h-full flex items-center right-2'>{rightIcon}</div>}
     </div>
   );
 };

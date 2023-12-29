@@ -1,31 +1,48 @@
 /* eslint-disable camelcase */
-import config from 'config'
-import axios from 'axios'
-import { postRequest } from './methods'
+import config from 'config';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import TotalNutrientEntity from '../store/analyst/models/TotalNutrientEntity';
+import IngredientEntity from '../store/analyst/models/IngredientEntity';
+import { AnalystState } from 'store/analyst/models/common';
 
-const url = '/nutrition-details'
+const url = '/nutrition-details';
+const service = config.service;
+const params = {
+  app_key: service.API_ANALYST_KEY,
+  app_id: service.API_ANALYST_ID,
+};
 
-const service = config.service
+export const analystApi = createApi({
+  baseQuery: fetchBaseQuery({ baseUrl: `${service.BASE_SEVER_URL}` }),
+  endpoints: (builder) => ({
+    postAnalyst: builder.mutation<AnalystState, Array<string>>({
+      query: (ingredients) => {
+        const body = { ingr: ingredients };
+        return {
+          url: url,
+          method: 'POST',
+          params,
+          body,
+        };
+      },
 
-export const axiosRequest = axios.create({
-  baseURL: `${service.BASE_SEVER_URL}${url}`,
-})
+      transformResponse: (response: any) => {
+        const ingredients = response.ingredients.length
+          ? response.ingredients.map(({ parsed }: { parsed: Record<string, any> }) =>
+              Object.assign({}, IngredientEntity.create(parsed[0])),
+            )
+          : null;
 
-axiosRequest.interceptors.request.use((config) => {
-  config.params = {
-    app_key: service.API_ANALYST_KEY,
-    app_id: service.API_ANALYST_ID,
-    ...config.params,
-  }
-  return config
-})
+        const totalNutrient = Object.assign(
+          {},
+          TotalNutrientEntity.create(response['totalNutrients']),
+        );
+        const healthLabels = response['healthLabels'];
 
-const postAnalyst = async (ingredients: Array<string>) => {
-  const params = {
-    ingr: ingredients,
-  }
-  const res = await postRequest(axiosRequest, params)
-  return res.data
-}
+        return { ingredients, totalNutrient, healthLabels };
+      },
+    }),
+  }),
+});
 
-export { postAnalyst }
+export const { usePostAnalystMutation } = analystApi;

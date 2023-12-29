@@ -1,4 +1,4 @@
-import { FiltersENUM } from 'stores/recipes';
+import { FiltersENUM } from 'store/recipes/models/common';
 
 export class FilterBlock {
   block: FiltersENUM;

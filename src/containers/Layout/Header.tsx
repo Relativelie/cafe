@@ -45,32 +45,32 @@ const Header = () => {
   };
 
   return (
-    <div className="h-16">
+    <div className='h-16'>
       <div
         style={{
           backgroundColor: theme.colors.darkBrand,
         }}
-        className="fixed top-0 left-0 right-0 z-20"
+        className='fixed top-0 left-0 right-0 z-20'
       >
         <div
           style={{
             borderBottomColor: theme.colors.defaultInverse,
           }}
-          className=" flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] "
+          className=' flex justify-between items-center mx-2 px-2 py-4 border-b-[0.5px] '
         >
-          <Link to={URLS.HOME} className="font-cursive">
+          <Link to={URLS.HOME} className='font-cursive'>
             {t('cafeName')}
           </Link>
-          <div className="flex gap-4">
+          <div className='flex gap-4'>
             {routes.map((route) => (
               <Link key={route.path} to={route.path}>
-                <h5 className="p md:h5">{route.title}</h5>
+                <h5 className='p md:h5'>{route.title}</h5>
               </Link>
             ))}
-            <div className="cursor-pointer" onClick={showModal}>
+            <div className='cursor-pointer' onClick={showModal}>
               <SettingsIcon
                 style={{ color: theme.colors.defaultInverse }}
-                className="fill-current "
+                className='fill-current '
               />
             </div>
           </div>

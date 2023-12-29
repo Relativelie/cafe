@@ -11,12 +11,12 @@ const Settings: React.FC<SettingsProps> = ({ closeModal }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col h-full w-full justify-between">
-      <div className="flex flex-col gap-6">
+    <div className='flex flex-col h-full w-full justify-between'>
+      <div className='flex flex-col gap-6'>
         <ThemeSettings />
         <LanguageSettings />
       </div>
-      <div className="self-end">
+      <div className='self-end'>
         <AppButton size={ButtonSizeENUM.sm} onClick={closeModal}>
           {t('common.close')}
         </AppButton>

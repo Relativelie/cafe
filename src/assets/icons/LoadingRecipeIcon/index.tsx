@@ -14,7 +14,7 @@ const Icon: React.FC<IconProps> = ({ className }) => {
   return (
     <img
       src={loadingImg[randomImg]}
-      alt="loading icon"
+      alt='loading icon'
       className={clsx(className, 'w-full h-full')}
     />
   );

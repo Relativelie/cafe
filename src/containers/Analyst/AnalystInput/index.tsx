@@ -1,32 +1,29 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { useStore } from 'store'
-import { AppTextArea, AppButton, ButtonSizeENUM } from 'components'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { AppTextArea, AppButton, ButtonSizeENUM } from 'components';
 
 type AnalystInputProps = {
-  textAreaRef: React.RefObject<HTMLTextAreaElement>
-}
+  textAreaRef: React.RefObject<HTMLTextAreaElement>;
+  postAnalyst: (po: string[]) => void;
+};
 
-const AnalystInput: React.FC<AnalystInputProps> = ({ textAreaRef }) => {
-  const { analystStore } = useStore()
-  const { getNutrition } = analystStore
+const AnalystInput: React.FC<AnalystInputProps> = ({ textAreaRef, postAnalyst }) => {
+  const { t } = useTranslation();
 
-  const { t } = useTranslation()
+  const onClickAnalyze = () => {
+    const searchingValue = getAnalyzedArray();
 
-  const onClickAnalyze = async () => {
-    const searchingValue = getAnalyzedArray()
-
-    await getNutrition(searchingValue)
-  }
+    postAnalyst(searchingValue);
+  };
 
   const getAnalyzedArray = (): Array<string> => {
-    if (!textAreaRef.current?.value) return []
+    if (!textAreaRef.current?.value) return [];
 
     if (textAreaRef.current?.value.includes(',')) {
-      return textAreaRef.current?.value.replace(/\n/g, ' ').split(', ')
+      return textAreaRef.current?.value.replace(/\n/g, ' ').split(', ');
     }
-    return textAreaRef.current?.value.split(/\n/g).filter((item: string) => item !== '')
-  }
+    return textAreaRef.current?.value.split(/\n/g).filter((item: string) => item !== '');
+  };
 
   return (
     <div className='h-96 w-full md:w-2/4'>
@@ -38,7 +35,7 @@ const AnalystInput: React.FC<AnalystInputProps> = ({ textAreaRef }) => {
         {t('analyst.analyze')}
       </AppButton>
     </div>
-  )
-}
+  );
+};
 
-export default AnalystInput
+export default AnalystInput;

@@ -1,26 +1,24 @@
-import { toJS } from 'mobx';
-import { useStore } from 'store';
+import TotalNutrientEntity from 'store/analyst/models/TotalNutrientEntity';
 import { NutritionItem } from './NutritionItem';
 import { useTranslation } from 'react-i18next';
 
-export const TotalNutrient = () => {
-  const { t } = useTranslation();
+type TotalNutrientProps = {
+  totalNutrient: TotalNutrientEntity;
+};
 
-  const { analystStore } = useStore();
-  const { totalNutrient } = toJS(analystStore);
+export const TotalNutrient: React.FC<TotalNutrientProps> = ({ totalNutrient }) => {
+  const { t } = useTranslation();
+  const { vitaRae, protein, tocpha, chocdf, mg, ca } = totalNutrient;
 
   return (
     <>
       <h3>{t('analyst.totalNutrients')}</h3>
-      <NutritionItem title={t('analyst.vitA')} value={totalNutrient!.vitaRae} />
-      <NutritionItem
-        title={t('analyst.protein')}
-        value={totalNutrient!.protein}
-      />
-      <NutritionItem title={t('analyst.vitE')} value={totalNutrient!.tocpha} />
-      <NutritionItem title={t('analyst.carbs')} value={totalNutrient!.chocdf} />
-      <NutritionItem title={t('analyst.magnesium')} value={totalNutrient!.mg} />
-      <NutritionItem title={t('analyst.calcium')} value={totalNutrient!.ca} />
+      <NutritionItem title={t('analyst.vitA')} value={vitaRae} />
+      <NutritionItem title={t('analyst.protein')} value={protein} />
+      <NutritionItem title={t('analyst.vitE')} value={tocpha} />
+      <NutritionItem title={t('analyst.carbs')} value={chocdf} />
+      <NutritionItem title={t('analyst.magnesium')} value={mg} />
+      <NutritionItem title={t('analyst.calcium')} value={ca} />
     </>
   );
 };

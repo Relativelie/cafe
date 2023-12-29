@@ -1,22 +1,23 @@
 import { useEffect, useRef } from 'react';
-import { observer } from 'mobx-react-lite';
-import { useStore } from 'store';
-import { toJS } from 'mobx';
 import isEqual from 'lodash.isequal';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import SearchingPanel from './SearchingPanel';
 import { AppSpinner } from 'components';
 import useDebounce from 'utils/useDebounce';
-import URLS from 'constants/urls';
 import MobileSearchingPanel from './MobileSearchingPanel';
 import { useTheme } from 'theme/themeProvider';
+import { useAppDispatch, useAppSelector } from 'utils/hooks';
+import { getRecipes } from 'services/recipes';
+import URLS from 'constants/urls';
+import { resetRecipesState } from 'store/recipes/recipesSlice';
 
-const Recipes = observer(() => {
+const Recipes = () => {
   const navigate = useNavigate();
-  const { recipeStore } = useStore();
-  const { filters, isLoading } = toJS(recipeStore);
-  const { loadRecipes } = recipeStore;
+
+  const { filters } = useAppSelector((state) => state.recipes);
+  const [trigger, { isLoading }] = getRecipes.useLazyQuery();
+  const dispatch = useAppDispatch();
   const { theme } = useTheme();
 
   const debouncedVal = useDebounce<string>(filters.q, 1000);
@@ -35,9 +36,13 @@ const Recipes = observer(() => {
   }
 
   useEffect(() => {
-    loadRecipes().then(() => {
+    trigger(filters).then(() => {
       navigate(URLS.RECIPES.SEARCH);
     });
+
+    return () => {
+      dispatch(resetRecipesState());
+    };
   }, [debouncedVal, checkboxFiltersRef.current]);
 
   return (
@@ -45,14 +50,14 @@ const Recipes = observer(() => {
       {isLoading && (
         <div
           style={{ backgroundColor: theme.colors.opacityDefault }}
-          className="fixed h-full w-full z-10"
+          className='fixed h-full w-full z-10'
         >
           <AppSpinner />
         </div>
       )}
 
-      <div className="grid lg:grid-cols-[minmax(200px,400px),_1fr]">
-        <div className="hidden lg:block">
+      <div className='grid lg:grid-cols-[minmax(200px,400px),_1fr]'>
+        <div className='hidden lg:block'>
           <SearchingPanel />
         </div>
         <MobileSearchingPanel />
@@ -60,6 +65,6 @@ const Recipes = observer(() => {
       </div>
     </>
   );
-});
+};
 
 export default Recipes;

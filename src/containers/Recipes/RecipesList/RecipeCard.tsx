@@ -1,34 +1,25 @@
 import clsx from 'clsx';
-import { RecipeType } from 'stores/recipes';
+import RecipeEntity from 'store/recipes/models/RecipeEntity';
 import { useTheme } from 'theme/themeProvider';
 
 const fittedLabels = (labels: string[]) => {
   const fittedLabelCount = 3;
-  return labels.length > fittedLabelCount
-    ? labels.splice(0, fittedLabelCount)
-    : labels;
+  return labels.length > fittedLabelCount ? labels.splice(0, fittedLabelCount) : labels;
 };
 
 type RecipeCardProps = {
-  recipe: RecipeType;
-  onClick: (recipe: RecipeType) => void;
+  recipe: RecipeEntity;
+  onClick: (id: string) => void;
 };
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
   const { theme } = useTheme();
-  const {
-    image,
-    label,
-    dietLabels,
-    cuisineType,
-    calories,
-    ingredientLines,
-    totalWeight,
-  } = recipe;
+
+  const { image, label, dietLabels, cuisineType, calories, ingredientLines, totalWeight } = recipe;
 
   return (
     <div
-      onClick={() => onClick(recipe)}
+      onClick={() => onClick(recipe.uri)}
       style={{ backgroundColor: theme.colors.defaultInverse }}
       className={clsx(
         theme.hoverBorders.success,
@@ -36,54 +27,40 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
       )}
     >
       <>
-        <div className="flex justify-end">
+        <div className='flex justify-end'>
           <div
             style={{ borderColor: theme.colors.defaultInverse }}
-            className="absolute w-32 h-32 flex items-center justify-center -top-[15%] left-2 border-4 rounded-full overflow-hidden"
+            className='absolute w-32 h-32 flex items-center justify-center -top-[15%] left-2 border-4 rounded-full overflow-hidden'
           >
             <img src={image} alt={label} />
           </div>
-          <div className="w-3/5 h-24 flex items-center justify-center">
-            <p style={{ color: theme.colors.default }} className="font-bold">
+          <div className='w-3/5 h-24 flex items-center justify-center'>
+            <p style={{ color: theme.colors.default }} className='font-bold'>
               {Math.round((calories * 100) / totalWeight)}
               kcal/100g
             </p>
           </div>
         </div>
-        <h5
-          style={{ color: theme.colors.default }}
-          className="mt-1 text-center font-medium"
-        >
+        <h5 style={{ color: theme.colors.default }} className='mt-1 text-center font-medium'>
           {label}
         </h5>
       </>
 
-      <div className="flex flex-col items-center mt-2">
-        <div className="flex flex-wrap gap-x-2 ">
+      <div className='flex flex-col items-center mt-2'>
+        <div className='flex flex-wrap gap-x-2 '>
           {fittedLabels(dietLabels).map((item) => (
-            <p
-              key={`${item}-diet-label`}
-              style={{ color: theme.colors.default }}
-            >
+            <p key={`${item}-diet-label`} style={{ color: theme.colors.default }}>
               #{item.toLowerCase()}
             </p>
           ))}
           {fittedLabels(cuisineType).map((item) => (
-            <p
-              key={`${item}-cousine-label`}
-              style={{ color: theme.colors.default }}
-            >
+            <p key={`${item}-cousine-label`} style={{ color: theme.colors.default }}>
               #{item}
             </p>
           ))}
         </div>
-        <div
-          style={{ backgroundColor: theme.colors.lightBrand }}
-          className="w-fit px-2 rounded-lg"
-        >
-          <p className="text-center text-black">
-            {ingredientLines.length} INGREDIENTS
-          </p>
+        <div style={{ backgroundColor: theme.colors.lightBrand }} className='w-fit px-2 rounded-lg'>
+          <p className='text-center text-black'>{ingredientLines.length} INGREDIENTS</p>
         </div>
       </div>
     </div>

@@ -1,20 +1,16 @@
-import { toJS } from 'mobx';
-import { useStore } from 'store';
+import { useAppSelector } from 'utils/hooks';
 import { NutritionClaims } from './NutritionClaims';
 import { NutritionFacts } from './NutritionFacts';
 import { PieChartTable } from './PieChartTable';
 
 const Table = () => {
-  const { analystStore } = useStore();
-  const { isLoading, healthLabels, totalNutrient } = toJS(analystStore);
+  const { totalNutrient, healthLabels } = useAppSelector((state) => state.analyst);
 
   return (
-    <div className="flex flex-col gap-8 px-8">
-      {totalNutrient && !isLoading && <PieChartTable />}
-      {totalNutrient && !isLoading && <NutritionFacts />}
-      {healthLabels?.length && !isLoading && (
-        <NutritionClaims labels={healthLabels} />
-      )}
+    <div className='flex flex-col gap-8 px-8'>
+      {totalNutrient && <PieChartTable />}
+      {totalNutrient && <NutritionFacts />}
+      {healthLabels?.length && <NutritionClaims labels={healthLabels} />}
     </div>
   );
 };

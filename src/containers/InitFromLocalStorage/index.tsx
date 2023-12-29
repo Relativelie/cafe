@@ -4,7 +4,7 @@ import { ThemeVariantsENUM } from 'theme/models';
 import { useTheme } from 'theme/themeProvider';
 import { LocalStorageENUM, getFromLS } from 'utils/storage';
 
-export const InitFromLocalStorage = () => {
+export const LSTheme = () => {
   const { toggleTheme } = useTheme();
   const { i18n } = useTranslation();
 

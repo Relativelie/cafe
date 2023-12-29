@@ -12,20 +12,20 @@ const Ingredients: React.FC<IngredientsProps> = ({ image, ingredients }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-center items-center gap-12 pb-8 md:pb-0">
+    <div className='flex justify-center items-center gap-12 pb-8 md:pb-0'>
       <div
         style={{ borderColor: theme.colors.defaultInverse }}
-        className="w-fit h-fit border-4 rounded-full overflow-hidden"
+        className='w-fit h-fit border-4 rounded-full overflow-hidden'
       >
-        <img src={image} alt="recipe" />
+        <img src={image} alt='recipe' />
       </div>
-      <div className="flex flex-col gap-8">
-        <h3 style={{ color: theme.colors.success }} className="font-semibold">
+      <div className='flex flex-col gap-8'>
+        <h3 style={{ color: theme.colors.success }} className='font-semibold'>
           {t('recipes.ingredients', { count: ingredients.length })}
         </h3>
-        <div className="flex flex-col gap-2">
+        <div className='flex flex-col gap-2'>
           {ingredients.map((ingredient, index) => (
-            <p className="h5" key={`ingredient-${index}`}>
+            <p className='h5' key={`ingredient-${index}`}>
               {ingredient}
             </p>
           ))}

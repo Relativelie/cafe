@@ -26,8 +26,9 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(darkTheme);
-  const [selectedThemeTitle, setSelectedThemeTitle] =
-    useState<ThemeVariantsENUM>(ThemeVariantsENUM.Dark);
+  const [selectedThemeTitle, setSelectedThemeTitle] = useState<ThemeVariantsENUM>(
+    ThemeVariantsENUM.Dark,
+  );
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
