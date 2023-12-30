@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { LocalesVariantsENUM } from 'i18n/models';
+import { useNavigate } from 'react-router-dom';
+
+import { useTheme } from 'theme/themeProvider';
+import { AppButton } from 'components';
 import Description from './Description';
 import VariantButton from './VariantButton';
 import { offersDataEu, offersDataRu } from './data';
-import { useTheme } from 'theme/themeProvider';
-import { useTranslation } from 'react-i18next';
-import { LocalesVariantsENUM } from 'i18n/models';
-import { AppButton } from 'components';
-import { useNavigate } from 'react-router-dom';
 
 const Content = () => {
   const { theme } = useTheme();

@@ -5,10 +5,10 @@ import clsx from 'clsx';
 import SearchIcon from 'assets/icons/SearchIcon';
 import { AppButton, AppInput, ButtonSizeENUM } from 'components';
 import { useTheme } from 'theme/themeProvider';
-import { FiltersSection } from './FiltersSection';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { onChangeCheckboxFilter, onChangeSearchFilter } from 'store/recipes/recipesSlice';
 import { CheckboxFilter, FiltersENUM } from 'store/recipes/models/common';
+import { FiltersSection } from './FiltersSection';
 
 type SearchingPanelProps = {
   isMobileView?: boolean;

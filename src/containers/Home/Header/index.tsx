@@ -1,6 +1,6 @@
-import { AppButton, ButtonSizeENUM } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
+import { AppButton, ButtonSizeENUM } from 'components';
 
 const Header = () => {
   const { t } = useTranslation();

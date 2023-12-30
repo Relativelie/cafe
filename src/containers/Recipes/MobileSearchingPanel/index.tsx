@@ -1,10 +1,11 @@
-import Modal from 'react-modal';
-import FilterIcon from 'assets/icons/FilterIcon';
 import { useState } from 'react';
-import SearchingPanel from '../SearchingPanel';
+import Modal from 'react-modal';
 import { useLocation } from 'react-router-dom';
+
+import FilterIcon from 'assets/icons/FilterIcon';
 import URLS from 'constants/urls';
 import { useTheme } from 'theme/themeProvider';
+import SearchingPanel from '../SearchingPanel';
 
 const MobileSearchingPanel = () => {
   const location = useLocation();

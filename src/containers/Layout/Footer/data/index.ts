@@ -1,5 +1,5 @@
-import Github from '../../../../assets/png/github.png';
-import Linkedin from '../../../../assets/png/linkedin.png';
+import Github from 'assets/png/github.png';
+import Linkedin from 'assets/png/linkedin.png';
 import { Link, LinksENUM } from './models';
 
 export const links: { [key in LinksENUM]: Link } = {

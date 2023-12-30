@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import isEqual from 'lodash.isequal';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import SearchingPanel from './SearchingPanel';
 import { AppSpinnerContainer } from 'components';
 import useDebounce from 'utils/useDebounce';
-import MobileSearchingPanel from './MobileSearchingPanel';
 import { useAppSelector } from 'utils/hooks';
 import { getRecipes } from 'services/recipes';
 import URLS from 'constants/urls';
+import MobileSearchingPanel from './MobileSearchingPanel';
+import SearchingPanel from './SearchingPanel';
 
 const Recipes = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { EventContent } from './models';
-import EventOne from '../../../../assets/webp/news-one.webp';
-import EventTwo from '../../../../assets/webp/news-two.webp';
-import EventThree from '../../../../assets/webp/news-three.webp';
+import EventOne from 'assets/webp/news-one.webp';
+import EventTwo from 'assets/webp/news-two.webp';
+import EventThree from 'assets/webp/news-three.webp';
 
 const getDay = (days: number) => {
   const date = new Date();

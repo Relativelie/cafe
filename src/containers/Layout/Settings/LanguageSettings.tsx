@@ -1,6 +1,7 @@
-import { AppRadioButton } from 'components';
 import { LocalesVariantsENUM } from 'i18n/models';
 import { useTranslation } from 'react-i18next';
+
+import { AppRadioButton } from 'components';
 import { useTheme } from 'theme/themeProvider';
 import { LocalStorageENUM, setToLS } from 'utils/storage';
 

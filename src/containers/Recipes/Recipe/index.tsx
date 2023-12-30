@@ -1,10 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
+import { useAppSelector } from 'utils/hooks';
+import { AppBackButton } from 'components';
 import Header from './RecipeTitle';
 import Nutrition from './Nutrition';
 import DietType from './DietType';
 import Ingredients from './Ingredients';
-import { AppBackButton } from 'components';
-import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'utils/hooks';
 
 const Recipe = () => {
   const { selectedRecipe } = useAppSelector((state) => state.recipes);

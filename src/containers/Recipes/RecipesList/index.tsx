@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
-import { RecipeCard, AppToUpButton, AppSpinner, AppSpinnerContainer } from 'components';
+
+import { RecipeCard, AppToUpButton, AppSpinnerContainer } from 'components';
 import URLS from 'constants/urls';
-import MatchesError from './MatchesError';
 import { getNextRecipes } from 'services/recipes';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { selectRecipe } from 'store/recipes/recipesSlice';
 import RecipeEntity from 'store/recipes/models/RecipeEntity';
+import MatchesError from './MatchesError';
 
 const RecipesList: React.FC = () => {
   const navigate = useNavigate();

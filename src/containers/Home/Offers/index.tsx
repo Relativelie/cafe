@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import Content from './Content';
 import ContentTitle from '../Common/ContentTitle';
-import { useTranslation } from 'react-i18next';
 
 const Offers = () => {
   const { t } = useTranslation();

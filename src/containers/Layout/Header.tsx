@@ -1,10 +1,11 @@
 import Modal from 'react-modal';
-import SettingsIcon from 'assets/icons/SettingsIcon';
-import URLS from 'constants/urls';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+
+import SettingsIcon from 'assets/icons/SettingsIcon';
+import URLS from 'constants/urls';
 import { useTheme } from 'theme/themeProvider';
-import { useState } from 'react';
 import Settings from './Settings';
 
 const Header = () => {
