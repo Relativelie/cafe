@@ -1,2 +1,4 @@
-npx husky add .husky/pre-commit "npm test"
-git add .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
