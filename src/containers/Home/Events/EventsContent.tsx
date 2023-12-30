@@ -18,7 +18,7 @@ const EventsContent = () => {
     };
   }, []);
 
-  const handleIntersection = (entries: any) => {
+  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
       showEvents();
     }

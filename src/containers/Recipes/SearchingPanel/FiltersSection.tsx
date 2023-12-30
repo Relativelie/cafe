@@ -1,39 +1,33 @@
 import { AppCheckbox } from 'components';
 import React from 'react';
-import { FilterBlock } from './data/models';
 import { useTranslation } from 'react-i18next';
-import { Filter, FiltersENUM } from 'store/recipes/models/common';
+import { CheckboxFilter, FiltersENUM } from 'store/recipes/models/common';
 
 type FiltersSectionProps = {
-  filterBlock: FilterBlock;
-  filters: Filter;
-  onChange: (block: FiltersENUM, key: string) => void;
+  filterSection: CheckboxFilter;
+  onChange: (key: string) => void;
+  section: FiltersENUM;
 };
 
 export const FiltersSection: React.FC<FiltersSectionProps> = ({
-  filterBlock,
-  filters,
+  filterSection,
+  section,
   onChange,
 }) => {
-  const { block, availableValues } = filterBlock;
   const { t } = useTranslation();
 
   return (
-    <React.Fragment key={`${block}-block`}>
-      <h4>{t(`recipes.filters.${block}`)}</h4>
+    <>
+      <h4>{t(`recipes.filters.${section}`)}</h4>
       <div className='flex flex-col gap-2 md:gap-1'>
-        {availableValues.map((item) => {
+        {Object.entries(filterSection).map(([key, value]) => {
           return (
-            <div key={`${item}-checkbox`} className='ml-2'>
-              <AppCheckbox
-                label={item}
-                checked={(filters[block] as any)[item]}
-                onChange={() => onChange(block, item)}
-              />
+            <div key={key} className='ml-2'>
+              <AppCheckbox label={key} checked={value} onChange={() => onChange(key)} />
             </div>
           );
         })}
       </div>
-    </React.Fragment>
+    </>
   );
 };

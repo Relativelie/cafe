@@ -1,12 +1,12 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import URLS from 'constants/urls'
-import { Analyst } from 'containers/Analyst'
-import Layout from 'containers/Layout'
-import Recipes from 'containers/Recipes'
-import RecipesList from 'containers/Recipes/RecipesList'
-import Recipe from 'containers/Recipes/Recipe'
-import Home from 'containers/Home'
+import URLS from 'constants/urls';
+import { Analyst } from 'containers/Analyst';
+import Layout from 'containers/Layout';
+import Recipes from 'containers/Recipes';
+import RecipesList from 'containers/Recipes/RecipesList';
+import Recipe from 'containers/Recipes/Recipe';
+import Home from 'containers/Home';
 
 const AppRoutes = () => {
   return (
@@ -21,7 +21,7 @@ const AppRoutes = () => {
       </Route>
       <Route path='*' element={<Navigate to={URLS.HOME} replace />} />
     </Routes>
-  )
-}
+  );
+};
 
-export default AppRoutes
+export default AppRoutes;

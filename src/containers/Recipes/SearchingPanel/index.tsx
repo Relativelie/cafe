@@ -6,10 +6,9 @@ import SearchIcon from 'assets/icons/SearchIcon';
 import { AppButton, AppInput, ButtonSizeENUM } from 'components';
 import { useTheme } from 'theme/themeProvider';
 import { FiltersSection } from './FiltersSection';
-import { filterBlocks } from './data';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { onChangeCheckboxFilter, onChangeSearchFilter } from 'store/recipes/recipesSlice';
-import { FiltersENUM } from 'store/recipes/models/common';
+import { CheckboxFilter, FiltersENUM } from 'store/recipes/models/common';
 
 type SearchingPanelProps = {
   isMobileView?: boolean;
@@ -17,9 +16,6 @@ type SearchingPanelProps = {
 };
 
 const SearchingPanel: React.FC<SearchingPanelProps> = ({ isMobileView = false, closeModal }) => {
-  // const { recipeStore } = useStore();
-  // const { filters } = toJS(recipeStore);
-  // const { onChangeFilter } = recipeStore;
   const filters = useAppSelector((state) => state.recipes.filters);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -36,6 +32,8 @@ const SearchingPanel: React.FC<SearchingPanelProps> = ({ isMobileView = false, c
       behavior: 'smooth',
     });
   };
+
+  const checkboxFilters = [FiltersENUM.Diet, FiltersENUM.CuisineType];
 
   return (
     <div className={clsx(!isMobileView && 'relative')}>
@@ -57,15 +55,15 @@ const SearchingPanel: React.FC<SearchingPanelProps> = ({ isMobileView = false, c
         />
 
         <div className='flex flex-col gap-4'>
-          {filterBlocks.map((filter) => {
+          {checkboxFilters.map((section, index) => {
             return (
               <FiltersSection
-                key={filter.block}
-                filterBlock={filter}
-                filters={filters}
-                onChange={(block: FiltersENUM, key: string) => {
+                key={index}
+                section={section}
+                filterSection={filters[section] as CheckboxFilter}
+                onChange={(key: string) => {
                   onScrollToTop();
-                  dispatch(onChangeCheckboxFilter({ block, key }));
+                  dispatch(onChangeCheckboxFilter({ section, key }));
                 }}
               />
             );

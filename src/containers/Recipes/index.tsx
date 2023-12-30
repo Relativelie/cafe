@@ -7,7 +7,7 @@ import { AppSpinner } from 'components';
 import useDebounce from 'utils/useDebounce';
 import MobileSearchingPanel from './MobileSearchingPanel';
 import { useTheme } from 'theme/themeProvider';
-import { useAppDispatch, useAppSelector } from 'utils/hooks';
+import { useAppSelector } from 'utils/hooks';
 import { getRecipes } from 'services/recipes';
 import URLS from 'constants/urls';
 
@@ -15,7 +15,7 @@ const Recipes = () => {
   const navigate = useNavigate();
 
   const { filters } = useAppSelector((state) => state.recipes);
-  const [trigger, { isLoading } ] = getRecipes.useLazyQuery();
+  const [trigger, { isLoading }] = getRecipes.useLazyQuery();
 
   const { theme } = useTheme();
 

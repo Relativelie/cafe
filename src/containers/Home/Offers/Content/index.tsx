@@ -5,20 +5,24 @@ import { offersDataEu, offersDataRu } from './data';
 import { useTheme } from 'theme/themeProvider';
 import { useTranslation } from 'react-i18next';
 import { LocalesVariantsENUM } from 'i18n/models';
+import { AppButton } from 'components';
+import { useNavigate } from 'react-router-dom';
 
 const Content = () => {
   const { theme } = useTheme();
   const { i18n } = useTranslation();
   const [selectedContent, setSelectedContent] = useState<number>(1);
+  const navigate = useNavigate();
 
   const isSelected = (id: number) => {
     return id === selectedContent;
   };
 
   const offersData = i18n.language === LocalesVariantsENUM.En ? offersDataEu : offersDataRu;
-  const selectedOffer = offersData.filter(({ id }) => isSelected(id))[0];
+  const selectedOffer = offersData.find(({ id }) => isSelected(id))!;
+
   return (
-    <div className='flex flex-col gap-8 items-center mt-14'>
+    <div className='flex flex-col gap-8 items-center'>
       <div className='flex gap-32'>
         {offersData.map((item) => (
           <VariantButton
@@ -39,9 +43,14 @@ const Content = () => {
               <Description key={title} title={title} content={content} />
             ))}
           </div>
+
           <h2 style={{ color: theme.colors.lightBrand }} className='text-center'>
             {selectedOffer.endingQuote}
           </h2>
+
+          <div className='flex justify-center mt-8'>
+            <AppButton onClick={() => navigate(selectedOffer.path)}>Go to page</AppButton>
+          </div>
         </div>
       </div>
     </div>

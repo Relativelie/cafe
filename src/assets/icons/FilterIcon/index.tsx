@@ -5,7 +5,7 @@ type IconProps = {
 const Icon: React.FC<IconProps> = ({ className = '' }) => {
   return (
     <svg
-      className='className'
+      className={className}
       width='24'
       height='24'
       viewBox='0 0 24 24'

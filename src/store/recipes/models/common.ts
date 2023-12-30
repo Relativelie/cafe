@@ -4,7 +4,7 @@ export enum DietEnum {
   Balanced = 'balanced',
   HighFiber = 'high-fiber',
   HighProtein = 'high-protein',
-  lowCarb = 'low-carb',
+  LowCarb = 'low-carb',
   LowFat = 'low-fat',
   LowSodium = 'low-sodium',
 }

@@ -1,3 +1,4 @@
+import URLS from 'constants/urls';
 import { Description, Offer } from './models';
 
 export const offersDataEu: Array<Offer> = [
@@ -16,6 +17,7 @@ export const offersDataEu: Array<Offer> = [
     ],
     poster: 'bg-recipe-poster ',
     endingQuote: 'Bon appétit!',
+    path: URLS.RECIPES.BASE,
   },
   {
     id: 2,
@@ -32,6 +34,7 @@ export const offersDataEu: Array<Offer> = [
     ],
     poster: 'bg-analyst-poster ',
     endingQuote: 'Eat well, live well!',
+    path: URLS.ANALYST,
   },
 ];
 
@@ -51,6 +54,7 @@ export const offersDataRu: Array<Offer> = [
     ],
     poster: 'bg-recipe-poster ',
     endingQuote: 'Bon appétit!',
+    path: URLS.RECIPES.BASE,
   },
   {
     id: 2,
@@ -67,5 +71,6 @@ export const offersDataRu: Array<Offer> = [
     ],
     poster: 'bg-analyst-poster ',
     endingQuote: 'Ешьте хорошо, живите хорошо!',
+    path: URLS.ANALYST,
   },
 ];

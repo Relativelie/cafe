@@ -1,12 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import {
-  CheckboxFilter,
-  CuisineEnum,
-  DietEnum,
-  Filter,
-  FiltersENUM,
-  RecipeState,
-} from './models/common';
+import { CheckboxFilter, CuisineEnum, DietEnum, FiltersENUM, RecipeState } from './models/common';
 import { getFilterModel } from './helpers';
 import { recipesApi } from 'services/recipes';
 
@@ -30,9 +23,9 @@ const recipesSlice = createSlice({
     },
     onChangeCheckboxFilter(
       state,
-      { payload }: PayloadAction<{ block: keyof Filter; key: string }>,
+      { payload }: PayloadAction<{ section: FiltersENUM; key: string }>,
     ) {
-      const { block, key } = payload;
+      const { section: block, key } = payload;
       const blockValue = state.filters[block] as CheckboxFilter;
       blockValue[key] = !blockValue[key];
     },

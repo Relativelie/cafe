@@ -14,4 +14,5 @@ export type Offer = {
   description: Array<Description>;
   poster: string;
   endingQuote: string;
+  path: string;
 };
