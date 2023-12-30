@@ -12,6 +12,7 @@ import AppTextArea from './TextArea';
 import AppRadioButton from './RadioButton';
 import AppAnchorLink from './AnchorLink';
 import ImageBlackout from './ImageBlackout';
+import AppSpinnerContainer from './SpinnerContainer';
 
 export {
   AppInput,
@@ -29,4 +30,5 @@ export {
   AppRadioButton,
   AppAnchorLink,
   ImageBlackout,
+  AppSpinnerContainer,
 };

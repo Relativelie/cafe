@@ -1,12 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import isEqual from 'lodash.isequal';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import SearchingPanel from './SearchingPanel';
-import { AppSpinner } from 'components';
+import { AppSpinnerContainer } from 'components';
 import useDebounce from 'utils/useDebounce';
 import MobileSearchingPanel from './MobileSearchingPanel';
-import { useTheme } from 'theme/themeProvider';
 import { useAppSelector } from 'utils/hooks';
 import { getRecipes } from 'services/recipes';
 import URLS from 'constants/urls';
@@ -15,9 +14,8 @@ const Recipes = () => {
   const navigate = useNavigate();
 
   const { filters } = useAppSelector((state) => state.recipes);
-  const [trigger, { isLoading }] = getRecipes.useLazyQuery();
-
-  const { theme } = useTheme();
+  const [trigger] = getRecipes.useLazyQuery();
+  const [isLoading, setIsLoading] = useState(false);
 
   const debouncedVal = useDebounce<string>(filters.q, 1000);
   const checkboxFiltersRef = useRef({
@@ -35,21 +33,16 @@ const Recipes = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true);
     trigger(filters).then(() => {
       navigate(URLS.RECIPES.SEARCH);
+      setIsLoading(false);
     });
   }, [debouncedVal, checkboxFiltersRef.current]);
 
   return (
     <>
-      {isLoading && (
-        <div
-          style={{ backgroundColor: theme.colors.opacityDefault }}
-          className='fixed h-full w-full z-10'
-        >
-          <AppSpinner />
-        </div>
-      )}
+      {isLoading && <AppSpinnerContainer />}
 
       <div className='grid lg:grid-cols-[minmax(200px,400px),_1fr]'>
         <div className='hidden lg:block'>

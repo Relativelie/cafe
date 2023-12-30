@@ -23,7 +23,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({ title, isSelected, poster
       >
         <ImageBlackout
           className={`duration-500 ease-in-out rounded-full ${
-            isSelected ? 'opacity-0 ' : 'opacity-70'
+            isSelected ? 'opacity-0 bg-black/10' : 'opacity-70'
           }`}
         />
       </div>

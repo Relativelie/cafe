@@ -48,7 +48,7 @@ const Content = () => {
             {selectedOffer.endingQuote}
           </h2>
 
-          <div className='flex justify-center mt-8'>
+          <div className='flex justify-center my-8'>
             <AppButton onClick={() => navigate(selectedOffer.path)}>Go to page</AppButton>
           </div>
         </div>
