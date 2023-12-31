@@ -38,7 +38,7 @@
     "ingredients_few": "{{count}} Ingredients",
     "ingredients_other": "{{count}} Ingredients",
     "matches": "We couldn't find any matches",
-    "matchesDescription": "Double check your search for any typos or spelling errors - or try a different search term."
+    "matchesDescription": "Double check your search for any types or spelling errors - or try a different search term."
   },
   "analyst": {
     "label": "Ingredients analyst",
