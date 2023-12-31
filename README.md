@@ -7,6 +7,7 @@ react - redux - redux toolkit - RTK Query - tailwind - react-hook-form - react-g
 
 In the [branch](https://github.com/Relativelie/cafe/tree/cafe-4-mobx-state-tree/) you can find the use of Mobx-state-tree (old code).
 
+## Features
 This project consist of three main components:
 
 1. **Recipe Searcher** 🍳
