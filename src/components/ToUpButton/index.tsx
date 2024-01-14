@@ -13,11 +13,7 @@ const AppUpButton = () => {
     const heightToHideFrom = 200;
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
-    if (winScroll < heightToHideFrom) {
-      setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
+    setIsVisible(winScroll > heightToHideFrom);
   };
 
   useEffect(() => {
