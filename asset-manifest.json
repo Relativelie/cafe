@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/cafe/static/css/main.35cf54f5.css",
+    "main.js": "/cafe/static/js/main.41b5a05f.js",
+    "static/js/787.99ec613d.chunk.js": "/cafe/static/js/787.99ec613d.chunk.js",
+    "static/media/cooking-bg.webp": "/cafe/static/media/cooking-bg.97f2b485ad7ce23bda1e.webp",
+    "static/media/home-bg.png": "/cafe/static/media/home-bg.213e286e7a8fe3348b38.png",
+    "static/media/sea.webp": "/cafe/static/media/sea.2decbec6d96293899d10.webp",
+    "static/media/github.png": "/cafe/static/media/github.f0c9b604e973c2a3abdc.png",
+    "static/media/heather-barnes.webp": "/cafe/static/media/heather-barnes.4b86b7cfa6787ee956b8.webp",
+    "static/media/loading-recipe-1.png": "/cafe/static/media/loading-recipe-1.2593d6f9d90670842cc5.png",
+    "static/media/food.webp": "/cafe/static/media/food.a4b3135b519451d122ae.webp",
+    "static/media/loading-recipe-3.png": "/cafe/static/media/loading-recipe-3.ed9deb94c7fae608f662.png",
+    "static/media/loading-recipe-2.png": "/cafe/static/media/loading-recipe-2.50e61a1b006821f68343.png",
+    "static/media/news-two.webp": "/cafe/static/media/news-two.d89f64cb40942e7138be.webp",
+    "static/media/linkedin.png": "/cafe/static/media/linkedin.e5fa10afcd0c5efa2ffd.png",
+    "static/media/news-one.webp": "/cafe/static/media/news-one.f00179d683dd1db71f66.webp",
+    "static/media/about-us-2.webp": "/cafe/static/media/about-us-2.0b0b5d7b986f53e85daf.webp",
+    "static/media/about-us.webp": "/cafe/static/media/about-us.fe107a3be695c1a0583f.webp",
+    "static/media/news-three.webp": "/cafe/static/media/news-three.105fc07936b04d991811.webp",
+    "index.html": "/cafe/index.html",
+    "main.35cf54f5.css.map": "/cafe/static/css/main.35cf54f5.css.map",
+    "main.41b5a05f.js.map": "/cafe/static/js/main.41b5a05f.js.map",
+    "787.99ec613d.chunk.js.map": "/cafe/static/js/787.99ec613d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35cf54f5.css",
+    "static/js/main.41b5a05f.js"
+  ]
+}
