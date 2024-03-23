@@ -1,7 +1,7 @@
 import { LocalesVariantsENUM } from 'i18n/models';
 import { useTranslation } from 'react-i18next';
 
-import { AppRadioButton } from 'components';
+import { RadioButton } from 'components';
 import { useTheme } from 'theme/themeProvider';
 import { LocalStorageENUM, setToLS } from 'utils/storage';
 
@@ -19,11 +19,14 @@ const LanguageSettings = () => {
       <h4 style={{ color: theme.colors.defaultInverse }}>{t('settings.language')}</h4>
       {Object.keys(LocalesVariantsENUM).map((themeKey) => {
         const value = LocalesVariantsENUM[themeKey as keyof typeof LocalesVariantsENUM];
+        const label = t(`settings.${themeKey.toLowerCase()}`);
 
         return (
-          <AppRadioButton
+          <RadioButton
+            id={label}
+            name='language'
             key={themeKey}
-            label={t(`settings.${themeKey.toLowerCase()}`)}
+            label={label}
             checked={i18n.language === value}
             onChange={() => changeLanguage(value)}
           />

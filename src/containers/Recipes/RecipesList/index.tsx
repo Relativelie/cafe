@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 
-import { RecipeCard, AppToUpButton, AppSpinnerContainer } from 'components';
+import { RecipeCard, UpButton, FullScreenLoader } from 'components';
 import URLS from 'constants/urls';
 import { getNextRecipes } from 'services/recipes';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
@@ -34,10 +34,10 @@ const RecipesList: React.FC = () => {
 
   return (
     <div className='relative mt-8 p-4'>
-      {inView && <AppSpinnerContainer />}
+      {inView && <FullScreenLoader />}
 
       <div className='fixed bottom-[15vh] z-10'>
-        <AppToUpButton />
+        <UpButton />
       </div>
 
       {

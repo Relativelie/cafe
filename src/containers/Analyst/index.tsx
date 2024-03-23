@@ -2,12 +2,12 @@ import { useEffect, useRef } from 'react';
 
 import AboutAnalyst from './AboutAnalyst';
 import { PieChartGraph } from './PieChartGraph';
-import { AppSpinner } from 'components';
 import AnalystInput from './AnalystInput';
 import Table from './Table';
 import { usePostAnalystMutation } from 'services/analyst';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { resetAnalystState } from 'store/analyst/analystSlice';
+import FullScreenLoader from 'components/FullScreenLoader';
 
 export const Analyst = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -31,11 +31,7 @@ export const Analyst = () => {
     <div className='flex flex-col gap-8 pb-12'>
       <AboutAnalyst onClick={onClickReadyBtn} />
 
-      {isLoading && (
-        <div className='fixed h-full w-full z-10'>
-          <AppSpinner />
-        </div>
-      )}
+      {isLoading && <FullScreenLoader />}
 
       <div className='flex flex-col items-center md:flex-row gap-4 pt-8 px-8'>
         <div className='w-3/4'>

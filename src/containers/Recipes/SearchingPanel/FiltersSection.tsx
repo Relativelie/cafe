@@ -1,5 +1,4 @@
-import { AppCheckbox } from 'components';
-import React from 'react';
+import { Checkbox } from 'components';
 import { useTranslation } from 'react-i18next';
 import { CheckboxFilter, FiltersENUM } from 'store/recipes/models/common';
 
@@ -23,7 +22,7 @@ export const FiltersSection: React.FC<FiltersSectionProps> = ({
         {Object.entries(filterSection).map(([key, value]) => {
           return (
             <div key={key} className='ml-2'>
-              <AppCheckbox label={key} checked={value} onChange={() => onChange(key)} />
+              <Checkbox label={key} checked={value} onChange={() => onChange(key)} />
             </div>
           );
         })}

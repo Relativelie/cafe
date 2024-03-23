@@ -1,6 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppTextArea, AppButton, ButtonSizeENUM } from 'components';
+import { TextArea, Button, ButtonSize } from 'components';
 
 type AnalystInputProps = {
   textAreaRef: React.RefObject<HTMLTextAreaElement>;
@@ -27,13 +26,10 @@ const AnalystInput: React.FC<AnalystInputProps> = ({ textAreaRef, postAnalyst })
 
   return (
     <div className='h-96 w-full md:w-2/4'>
-      <AppTextArea
-        textareaRef={textAreaRef}
-        placeholder={`${t('analyst.write')} \n${t('analyst.example')}`}
-      />
-      <AppButton size={ButtonSizeENUM.full} onClick={onClickAnalyze}>
+      <TextArea ref={textAreaRef} placeholder={`${t('analyst.write')} \n${t('analyst.example')}`} />
+      <Button size={ButtonSize.full} onClick={onClickAnalyze}>
         {t('analyst.analyze')}
-      </AppButton>
+      </Button>
     </div>
   );
 };

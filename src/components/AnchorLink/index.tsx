@@ -1,16 +1,16 @@
-type AppAnchorLinkProps = {
-  link?: string;
+type AnchorLinkProps = {
+  link: string;
   title?: string;
-  child?: JSX.Element;
+  children?: JSX.Element;
 };
 
-const AppAnchorLink: React.FC<AppAnchorLinkProps> = ({ link, title, child }) => {
+const AnchorLink: React.FC<AnchorLinkProps> = ({ link, title, children }) => {
   return (
-    <a target='_blank' className='underline' href={link} rel='noreferrer'>
+    <a target='_blank' className='underline' href={link} rel='noopener noreferrer'>
       {title}
-      {child}
+      {children}
     </a>
   );
 };
 
-export default AppAnchorLink;
+export default AnchorLink;

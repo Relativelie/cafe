@@ -1,18 +1,23 @@
 import clsx from 'clsx';
 import Loading from 'assets/icons/LoadingRecipeIcon';
 
-type AppSpinnerProps = {
+type SpinnerProps = {
   className?: string;
 };
 
-const AppSpinner: React.FC<AppSpinnerProps> = ({ className }) => {
+const Spinner: React.FC<SpinnerProps> = ({ className }) => {
   return (
-    <div className={clsx('flex h-full justify-center items-center', className)}>
+    <div
+      className={clsx('flex h-full justify-center items-center', className)}
+      role='alert'
+      aria-live='polite'
+    >
       <div className='animate-[spin_1.7s_linear_infinite] h-32 w-32'>
         <Loading />
+        <span className='sr-only'>Loading...</span>
       </div>
     </div>
   );
 };
 
-export default AppSpinner;
+export default Spinner;

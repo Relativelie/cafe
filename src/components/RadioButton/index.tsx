@@ -1,26 +1,16 @@
 import clsx from 'clsx';
-import React from 'react';
 import { useTheme } from 'theme/themeProvider';
 
-type AppRadioButtonProps = {
+type RadioButtonProps = {
+  label: string;
+  id: string;
   name?: string;
   value?: string;
-  id?: string;
-  htmlFor?: string;
-  label?: string;
   checked?: boolean;
   onChange?: () => void;
 };
 
-const AppRadioButton: React.FC<AppRadioButtonProps> = ({
-  name,
-  value,
-  id,
-  htmlFor,
-  label,
-  checked,
-  onChange,
-}) => {
+const RadioButton: React.FC<RadioButtonProps> = ({ id, label, name, value, checked, onChange }) => {
   const { theme } = useTheme();
 
   return (
@@ -38,8 +28,7 @@ const AppRadioButton: React.FC<AppRadioButtonProps> = ({
         <label
           style={{ color: theme.colors.defaultInverse }}
           className='cursor-pointer'
-          htmlFor={htmlFor}
-          onClick={onChange}
+          htmlFor={id}
         >
           {label}
         </label>
@@ -48,4 +37,4 @@ const AppRadioButton: React.FC<AppRadioButtonProps> = ({
   );
 };
 
-export default AppRadioButton;
+export default RadioButton;

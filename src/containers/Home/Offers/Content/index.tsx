@@ -4,7 +4,7 @@ import { LocalesVariantsENUM } from 'i18n/models';
 import { useNavigate } from 'react-router-dom';
 
 import { useTheme } from 'theme/themeProvider';
-import { AppButton } from 'components';
+import { Button } from 'components';
 import Description from './Description';
 import VariantButton from './VariantButton';
 import { offersDataEu, offersDataRu } from './data';
@@ -50,7 +50,7 @@ const Content = () => {
           </h2>
 
           <div className='flex justify-center my-8'>
-            <AppButton onClick={() => navigate(selectedOffer.path)}>Go to page</AppButton>
+            <Button onClick={() => navigate(selectedOffer.path)}>Go to page</Button>
           </div>
         </div>
       </div>

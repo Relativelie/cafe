@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { AppRadioButton } from 'components';
+import { RadioButton } from 'components';
 import { ThemeVariantsENUM } from 'theme/models';
 import { useTheme } from 'theme/themeProvider';
 
@@ -17,11 +17,14 @@ const ThemeSettings = () => {
       <h4 style={{ color: theme.colors.defaultInverse }}>{t('settings.theme')}</h4>
       {Object.keys(ThemeVariantsENUM).map((themeKey) => {
         const value = ThemeVariantsENUM[themeKey as keyof typeof ThemeVariantsENUM];
+        const label = t(`settings.${themeKey.toLowerCase()}`);
 
         return (
-          <AppRadioButton
+          <RadioButton
+            id={label}
+            name='theme'
             key={themeKey}
-            label={t(`settings.${themeKey.toLowerCase()}`)}
+            label={label}
             checked={selectedThemeTitle === value}
             onChange={() => onChange(value)}
           />

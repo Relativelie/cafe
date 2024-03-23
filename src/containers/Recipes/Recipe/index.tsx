@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useAppSelector } from 'utils/hooks';
-import { AppBackButton } from 'components';
+import { BackButton } from 'components';
 import Header from './RecipeTitle';
 import Nutrition from './Nutrition';
 import DietType from './DietType';
@@ -17,7 +17,7 @@ const Recipe = () => {
       {selectedRecipe && (
         <div className='h-screen flex flex-col gap-6 lg:gap-10'>
           <div className='h-64 grid grid-cols-[80px_1fr_80px] grid-rows-[50px_1fr_80px] bg-recipe-poster bg-cover bg-center'>
-            <AppBackButton title={t('recipes.backToList')} />
+            <BackButton title={t('recipes.backToList')} />
             <Header title={selectedRecipe.label} />
           </div>
           <Nutrition

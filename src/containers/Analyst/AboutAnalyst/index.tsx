@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { useTranslation } from 'react-i18next';
 
-import { AppButton, ButtonSizeENUM, ImageBlackout } from 'components';
+import { ButtonSize, Backdrop, Button } from 'components';
 import { useTheme } from 'theme/themeProvider';
 
 type AboutAnalystProps = {
@@ -19,7 +19,7 @@ const AboutAnalyst: React.FC<AboutAnalystProps> = ({ onClick }) => {
         'relative flex p-5 bg-analyst-poster bg-cover bg-center shadow-lg',
       )}
     >
-      <ImageBlackout />
+      <Backdrop />
       <div className='w-full flex flex-col items-center gap-5 z-10 text-white'>
         <>
           <h2 className='text-center text-6xl font-cursive text-shadow-[0_4px_8px_#111111]'>
@@ -35,9 +35,9 @@ const AboutAnalyst: React.FC<AboutAnalystProps> = ({ onClick }) => {
           </h5>
         </div>
 
-        <AppButton size={ButtonSizeENUM.sm} onClick={onClick}>
+        <Button size={ButtonSize.sm} onClick={onClick}>
           {t('analyst.ready')}
-        </AppButton>
+        </Button>
       </div>
     </div>
   );

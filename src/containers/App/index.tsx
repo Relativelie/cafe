@@ -1,6 +1,6 @@
 import ErrorBoundaries from 'components/ErrorBoundary';
 import { I18nextProvider } from 'react-i18next';
-import { AppNotificationToaster } from 'components';
+import { NotificationToaster } from 'components';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import ScrollToTop from 'utils/useScrollToTop';
@@ -25,7 +25,7 @@ function App() {
           <LSTheme />
           <ErrorBoundaries>
             <AppRoutes />
-            <AppNotificationToaster />
+            <NotificationToaster />
           </ErrorBoundaries>
         </I18nextProvider>
       </ThemeProvider>

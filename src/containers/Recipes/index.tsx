@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import isEqual from 'lodash.isequal';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { AppSpinnerContainer } from 'components';
+import { FullScreenLoader } from 'components';
 import useDebounce from 'utils/useDebounce';
 import { useAppSelector } from 'utils/hooks';
 import { getRecipes } from 'services/recipes';
@@ -42,7 +42,7 @@ const Recipes = () => {
 
   return (
     <>
-      {isLoading && <AppSpinnerContainer />}
+      {isLoading && <FullScreenLoader />}
 
       <div className='grid lg:grid-cols-[minmax(200px,400px),_1fr]'>
         <div className='hidden lg:block'>

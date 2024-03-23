@@ -2,28 +2,41 @@ import clsx from 'clsx';
 import { ReactNode } from 'react';
 import { useTheme } from 'theme/themeProvider';
 
-type AppInputProps = {
-  curVal?: string;
+type InputProps = {
   handleInputChange: (arg0: string) => void;
+  srLabel: string;
+  id: string;
+  curVal?: string;
   rightIcon?: ReactNode;
   leftIcon?: ReactNode;
   alt?: string;
   className?: string;
 };
 
-const AppInput: React.FC<AppInputProps> = ({
-  curVal,
+const Input: React.FC<InputProps> = ({
   handleInputChange,
+  srLabel,
+  id,
+  curVal = '',
   leftIcon,
   rightIcon,
   className = '',
+  alt = '',
 }) => {
   const { theme } = useTheme();
 
   return (
     <div className={clsx(className, 'relative flex items-center')}>
-      {leftIcon && <div className='absolute h-full flex items-center left-2'>{leftIcon}</div>}
+      {leftIcon && (
+        <div className='absolute left-2' aria-hidden={!alt}>
+          {leftIcon}
+        </div>
+      )}
+      <label htmlFor={id} className='sr-only'>
+        {srLabel}
+      </label>
       <input
+        id={id}
         style={{ borderColor: theme.colors.opacityDefaultInverse }}
         className={clsx(
           theme.outlineFocusColor.brand,
@@ -33,9 +46,13 @@ const AppInput: React.FC<AppInputProps> = ({
         value={curVal}
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {rightIcon && <div className='absolute h-full flex items-center right-2'>{rightIcon}</div>}
+      {rightIcon && (
+        <div className='absolute right-2' aria-hidden={!alt}>
+          {rightIcon}
+        </div>
+      )}
     </div>
   );
 };
 
-export default AppInput;
+export default Input;

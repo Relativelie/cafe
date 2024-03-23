@@ -1,25 +1,27 @@
 import { clsx } from 'clsx';
+import { forwardRef } from 'react';
 import { useTheme } from 'theme/themeProvider';
 
-type AppTextAreaProps = {
+type TextAreaProps = {
   placeholder?: string;
-  textareaRef?: React.RefObject<HTMLTextAreaElement>;
 };
 
-const AppTextArea: React.FC<AppTextAreaProps> = ({ placeholder, textareaRef }) => {
+const AppTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ placeholder }, ref) => {
   const { theme } = useTheme();
 
   return (
     <textarea
-      ref={textareaRef}
+      ref={ref}
       style={{ borderColor: theme.colors.opacityDefaultInverse }}
       placeholder={placeholder}
       className={clsx(
         theme.focusColors.brand,
         'h-[90%] w-full p-2 border rounded-xl text-xl font-oxygen bg-transparent focus:outline-none focus:border-2',
       )}
-    ></textarea>
+    />
   );
-};
+});
+
+AppTextArea.displayName = 'AppTextArea';
 
 export default AppTextArea;

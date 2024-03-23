@@ -12,11 +12,7 @@ type IconProps = {
 const Icon: React.FC<IconProps> = ({ className }) => {
   const randomImg = Math.floor(Math.random() * loadingImg.length);
   return (
-    <img
-      src={loadingImg[randomImg]}
-      alt='loading icon'
-      className={clsx(className, 'w-full h-full')}
-    />
+    <img src={loadingImg[randomImg]} alt='loading' className={clsx(className, 'w-full h-full')} />
   );
 };
 

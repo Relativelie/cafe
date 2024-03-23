@@ -1,4 +1,4 @@
-import { AppButton, ButtonSizeENUM } from 'components';
+import { Button, ButtonSize } from 'components';
 import LanguageSettings from './LanguageSettings';
 import ThemeSettings from './ThemeSettings';
 import { useTranslation } from 'react-i18next';
@@ -17,9 +17,9 @@ const Settings: React.FC<SettingsProps> = ({ closeModal }) => {
         <LanguageSettings />
       </div>
       <div className='self-end'>
-        <AppButton size={ButtonSizeENUM.sm} onClick={closeModal}>
+        <Button size={ButtonSize.sm} onClick={closeModal}>
           {t('common.close')}
-        </AppButton>
+        </Button>
       </div>
     </div>
   );

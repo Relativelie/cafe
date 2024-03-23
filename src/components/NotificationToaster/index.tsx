@@ -1,6 +1,6 @@
 import { Toaster } from 'react-hot-toast';
 
-const AppNotificationToaster = () => {
+const NotificationToaster = () => {
   return (
     <Toaster
       position='bottom-left'
@@ -32,4 +32,4 @@ const AppNotificationToaster = () => {
   );
 };
 
-export default AppNotificationToaster;
+export default NotificationToaster;

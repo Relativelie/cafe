@@ -1,30 +1,28 @@
 import clsx from 'clsx';
 import { useTheme } from 'theme/themeProvider';
 
-type AppCheckboxProps = {
+type CheckboxProps = {
   checked: boolean;
   onChange: (val: boolean) => void;
-  label?: string;
+  label: string;
 };
 
-const AppCheckbox: React.FC<AppCheckboxProps> = ({ label = '', checked, onChange }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
   const { theme } = useTheme();
 
+  const handleChange = () => onChange(!checked);
+
   return (
-    <div className='flex gap-4'>
+    <label className='flex gap-4 items-center cursor-pointer'>
       <input
         className={clsx(theme.accentColors.brand, 'w-5 h-5 self-center')}
         type='checkbox'
         name='status'
         checked={checked}
-        onChange={() => onChange(!checked)}
+        onChange={handleChange}
       />
-      {label && (
-        <label onClick={() => onChange(!checked)} className='h5'>
-          {label}
-        </label>
-      )}
-    </div>
+      <h5>{label}</h5>
+    </label>
   );
 };
-export default AppCheckbox;
+export default Checkbox;

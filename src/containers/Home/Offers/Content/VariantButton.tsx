@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ImageBlackout } from 'components';
+import { Backdrop } from 'components';
 
 type VariantButtonProps = {
   title: string;
@@ -21,7 +21,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({ title, isSelected, poster
           'relative bg-center bg-cover h-16 w-16 md:h-32 md:w-32 rounded-full',
         )}
       >
-        <ImageBlackout
+        <Backdrop
           className={`duration-500 ease-in-out rounded-full ${
             isSelected ? 'opacity-0 bg-black/10' : 'opacity-70'
           }`}

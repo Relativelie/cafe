@@ -32,7 +32,7 @@ const recipesSlice = createSlice({
     selectRecipe(state, action: PayloadAction<string>) {
       if (!state.recipes) return;
 
-      state.selectedRecipe = state.recipes.find((recipe) => recipe.uri === action.payload) ?? null;
+      state.selectedRecipe = state.recipes.find((recipe) => recipe.uri === action.payload) || null;
     },
     unselectRecipe(state) {
       state.selectedRecipe = null;
@@ -46,9 +46,9 @@ const recipesSlice = createSlice({
     });
     builder.addMatcher(recipesApi.endpoints.getNextRecipes.matchFulfilled, (state, { payload }) => {
       const { recipes, nextPage } = payload;
-      const stateRecipes = state.recipes ?? [];
-      const newRecipes = recipes ?? [];
-      state.recipes = [...stateRecipes, ...newRecipes];
+      const curRecipes = state.recipes || [];
+      const newRecipes = recipes || [];
+      state.recipes = [...curRecipes, ...newRecipes];
       state.nextPage = nextPage;
     });
   },

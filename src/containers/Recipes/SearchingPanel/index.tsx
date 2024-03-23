@@ -1,9 +1,8 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import SearchIcon from 'assets/icons/SearchIcon';
-import { AppButton, AppInput, ButtonSizeENUM } from 'components';
+import { Button, Input, ButtonSize } from 'components';
 import { useTheme } from 'theme/themeProvider';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { onChangeCheckboxFilter, onChangeSearchFilter } from 'store/recipes/recipesSlice';
@@ -44,7 +43,9 @@ const SearchingPanel: React.FC<SearchingPanelProps> = ({ isMobileView = false, c
           'flex flex-col gap-6 ',
         )}
       >
-        <AppInput
+        <Input
+          id='search'
+          srLabel={t('recipes.search')}
           curVal={filters.q}
           handleInputChange={(value) => {
             onScrollToTop();
@@ -71,9 +72,9 @@ const SearchingPanel: React.FC<SearchingPanelProps> = ({ isMobileView = false, c
         </div>
 
         {isMobileView && (
-          <AppButton size={ButtonSizeENUM.full} onClick={closeModal}>
+          <Button size={ButtonSize.full} onClick={closeModal}>
             {t('common.close')}
-          </AppButton>
+          </Button>
         )}
       </div>
     </div>

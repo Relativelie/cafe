@@ -1,62 +1,51 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { useTheme } from 'theme/themeProvider';
 
-export enum ButtonSizeENUM {
+export enum ButtonSize {
   sm = 'SM',
   md = 'MD',
   lg = 'LG',
   full = 'FULL',
 }
 
-const sizes: { [key in ButtonSizeENUM]: string } = {
+const sizes: { [key in ButtonSize]: string } = {
   SM: 'w-48 h-9',
   MD: 'w-64 h-9',
   LG: 'w-80 h-9',
   FULL: 'h-full w-full',
 };
 
-interface ButtonProps
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+type ButtonProps = {
+  children: React.ReactNode;
   disabled?: boolean;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
   onClick?: () => void;
-  className?: string;
-  size?: ButtonSizeENUM;
-}
+  size?: ButtonSize;
+};
 
-const AppButton: React.FC<ButtonProps> = ({
-  disabled = false,
-  leftIcon = undefined,
-  rightIcon = undefined,
-  onClick,
+const Button: React.FC<ButtonProps> = ({
   children,
-  className = '',
-  size = ButtonSizeENUM.md,
+  disabled = false,
+  size = ButtonSize.md,
+  onClick,
 }) => {
   const { theme } = useTheme();
 
   return (
     <button
-      type='button'
       disabled={disabled}
       style={{
         borderColor: theme.colors.lightBrand,
       }}
       className={clsx(
         sizes[size],
-        className,
         theme.hoverBgColors.darkBrand,
         'h-min border-2 rounded-lg hover:shadow-lg',
       )}
       onClick={onClick}
     >
-      {!!leftIcon && leftIcon}
       {children}
-      {!!rightIcon && rightIcon}
     </button>
   );
 };
 
-export default AppButton;
+export default Button;

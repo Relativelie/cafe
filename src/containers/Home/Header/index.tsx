@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'theme/themeProvider';
-import { AppButton, ButtonSizeENUM } from 'components';
+import { Button, ButtonSize } from 'components';
 
 const Header = () => {
   const { t } = useTranslation();
@@ -20,9 +20,9 @@ const Header = () => {
 
       <h5 className='text-center'>{t('home.workingSince')}</h5>
       <a href='#offers'>
-        <AppButton size={ButtonSizeENUM.sm}>
+        <Button size={ButtonSize.sm}>
           {t('home.our')} {t('home.offers')}
-        </AppButton>
+        </Button>
       </a>
     </div>
   );
