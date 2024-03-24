@@ -12,9 +12,9 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path={URLS.HOME} element={<Layout />}>
-        <Route path={URLS.HOME} element={<Home />} />
+        <Route index element={<Home />} />
         <Route path={URLS.RECIPES.BASE} element={<Recipes />}>
-          <Route path={URLS.RECIPES.SEARCH} element={<RecipesList />} />
+          <Route index path={URLS.RECIPES.SEARCH} element={<RecipesList />} />
           <Route path={URLS.RECIPES.RECIPE} element={<Recipe />} />
         </Route>
         <Route path={URLS.ANALYST} element={<Analyst />}></Route>

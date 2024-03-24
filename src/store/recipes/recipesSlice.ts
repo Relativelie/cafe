@@ -18,13 +18,10 @@ const recipesSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
-    onChangeSearchFilter(state, { payload }: PayloadAction<string>) {
+    onSearchChange(state, { payload }: PayloadAction<string>) {
       state.filters[FiltersENUM.Search] = payload;
     },
-    onChangeCheckboxFilter(
-      state,
-      { payload }: PayloadAction<{ section: FiltersENUM; key: string }>,
-    ) {
+    onFilterChange(state, { payload }: PayloadAction<{ section: FiltersENUM; key: string }>) {
       const { section: block, key } = payload;
       const blockValue = state.filters[block] as CheckboxFilter;
       blockValue[key] = !blockValue[key];
@@ -54,7 +51,7 @@ const recipesSlice = createSlice({
   },
 });
 
-export const { onChangeSearchFilter, onChangeCheckboxFilter, selectRecipe, unselectRecipe } =
+export const { onSearchChange, onFilterChange, selectRecipe, unselectRecipe } =
   recipesSlice.actions;
 
 export default recipesSlice.reducer;

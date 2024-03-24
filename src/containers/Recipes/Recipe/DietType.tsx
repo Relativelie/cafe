@@ -9,10 +9,10 @@ const DietType: React.FC<DietTypeProps> = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <div className='flex flex-col gap-2'>
+    <section className='flex flex-col gap-2' aria-labelledby='Diet types'>
       <ContentTitle text={t('recipes.dietType')} />
       <h5 className='font-semibold text-center'>{title}</h5>
-    </div>
+    </section>
   );
 };
 

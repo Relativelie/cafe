@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { useAppSelector } from 'utils/hooks';
+import { useAppSelector } from 'utils/storeHooks';
 import { BackButton } from 'components';
 import Header from './RecipeTitle';
 import Nutrition from './Nutrition';

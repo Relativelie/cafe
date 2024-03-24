@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import AboutAnalyst from './AboutAnalyst';
-import { PieChartGraph } from './PieChartGraph';
-import AnalystInput from './AnalystInput';
-import Table from './Table';
+import { NutrientPieChart } from './PieChartGraph';
+import TextAnalysisInput from './AnalystInput';
+import NutritionDetails from './NutritionDetails';
 import { usePostAnalystMutation } from 'services/analyst';
-import { useAppDispatch, useAppSelector } from 'utils/hooks';
+import { useAppDispatch, useAppSelector } from 'utils/storeHooks';
 import { resetAnalystState } from 'store/analyst/analystSlice';
 import FullScreenLoader from 'components/FullScreenLoader';
 
@@ -21,11 +21,15 @@ export const Analyst = () => {
     };
   }, []);
 
-  const onClickReadyBtn = () => {
+  const onClickAnalyze = useCallback((arg: string[]) => {
+    trigger(arg);
+  }, []);
+
+  const onClickReadyBtn = useCallback(() => {
     if (textAreaRef.current) {
       textAreaRef.current.focus();
     }
-  };
+  }, []);
 
   return (
     <div className='flex flex-col gap-8 pb-12'>
@@ -35,12 +39,12 @@ export const Analyst = () => {
 
       <div className='flex flex-col items-center md:flex-row gap-4 pt-8 px-8'>
         <div className='w-3/4'>
-          {totalNutrient && !isLoading && <PieChartGraph totalNutrient={totalNutrient} />}
+          {totalNutrient && !isLoading && <NutrientPieChart totalNutrient={totalNutrient} />}
         </div>
-        <AnalystInput textAreaRef={textAreaRef} postAnalyst={trigger} />
+        <TextAnalysisInput textAreaRef={textAreaRef} postAnalyst={onClickAnalyze} />
       </div>
 
-      {!isLoading && <Table />}
+      {!isLoading && <NutritionDetails />}
     </div>
   );
 };

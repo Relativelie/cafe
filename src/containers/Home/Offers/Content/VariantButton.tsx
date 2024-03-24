@@ -10,7 +10,7 @@ type VariantButtonProps = {
 
 const VariantButton: React.FC<VariantButtonProps> = ({ title, isSelected, poster, onClick }) => {
   return (
-    <div
+    <button
       onClick={onClick}
       className='flex flex-col justify-center items-center gap-2 cursor-pointer'
     >
@@ -28,7 +28,7 @@ const VariantButton: React.FC<VariantButtonProps> = ({ title, isSelected, poster
         />
       </div>
       <h3 className={clsx(!isSelected && 'opacity-40', 'p md:h3')}>{title}</h3>
-    </div>
+    </button>
   );
 };
 

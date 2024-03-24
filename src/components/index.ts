@@ -12,6 +12,7 @@ import RadioButton from './RadioButton';
 import AnchorLink from './AnchorLink';
 import Backdrop from './Backdrop';
 import FullScreenLoader from './FullScreenLoader';
+import AppModal from './AppModal';
 
 export {
   Input,
@@ -29,4 +30,5 @@ export {
   AnchorLink,
   Backdrop,
   FullScreenLoader,
+  AppModal,
 };

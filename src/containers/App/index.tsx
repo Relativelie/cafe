@@ -3,10 +3,10 @@ import { I18nextProvider } from 'react-i18next';
 import { NotificationToaster } from 'components';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
-import ScrollToTop from 'utils/useScrollToTop';
+import ScrollToTop from 'containers/App/ScrollToTop';
 import { ThemeProvider } from 'theme/themeProvider';
 import i18n from 'i18n/i18n.config';
-import { LSTheme } from '../InitFromLocalStorage';
+import InitializeAppSettings from 'containers/App/InitializeAppSettings';
 
 export type SearchingData = {
   recipe: {
@@ -22,7 +22,7 @@ function App() {
       <ThemeProvider>
         <I18nextProvider i18n={i18n}>
           <ScrollToTop />
-          <LSTheme />
+          <InitializeAppSettings />
           <ErrorBoundaries>
             <AppRoutes />
             <NotificationToaster />

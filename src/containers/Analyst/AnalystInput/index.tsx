@@ -1,37 +1,40 @@
 import { useTranslation } from 'react-i18next';
 import { TextArea, Button, ButtonSize } from 'components';
+import { memo } from 'react';
 
-type AnalystInputProps = {
-  textAreaRef: React.RefObject<HTMLTextAreaElement>;
+type TextAnalysisInputProps = {
   postAnalyst: (po: string[]) => void;
+  textAreaRef: React.RefObject<HTMLTextAreaElement>;
 };
 
-const AnalystInput: React.FC<AnalystInputProps> = ({ textAreaRef, postAnalyst }) => {
+const TextAnalysisInput: React.FC<TextAnalysisInputProps> = memo(function TextAnalysisInput({
+  textAreaRef,
+  postAnalyst,
+}) {
   const { t } = useTranslation();
 
   const onClickAnalyze = () => {
-    const searchingValue = getAnalyzedArray();
+    const searchingValue = getAnalysisData();
 
     postAnalyst(searchingValue);
   };
 
-  const getAnalyzedArray = (): Array<string> => {
-    if (!textAreaRef.current?.value) return [];
-
-    if (textAreaRef.current?.value.includes(',')) {
-      return textAreaRef.current?.value.replace(/\n/g, ' ').split(', ');
-    }
-    return textAreaRef.current?.value.split(/\n/g).filter((item: string) => item !== '');
+  const getAnalysisData = (): string[] => {
+    const textValue = textAreaRef.current?.value || '';
+    return textValue
+      .split(/,|\n/)
+      .map((item) => item.trim())
+      .filter((item) => item !== '');
   };
 
   return (
-    <div className='h-96 w-full md:w-2/4'>
+    <section className='h-96 w-full md:w-2/4' aria-labelledby='Input data for the search analyst'>
       <TextArea ref={textAreaRef} placeholder={`${t('analyst.write')} \n${t('analyst.example')}`} />
       <Button size={ButtonSize.full} onClick={onClickAnalyze}>
         {t('analyst.analyze')}
       </Button>
-    </div>
+    </section>
   );
-};
+});
 
-export default AnalystInput;
+export default TextAnalysisInput;

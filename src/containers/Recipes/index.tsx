@@ -4,11 +4,11 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 import { FullScreenLoader } from 'components';
 import useDebounce from 'utils/useDebounce';
-import { useAppSelector } from 'utils/hooks';
+import { useAppSelector } from 'utils/storeHooks';
 import { getRecipes } from 'services/recipes';
 import URLS from 'constants/urls';
 import MobileSearchingPanel from './MobileSearchingPanel';
-import SearchingPanel from './SearchingPanel';
+import SearchingPanel from './FiltersPanel';
 
 const Recipes = () => {
   const navigate = useNavigate();
@@ -17,28 +17,31 @@ const Recipes = () => {
   const [trigger] = getRecipes.useLazyQuery();
   const [isLoading, setIsLoading] = useState(false);
 
-  const debouncedVal = useDebounce<string>(filters.q, 1000);
+  const debouncedSearchText = useDebounce<string>(filters.q, 1000);
   const checkboxFiltersRef = useRef({
     ...filters.diet,
     ...filters.cuisineType,
   });
 
-  if (
-    !isEqual(checkboxFiltersRef.current, {
-      ...filters.diet,
-      ...filters.cuisineType,
-    })
-  ) {
-    checkboxFiltersRef.current = { ...filters.diet, ...filters.cuisineType };
+  const checkboxFilters = {
+    ...filters.diet,
+    ...filters.cuisineType,
+  };
+
+  if (!isEqual(checkboxFiltersRef.current, checkboxFilters)) {
+    checkboxFiltersRef.current = checkboxFilters;
   }
 
   useEffect(() => {
-    setIsLoading(true);
-    trigger(filters).then(() => {
-      navigate(URLS.RECIPES.SEARCH);
+    const fetchRecipes = async () => {
+      setIsLoading(true);
+      await trigger(filters);
       setIsLoading(false);
-    });
-  }, [debouncedVal, checkboxFiltersRef.current]);
+      navigate(URLS.RECIPES.SEARCH);
+    };
+
+    fetchRecipes();
+  }, [debouncedSearchText, checkboxFiltersRef.current]);
 
   return (
     <>

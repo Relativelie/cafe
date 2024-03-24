@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ScrollUp from 'assets/png/scroll-up.png';
 import { useTheme } from 'theme/themeProvider';
 import { useTranslation } from 'react-i18next';
+import { onScrollToTop } from 'utils/onScrollToTop';
 
 const UpButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,19 +23,11 @@ const UpButton = () => {
     };
   }, []);
 
-  const onClick = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return isVisible ? (
     <button
       className='flex flex-col items-center cursor-pointer h5 uppercase font-bold'
       style={{ color: theme.colors.success }}
-      onClick={onClick}
+      onClick={onScrollToTop}
     >
       <img src={ScrollUp} alt='scroll up' className='w-10 h-10' />
       {t('common.up')}
