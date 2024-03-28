@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import EventCard from './EventCard';
 import eventsData from './data';
 
-const EventsContent = () => {
+const EventsList = () => {
   const newsItemRef = useRef(null);
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const EventsContent = () => {
   );
 };
 
-export default EventsContent;
+export default EventsList;

@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import ContentTitle from '../Common/ContentTitle';
-import EventsContent from './EventsContent';
+import EventsList from './EventsList';
+import { Title } from 'components';
 
 const Events = () => {
   const { t } = useTranslation();
   return (
-    <div className='flex flex-col justify-between overflow-hidden'>
-      <ContentTitle title={t('home.events').toUpperCase()} />
-      <EventsContent />
-    </div>
+    <section aria-label='Events' className='flex flex-col justify-between overflow-hidden gap-4'>
+      <Title headingText={t('home.our')} subHeadingText={t('home.events').toUpperCase()} />
+      <EventsList />
+    </section>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import ContentTitle from '../ContentTitle';
 import NutritionItem from './NutritionItem';
+import { Title } from 'components';
 
 type NutritionProps = {
   calories: number;
@@ -13,7 +13,7 @@ const Nutrition: React.FC<NutritionProps> = ({ calories, totalDaily, totalWeight
 
   return (
     <section className='flex flex-col gap-2' aria-labelledby='Recipe nutrition'>
-      <ContentTitle text={t('recipes.nutrition')} />
+      <Title headingText={t('home.our')} subHeadingText={t('recipes.nutrition')} />
 
       <div className='flex justify-center gap-10'>
         <NutritionItem

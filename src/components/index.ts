@@ -13,6 +13,7 @@ import AnchorLink from './AnchorLink';
 import Backdrop from './Backdrop';
 import FullScreenLoader from './FullScreenLoader';
 import AppModal from './AppModal';
+import Title from './Title';
 
 export {
   Input,
@@ -31,4 +32,5 @@ export {
   Backdrop,
   FullScreenLoader,
   AppModal,
+  Title,
 };

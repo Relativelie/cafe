@@ -12,7 +12,6 @@ export const IngredientsList = () => {
       {ingredients?.map((ingredient) => (
         <IngredientItem key={`${ingredient.label}-ingredient`} ingredient={ingredient} />
       ))}
-      ;
     </>
   );
 };

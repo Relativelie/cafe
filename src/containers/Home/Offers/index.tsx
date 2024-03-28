@@ -1,16 +1,15 @@
 import { useTranslation } from 'react-i18next';
-
 import Content from './Content';
-import ContentTitle from '../Common/ContentTitle';
+import { Title } from 'components';
 
 const Offers = () => {
   const { t } = useTranslation();
 
   return (
-    <div id='offers' className='flex flex-col items-center'>
-      <ContentTitle title={t('home.offers').toUpperCase()} />
+    <section id='offers' className='flex flex-col items-center gap-4' aria-label='Special Offers'>
+      <Title headingText={t('home.our')} subHeadingText={t('home.offers').toUpperCase()} />
       <Content />
-    </div>
+    </section>
   );
 };
 

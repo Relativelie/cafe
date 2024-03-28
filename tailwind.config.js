@@ -13,8 +13,7 @@ module.exports = {
         'analyst-poster': "url('assets/webp/heather-barnes.webp')",
         'sea-poster': "url('assets/webp/sea.webp')",
         'food-poster': "url('assets/webp/food.webp')",
-        'about-poster': "url('assets/webp/about-us.webp')",
-        'about-poster-two': "url('assets/webp/about-us-2.webp')",
+
         'home-poster': "url('assets/png/home-bg.png')",
       },
     },

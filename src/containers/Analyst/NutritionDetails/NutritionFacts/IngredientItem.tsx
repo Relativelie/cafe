@@ -21,7 +21,7 @@ export const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient }) =>
   ];
 
   return (
-    <div>
+    <>
       <div className='flex justify-between md:px-4'>
         <h4>{label}</h4>
         <p>{measure}</p>
@@ -31,6 +31,6 @@ export const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient }) =>
           <NutritionItem key={index} title={item.title} value={item.value} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
