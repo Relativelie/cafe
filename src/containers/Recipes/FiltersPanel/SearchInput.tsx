@@ -1,7 +1,7 @@
 import { Input } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'utils/storeHooks';
-import { onSearchChange } from 'store/recipes/recipesSlice';
+import { setSearchFilter } from 'store/recipes/recipesSlice';
 import SearchIcon from 'assets/icons/SearchIcon';
 import { useTheme } from 'theme/themeProvider';
 import clsx from 'clsx';
@@ -23,7 +23,7 @@ const SearchInput: React.FC<SearchInputProps> = memo(function SearchInput({ isMo
       srLabel={t('recipes.search')}
       curVal={value}
       handleInputChange={(value) => {
-        dispatch(onSearchChange(value));
+        dispatch(setSearchFilter(value));
       }}
       leftIcon={<SearchIcon fill={theme.colors.defaultInverse} />}
       className={clsx(!isMobileView && 'mt-4 mr-4')}

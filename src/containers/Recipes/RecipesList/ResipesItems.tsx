@@ -1,13 +1,16 @@
 import { selectRecipe } from 'store/recipes/recipesSlice';
 import RecipeEntity from 'store/recipes/models/RecipeEntity';
 import RecipeCard from './RecipeCard';
-import { useAppDispatch, useAppSelector } from 'utils/storeHooks';
+import { useAppDispatch } from 'utils/storeHooks';
 import { useNavigate } from 'react-router-dom';
 
 import URLS from 'constants/urls';
 
-export const RecipesItems = () => {
-  const { recipes } = useAppSelector((state) => state.recipes);
+type RecipesItemsProps = {
+  recipes: RecipeEntity[];
+};
+
+export const RecipesItems: React.FC<RecipesItemsProps> = ({ recipes }) => {
   const dispatch = useAppDispatch();
 
   const onClickRecipeCard = (recipe: RecipeEntity) => {
@@ -18,7 +21,7 @@ export const RecipesItems = () => {
 
   return (
     <>
-      {recipes!.map((recipe) => {
+      {recipes.map((recipe) => {
         return (
           <RecipeCard
             key={`${recipe.uri}-${recipe.calories}`}

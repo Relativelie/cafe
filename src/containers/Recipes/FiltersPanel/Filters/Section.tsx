@@ -1,30 +1,26 @@
-import { Checkbox } from 'components';
 import { useTranslation } from 'react-i18next';
-import { CheckboxFilter, FiltersENUM } from 'store/recipes/models/common';
+import { CheckboxFilters, FiltersENUM } from 'store/recipes/models/common';
+import FilterCheckbox from './FilterCheckbox';
+import { memo } from 'react';
 
 type SectionProps = {
-  filterSection: CheckboxFilter;
-  onChange: (key: string) => void;
+  filters: CheckboxFilters;
   section: FiltersENUM;
 };
 
-const Section: React.FC<SectionProps> = ({ filterSection, section, onChange }) => {
+const Section: React.FC<SectionProps> = memo(function Section({ filters, section }) {
   const { t } = useTranslation();
 
   return (
     <fieldset>
       <legend className='h4'>{t(`recipes.filters.${section}`)}</legend>
       <div className='flex flex-col gap-2 md:gap-1'>
-        {Object.entries(filterSection).map(([key, isChecked]) => {
-          return (
-            <div key={key} className='ml-2'>
-              <Checkbox label={key} checked={isChecked} onChange={() => onChange(key)} />
-            </div>
-          );
+        {Object.entries(filters).map(([key, isChecked]) => {
+          return <FilterCheckbox key={key} label={key} isChecked={isChecked} section={section} />;
         })}
       </div>
     </fieldset>
   );
-};
+});
 
 export default Section;

@@ -25,8 +25,8 @@ const SearchingPanel: React.FC<SearchingPanelProps> = memo(function SearchingPan
 
   return (
     <div className={clsx(!isMobileView && 'relative')}>
-      <Container isMobileView>
-        <SearchInput value={filters.q} isMobileView />
+      <Container isMobileView={isMobileView}>
+        <SearchInput value={filters.q} isMobileView={isMobileView} />
         <Filters />
       </Container>
 

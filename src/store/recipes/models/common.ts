@@ -41,14 +41,14 @@ export enum FiltersENUM {
 
 export interface Filter {
   [FiltersENUM.Search]: string;
-  [FiltersENUM.Diet]: CheckboxFilter;
-  [FiltersENUM.CuisineType]: CheckboxFilter;
+  [FiltersENUM.Diet]: CheckboxFilters;
+  [FiltersENUM.CuisineType]: CheckboxFilters;
 }
 
-export type CheckboxFilter = { [key: string]: boolean };
+export type CheckboxFilters = { [key: string]: boolean };
 
 export type RecipeState = {
-  recipes: RecipeEntity[] | null;
+  recipes: RecipeEntity[];
   filters: Filter;
   nextPage: string | null;
   selectedRecipe: RecipeEntity | null;
