@@ -8,6 +8,8 @@ import { errorHandler } from 'services/errorHandler';
 const rootReducer = {
   analyst: analystReducer,
   recipes: recipesReducer,
+  [analystApi.reducerPath]: analystApi.reducer,
+  [recipesApi.reducerPath]: recipesApi.reducer,
 };
 
 const middleware: Middleware[] = [analystApi.middleware, recipesApi.middleware];
